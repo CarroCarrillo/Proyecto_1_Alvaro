@@ -1,0 +1,48 @@
+-Le gustaría que la base de datos pueda exportarse a un Excel 
+(que tenga la opción y luego seleccione la tabla que quiere exportar)
+
+-Si introduces un nuevo cliente o una nueva máquina que no esté registrada
+el programa te lo indique (a la hora de crear contrato). Preguntar si se quiere crear.
+
+-Cuando se introduzca un nuevo dato al crear máquina o cliente busque textos similares
+por si ya existieran.
+
+-Que el contrato pueda imprimirse.
+
+????????????????
+-que genere un listado de las máquinas que el transportista se lleva y a quién se las lleva
+(crear un estado en la maquina que sea en transporte
+estados de una máquina: uso, desuso, reparación, transporte, pendiente, libre
+
+-que en contrato se pueda subir un escaneo del contrato
+
+-crear código de control en el contrato: 
+1. Sumar todos los dígitos en las posiciones impares 
+2. multiplicar ese resultado por 3
+3. sumar todos los dígitos de las posiciones pares
+4. sumar los resultados de los pasos 3 y 2
+
+-Cuando realices una búsqueda, si el código no se corresponde al código de control,
+dé un aviso.
+códigos de contrato de 8 cifras, pero se convierte en 10 con el código de control
+
+
+-El contrato queda en estado pendiente cuando se imprime (genera el contrato para firmarse), cuando el usuario
+suba el archivo firmado, pasará a estado firmado)
+
+-cliente 00001 es ALMACÉN
+
+-los datos que no estén actualizados que aparezcan en un color distinto
+
+-Estado tendría por defecto pendiente, y cuando se cambiara a firmado,  
+la fecha de entrega se rellenaría automáticamente con la actual.
+Mientras se está en pendiente, la máquina no estará ni en almacén ni en ningún cliente, 
+estará en pendiente. Cuando se cambie a firmado o nulo se cambiará el estado de la máquina 
+(mostrar un texto de a dónde va)
+
+-Si lo pasa a nulo, que ese contrato se elimine y la máquina pase a estado libre.
+Si se marca nulo: la máquina pasa a almacén
+Si la máquina marca firmado: pasa al cliente
+
+-La tabla Adquisición sería información que corespondería a la máquina 
+(se tendría que ver en la opción de la inf.. máquina)

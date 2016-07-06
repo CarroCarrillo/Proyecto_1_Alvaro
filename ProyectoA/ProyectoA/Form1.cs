@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoA.BDADataSetTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+
 
 namespace ProyectoA
 {
@@ -23,7 +26,6 @@ namespace ProyectoA
             groupBox4.Hide();
             groupBox5.Hide();
             groupBox6.Hide();
-
         }
 
         private void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -150,24 +152,56 @@ namespace ProyectoA
 
         private void button3_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection1 = new SqlConnection("BDA.accdb");
-            SqlCommand cmd = new SqlCommand();
-            SqlDataReader reader;
-            
-            cmd.CommandText = "SELECT * FROM Cliente";
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = sqlConnection1;
+            //SqlConnection sqlConnection1 = new SqlConnection("Data Source = C:\\Users\\Usuario\\Documents\\Proyecto_1_Alvaro\\ProyectoA\\ProyectoA\\BDA.accdb");
+            //SqlCommand cmd = new SqlCommand();
+            //SqlDataReader reader;
 
-            sqlConnection1.Open();
+            //cmd.CommandText = "SELECT * FROM Cliente";
+            //cmd.CommandType = CommandType.Text;
+            //cmd.Connection = sqlConnection1;
 
-            reader = cmd.ExecuteReader();
-            // Data is accessible through the DataReader object here.
+            //sqlConnection1.Open();
 
-            Console.Write(reader.ToString());
+            //reader = cmd.ExecuteReader();
+            //// Data is accessible through the DataReader object here.
 
-            sqlConnection1.Close();
+            //Console.Write(reader[0].ToString());
+
+            //sqlConnection1.Close();
 
 
+            ClienteTableAdapter tableAdapter = new ClienteTableAdapter();
+
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 5; j++)
+                {
+                    Console.WriteLine(tableAdapter.devolverCli()[i][j].ToString());
+                }
+            }
+
+            string sConnectionString;
+            sConnectionString = "Data Source = . \\SQLEXPRESS";
+            SqlConnection objConn
+                = new SqlConnection(sConnectionString);
+            objConn.Open();
+
+            SqlDataAdapter daAuthors
+                = new SqlDataAdapter("Select * From Cliente", objConn);
+            DataSet dsPubs = new DataSet("Pubs");
+            daAuthors.FillSchema(dsPubs, SchemaType.Source, "Clientes");
+            daAuthors.Fill(dsPubs, "Clientes");
+
+            DataTable tblAuthors;
+            tblAuthors = dsPubs.Tables["Cliente"];
+
+            foreach (DataRow drCurrent in tblAuthors.Rows)
+            {
+                Console.WriteLine("{0} {1}",
+                    drCurrent["au_fname"].ToString(),
+                    drCurrent["au_lname"].ToString());
+            }
+            Console.ReadLine();
 
         }
     }

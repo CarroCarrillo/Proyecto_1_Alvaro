@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,12 @@ namespace ProyectoA
         public Form1()
         {
             InitializeComponent();
+            groupBox1.Hide();
+            groupBox2.Hide();
+            groupBox3.Hide();
+            groupBox4.Hide();
+            groupBox5.Hide();
+            groupBox6.Hide();
 
         }
 
@@ -33,7 +40,7 @@ namespace ProyectoA
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'bDADataSet.Cliente' Puede moverla o quitarla según sea necesario.
-            this.clienteTableAdapter.Fill(this.bDADataSet.Cliente);
+            //this.clienteTableAdapter.Fill(this.bDADataSet.Cliente);
 
         }
 
@@ -59,7 +66,7 @@ namespace ProyectoA
             Form AContratoForm = new AyudaContrato();
             AContratoForm.Show();
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             groupBox2.Hide();
@@ -77,29 +84,8 @@ namespace ProyectoA
             
         }
 
-        private void clienteBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.clienteBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.bDADataSet);
-
-        }
-
         private void clienteDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.clienteTableAdapter.FillBy(this.bDADataSet.Cliente);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
 
         }
 
@@ -125,6 +111,63 @@ namespace ProyectoA
 
         private void codigoLabel_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            groupBox4.Hide();
+            groupBox3.Show();
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            groupBox6.Hide();
+            groupBox5.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            groupBox5.Hide();
+            groupBox6.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            groupBox3.Hide();
+            groupBox4.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection("BDA.accdb");
+            SqlCommand cmd = new SqlCommand();
+            SqlDataReader reader;
+            
+            cmd.CommandText = "SELECT * FROM Cliente";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = sqlConnection1;
+
+            sqlConnection1.Open();
+
+            reader = cmd.ExecuteReader();
+            // Data is accessible through the DataReader object here.
+
+            Console.Write(reader.ToString());
+
+            sqlConnection1.Close();
+
+
 
         }
     }

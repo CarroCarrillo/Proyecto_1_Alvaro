@@ -42,17 +42,37 @@
             System.Windows.Forms.Label actualizadoLabel;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.actualizadoCheckBox = new System.Windows.Forms.CheckBox();
+            this.activoCheckBox = new System.Windows.Forms.CheckBox();
+            this.telefonoTextBox = new System.Windows.Forms.TextBox();
+            this.dniTextBox = new System.Windows.Forms.TextBox();
+            this.nombrApellidosTextBox = new System.Windows.Forms.TextBox();
+            this.poblacionTextBox = new System.Windows.Forms.TextBox();
+            this.cpTextBox = new System.Windows.Forms.TextBox();
+            this.direccionTextBox = new System.Windows.Forms.TextBox();
+            this.cifTextBox = new System.Windows.Forms.TextBox();
+            this.cadenaTextBox = new System.Windows.Forms.TextBox();
+            this.nombreEmpresaTextBox = new System.Windows.Forms.TextBox();
+            this.codigoTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bDADataSet = new ProyectoA.BDADataSet();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.bDADataSet = new ProyectoA.BDADataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.prueba1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,21 +82,17 @@
             this.informaciónClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónMáquinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónContratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clienteTableAdapter = new ProyectoA.BDADataSetTableAdapters.ClienteTableAdapter();
-            this.tableAdapterManager = new ProyectoA.BDADataSetTableAdapters.TableAdapterManager();
-            this.label1 = new System.Windows.Forms.Label();
-            this.codigoTextBox = new System.Windows.Forms.TextBox();
-            this.nombreEmpresaTextBox = new System.Windows.Forms.TextBox();
-            this.cadenaTextBox = new System.Windows.Forms.TextBox();
-            this.cifTextBox = new System.Windows.Forms.TextBox();
-            this.direccionTextBox = new System.Windows.Forms.TextBox();
-            this.cpTextBox = new System.Windows.Forms.TextBox();
-            this.poblacionTextBox = new System.Windows.Forms.TextBox();
-            this.nombrApellidosTextBox = new System.Windows.Forms.TextBox();
-            this.dniTextBox = new System.Windows.Forms.TextBox();
-            this.telefonoTextBox = new System.Windows.Forms.TextBox();
-            this.activoCheckBox = new System.Windows.Forms.CheckBox();
-            this.actualizadoCheckBox = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bDADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             codigoLabel = new System.Windows.Forms.Label();
             nombreEmpresaLabel = new System.Windows.Forms.Label();
             cadenaLabel = new System.Windows.Forms.Label();
@@ -90,12 +106,16 @@
             actualizadoLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // codigoLabel
@@ -215,6 +235,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -226,27 +247,12 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(960, 377);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Añadir";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(65, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
-            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.actualizadoCheckBox);
             this.groupBox1.Controls.Add(this.activoCheckBox);
             this.groupBox1.Controls.Add(this.telefonoTextBox);
@@ -260,7 +266,6 @@
             this.groupBox1.Controls.Add(this.nombreEmpresaTextBox);
             this.groupBox1.Controls.Add(this.codigoTextBox);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(codigoLabel);
             this.groupBox1.Controls.Add(nombreEmpresaLabel);
@@ -275,11 +280,108 @@
             this.groupBox1.Controls.Add(actualizadoLabel);
             this.groupBox1.Location = new System.Drawing.Point(6, 60);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1166, 494);
+            this.groupBox1.Size = new System.Drawing.Size(1039, 494);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // actualizadoCheckBox
+            // 
+            this.actualizadoCheckBox.AutoSize = true;
+            this.actualizadoCheckBox.Location = new System.Drawing.Point(1002, 69);
+            this.actualizadoCheckBox.Name = "actualizadoCheckBox";
+            this.actualizadoCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.actualizadoCheckBox.TabIndex = 37;
+            this.actualizadoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // activoCheckBox
+            // 
+            this.activoCheckBox.AutoSize = true;
+            this.activoCheckBox.Location = new System.Drawing.Point(1002, 40);
+            this.activoCheckBox.Name = "activoCheckBox";
+            this.activoCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.activoCheckBox.TabIndex = 36;
+            this.activoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // telefonoTextBox
+            // 
+            this.telefonoTextBox.Location = new System.Drawing.Point(705, 93);
+            this.telefonoTextBox.Name = "telefonoTextBox";
+            this.telefonoTextBox.Size = new System.Drawing.Size(160, 20);
+            this.telefonoTextBox.TabIndex = 35;
+            // 
+            // dniTextBox
+            // 
+            this.dniTextBox.Location = new System.Drawing.Point(705, 67);
+            this.dniTextBox.Name = "dniTextBox";
+            this.dniTextBox.Size = new System.Drawing.Size(160, 20);
+            this.dniTextBox.TabIndex = 34;
+            // 
+            // nombrApellidosTextBox
+            // 
+            this.nombrApellidosTextBox.Location = new System.Drawing.Point(705, 38);
+            this.nombrApellidosTextBox.Name = "nombrApellidosTextBox";
+            this.nombrApellidosTextBox.Size = new System.Drawing.Size(160, 20);
+            this.nombrApellidosTextBox.TabIndex = 33;
+            // 
+            // poblacionTextBox
+            // 
+            this.poblacionTextBox.Location = new System.Drawing.Point(397, 93);
+            this.poblacionTextBox.Name = "poblacionTextBox";
+            this.poblacionTextBox.Size = new System.Drawing.Size(148, 20);
+            this.poblacionTextBox.TabIndex = 32;
+            // 
+            // cpTextBox
+            // 
+            this.cpTextBox.Location = new System.Drawing.Point(397, 67);
+            this.cpTextBox.Name = "cpTextBox";
+            this.cpTextBox.Size = new System.Drawing.Size(148, 20);
+            this.cpTextBox.TabIndex = 31;
+            // 
+            // direccionTextBox
+            // 
+            this.direccionTextBox.Location = new System.Drawing.Point(397, 35);
+            this.direccionTextBox.Name = "direccionTextBox";
+            this.direccionTextBox.Size = new System.Drawing.Size(148, 20);
+            this.direccionTextBox.TabIndex = 30;
+            // 
+            // cifTextBox
+            // 
+            this.cifTextBox.Location = new System.Drawing.Point(134, 115);
+            this.cifTextBox.Name = "cifTextBox";
+            this.cifTextBox.Size = new System.Drawing.Size(133, 20);
+            this.cifTextBox.TabIndex = 29;
+            // 
+            // cadenaTextBox
+            // 
+            this.cadenaTextBox.Location = new System.Drawing.Point(134, 89);
+            this.cadenaTextBox.Name = "cadenaTextBox";
+            this.cadenaTextBox.Size = new System.Drawing.Size(133, 20);
+            this.cadenaTextBox.TabIndex = 28;
+            // 
+            // nombreEmpresaTextBox
+            // 
+            this.nombreEmpresaTextBox.Location = new System.Drawing.Point(134, 61);
+            this.nombreEmpresaTextBox.Name = "nombreEmpresaTextBox";
+            this.nombreEmpresaTextBox.Size = new System.Drawing.Size(133, 20);
+            this.nombreEmpresaTextBox.TabIndex = 27;
+            // 
+            // codigoTextBox
+            // 
+            this.codigoTextBox.Location = new System.Drawing.Point(134, 35);
+            this.codigoTextBox.Name = "codigoTextBox";
+            this.codigoTextBox.Size = new System.Drawing.Size(133, 20);
+            this.codigoTextBox.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(583, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Teléfono:";
             // 
             // button3
             // 
@@ -289,16 +391,7 @@
             this.button3.TabIndex = 24;
             this.button3.Text = "INICIAR BÚSQUEDA";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataMember = "Cliente";
-            this.clienteBindingSource.DataSource = this.bDADataSet;
-            // 
-            // bDADataSet
-            // 
-            this.bDADataSet.DataSetName = "BDADataSet";
-            this.bDADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -345,6 +438,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -353,14 +449,130 @@
             this.tabPage2.Text = "Máquinas";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Location = new System.Drawing.Point(603, 108);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(466, 330);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Añadir";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Location = new System.Drawing.Point(16, 83);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(511, 401);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Buscar";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.button4, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button5, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 57);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(3, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(583, 51);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "BUSCAR";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(592, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(583, 51);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "AÑADIR";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox6);
+            this.tabPage3.Controls.Add(this.groupBox5);
+            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1178, 560);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Contratos";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Location = new System.Drawing.Point(683, 137);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(410, 260);
+            this.groupBox6.TabIndex = 2;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Generar";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Location = new System.Drawing.Point(49, 119);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(336, 232);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Buscar";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.button6, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.button7, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1178, 57);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(3, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(583, 51);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "BUSCAR";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(592, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(583, 51);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "GENERAR";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // bDADataSet
+            // 
+            this.bDADataSet.DataSetName = "BDADataSet";
+            this.bDADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // menuStrip1
             // 
@@ -433,121 +645,79 @@
             this.informaciónContratosToolStripMenuItem.Text = "Información Contratos";
             this.informaciónContratosToolStripMenuItem.Click += new System.EventHandler(this.informaciónContratosToolStripMenuItem_Click);
             // 
-            // clienteTableAdapter
+            // groupBox2
             // 
-            this.clienteTableAdapter.ClearBeforeFill = true;
+            this.groupBox2.Location = new System.Drawing.Point(1067, 231);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(80, 219);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Añadir";
             // 
-            // tableAdapterManager
+            // dataGridView1
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ClienteTableAdapter = this.clienteTableAdapter;
-            this.tableAdapterManager.ClienteTelefonoTableAdapter = null;
-            this.tableAdapterManager.ContratoTableAdapter = null;
-            this.tableAdapterManager.EstadosContratoTableAdapter = null;
-            this.tableAdapterManager.EstadosMaquinaTableAdapter = null;
-            this.tableAdapterManager.FamiliaTableAdapter = null;
-            this.tableAdapterManager.MaquinaTableAdapter = null;
-            this.tableAdapterManager.ModeloTableAdapter = null;
-            this.tableAdapterManager.TelefonoTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = ProyectoA.BDADataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsuarioTableAdapter = null;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8});
+            this.dataGridView1.DataSource = this.bDADataSetBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 210);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1026, 293);
+            this.dataGridView1.TabIndex = 38;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // label1
+            // bDADataSetBindingSource
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(583, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Teléfono:";
+            this.bDADataSetBindingSource.DataSource = this.bDADataSet;
+            this.bDADataSetBindingSource.Position = 0;
             // 
-            // codigoTextBox
+            // Column1
             // 
-            this.codigoTextBox.Location = new System.Drawing.Point(134, 35);
-            this.codigoTextBox.Name = "codigoTextBox";
-            this.codigoTextBox.Size = new System.Drawing.Size(133, 20);
-            this.codigoTextBox.TabIndex = 26;
+            this.Column1.HeaderText = "Código";
+            this.Column1.Name = "Column1";
             // 
-            // nombreEmpresaTextBox
+            // Column2
             // 
-            this.nombreEmpresaTextBox.Location = new System.Drawing.Point(134, 61);
-            this.nombreEmpresaTextBox.Name = "nombreEmpresaTextBox";
-            this.nombreEmpresaTextBox.Size = new System.Drawing.Size(133, 20);
-            this.nombreEmpresaTextBox.TabIndex = 27;
+            this.Column2.HeaderText = "Nombre Empresa";
+            this.Column2.Name = "Column2";
             // 
-            // cadenaTextBox
+            // Column3
             // 
-            this.cadenaTextBox.Location = new System.Drawing.Point(134, 89);
-            this.cadenaTextBox.Name = "cadenaTextBox";
-            this.cadenaTextBox.Size = new System.Drawing.Size(133, 20);
-            this.cadenaTextBox.TabIndex = 28;
+            this.Column3.HeaderText = "Cadena";
+            this.Column3.Name = "Column3";
             // 
-            // cifTextBox
+            // Column4
             // 
-            this.cifTextBox.Location = new System.Drawing.Point(134, 115);
-            this.cifTextBox.Name = "cifTextBox";
-            this.cifTextBox.Size = new System.Drawing.Size(133, 20);
-            this.cifTextBox.TabIndex = 29;
+            this.Column4.HeaderText = "CIF";
+            this.Column4.Name = "Column4";
             // 
-            // direccionTextBox
+            // Column5
             // 
-            this.direccionTextBox.Location = new System.Drawing.Point(397, 35);
-            this.direccionTextBox.Name = "direccionTextBox";
-            this.direccionTextBox.Size = new System.Drawing.Size(148, 20);
-            this.direccionTextBox.TabIndex = 30;
+            this.Column5.HeaderText = "Dirección";
+            this.Column5.Name = "Column5";
             // 
-            // cpTextBox
+            // Column6
             // 
-            this.cpTextBox.Location = new System.Drawing.Point(397, 67);
-            this.cpTextBox.Name = "cpTextBox";
-            this.cpTextBox.Size = new System.Drawing.Size(148, 20);
-            this.cpTextBox.TabIndex = 31;
+            this.Column6.HeaderText = "CP";
+            this.Column6.Name = "Column6";
             // 
-            // poblacionTextBox
+            // Column7
             // 
-            this.poblacionTextBox.Location = new System.Drawing.Point(397, 93);
-            this.poblacionTextBox.Name = "poblacionTextBox";
-            this.poblacionTextBox.Size = new System.Drawing.Size(148, 20);
-            this.poblacionTextBox.TabIndex = 32;
+            this.Column7.HeaderText = "Población";
+            this.Column7.Name = "Column7";
             // 
-            // nombrApellidosTextBox
+            // Column8
             // 
-            this.nombrApellidosTextBox.Location = new System.Drawing.Point(705, 38);
-            this.nombrApellidosTextBox.Name = "nombrApellidosTextBox";
-            this.nombrApellidosTextBox.Size = new System.Drawing.Size(160, 20);
-            this.nombrApellidosTextBox.TabIndex = 33;
-            // 
-            // dniTextBox
-            // 
-            this.dniTextBox.Location = new System.Drawing.Point(705, 67);
-            this.dniTextBox.Name = "dniTextBox";
-            this.dniTextBox.Size = new System.Drawing.Size(160, 20);
-            this.dniTextBox.TabIndex = 34;
-            // 
-            // telefonoTextBox
-            // 
-            this.telefonoTextBox.Location = new System.Drawing.Point(705, 93);
-            this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.Size = new System.Drawing.Size(160, 20);
-            this.telefonoTextBox.TabIndex = 35;
-            // 
-            // activoCheckBox
-            // 
-            this.activoCheckBox.AutoSize = true;
-            this.activoCheckBox.Location = new System.Drawing.Point(1002, 40);
-            this.activoCheckBox.Name = "activoCheckBox";
-            this.activoCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.activoCheckBox.TabIndex = 36;
-            this.activoCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // actualizadoCheckBox
-            // 
-            this.actualizadoCheckBox.AutoSize = true;
-            this.actualizadoCheckBox.Location = new System.Drawing.Point(1002, 69);
-            this.actualizadoCheckBox.Name = "actualizadoCheckBox";
-            this.actualizadoCheckBox.Size = new System.Drawing.Size(15, 14);
-            this.actualizadoCheckBox.TabIndex = 37;
-            this.actualizadoCheckBox.UseVisualStyleBackColor = true;
+            this.Column8.HeaderText = "Nombre y apellidos";
+            this.Column8.Name = "Column8";
             // 
             // Form1
             // 
@@ -565,15 +735,18 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,13 +771,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private BDADataSet bDADataSet;
-        private System.Windows.Forms.BindingSource clienteBindingSource;
-        private BDADataSetTableAdapters.ClienteTableAdapter clienteTableAdapter;
-        private BDADataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox actualizadoCheckBox;
         private System.Windows.Forms.CheckBox activoCheckBox;
@@ -619,6 +787,27 @@
         private System.Windows.Forms.TextBox nombreEmpresaTextBox;
         private System.Windows.Forms.TextBox codigoTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource bDADataSetBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }
 

@@ -64,6 +64,9 @@
     <Compile Include="AyudaMaquina.Designer.cs">
       <DependentUpon>AyudaMaquina.cs</DependentUpon>
     </Compile>
+    <Compile Include="BDADataSet.cs">
+      <DependentUpon>BDADataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BDADataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

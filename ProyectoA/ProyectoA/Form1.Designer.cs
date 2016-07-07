@@ -44,6 +44,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bDADataSet = new ProyectoA.BDADataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,8 +55,10 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bDADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bDADataSet = new ProyectoA.BDADataSet();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actualizadoCheckBox = new System.Windows.Forms.CheckBox();
             this.activoCheckBox = new System.Windows.Forms.CheckBox();
             this.telefonoTextBox = new System.Windows.Forms.TextBox();
@@ -84,6 +88,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.bDADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.prueba1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,6 +99,8 @@
             this.informaciónMáquinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónContratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bdaDataSet1 = new ProyectoA.BDADataSet();
+            this.clienteTableAdapter = new ProyectoA.BDADataSetTableAdapters.ClienteTableAdapter();
+            this.tableAdapterManager = new ProyectoA.BDADataSetTableAdapters.TableAdapterManager();
             codigoLabel = new System.Windows.Forms.Label();
             nombreEmpresaLabel = new System.Windows.Forms.Label();
             cadenaLabel = new System.Windows.Forms.Label();
@@ -108,14 +115,15 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdaDataSet1)).BeginInit();
             this.SuspendLayout();
@@ -251,7 +259,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Location = new System.Drawing.Point(1067, 231);
+            this.groupBox2.Location = new System.Drawing.Point(1071, 63);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(80, 219);
             this.groupBox2.TabIndex = 2;
@@ -291,15 +299,27 @@
             this.groupBox1.Controls.Add(actualizadoLabel);
             this.groupBox1.Location = new System.Drawing.Point(6, 60);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1039, 494);
+            this.groupBox1.Size = new System.Drawing.Size(1166, 494);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // clienteBindingSource
+            // 
+            this.clienteBindingSource.DataMember = "Cliente";
+            this.clienteBindingSource.DataSource = this.bDADataSet;
+            // 
+            // bDADataSet
+            // 
+            this.bDADataSet.DataSetName = "BDADataSet";
+            this.bDADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -309,11 +329,14 @@
             this.Column5,
             this.Column6,
             this.Column7,
-            this.Column8});
-            this.dataGridView1.DataSource = this.bDADataSetBindingSource;
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12});
             this.dataGridView1.Location = new System.Drawing.Point(7, 210);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1026, 293);
+            this.dataGridView1.Size = new System.Drawing.Size(1159, 284);
             this.dataGridView1.TabIndex = 38;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -344,12 +367,12 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "CP";
+            this.Column6.HeaderText = "Población";
             this.Column6.Name = "Column6";
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "Población";
+            this.Column7.HeaderText = "CP";
             this.Column7.Name = "Column7";
             // 
             // Column8
@@ -357,15 +380,25 @@
             this.Column8.HeaderText = "Nombre y apellidos";
             this.Column8.Name = "Column8";
             // 
-            // bDADataSetBindingSource
+            // Column9
             // 
-            this.bDADataSetBindingSource.DataSource = this.bDADataSet;
-            this.bDADataSetBindingSource.Position = 0;
+            this.Column9.HeaderText = "DNI";
+            this.Column9.Name = "Column9";
             // 
-            // bDADataSet
+            // Column10
             // 
-            this.bDADataSet.DataSetName = "BDADataSet";
-            this.bDADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.Column10.HeaderText = "Observaciones";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Activo";
+            this.Column11.Name = "Column11";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Actualizado";
+            this.Column12.Name = "Column12";
             // 
             // actualizadoCheckBox
             // 
@@ -650,6 +683,11 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // bDADataSetBindingSource
+            // 
+            this.bDADataSetBindingSource.DataSource = this.bDADataSet;
+            this.bDADataSetBindingSource.Position = 0;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -726,6 +764,25 @@
             this.bdaDataSet1.DataSetName = "BDADataSet";
             this.bdaDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // clienteTableAdapter
+            // 
+            this.clienteTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ClienteTableAdapter = this.clienteTableAdapter;
+            this.tableAdapterManager.ClienteTelefonoTableAdapter = null;
+            this.tableAdapterManager.ContratoTableAdapter = null;
+            this.tableAdapterManager.EstadosContratoTableAdapter = null;
+            this.tableAdapterManager.EstadosMaquinaTableAdapter = null;
+            this.tableAdapterManager.FamiliaTableAdapter = null;
+            this.tableAdapterManager.MaquinaTableAdapter = null;
+            this.tableAdapterManager.ModeloTableAdapter = null;
+            this.tableAdapterManager.TelefonoTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = ProyectoA.BDADataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UsuarioTableAdapter = null;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -744,14 +801,15 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdaDataSet1)).EndInit();
@@ -808,6 +866,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bDADataSetBindingSource;
+        private BDADataSet bdaDataSet1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -816,7 +875,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private BDADataSet bdaDataSet1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.BindingSource clienteBindingSource;
+        private BDADataSetTableAdapters.ClienteTableAdapter clienteTableAdapter;
+        private BDADataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }
 

@@ -42,6 +42,8 @@ namespace ProyectoA
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'bDADataSet.Cliente' Puede moverla o quitarla según sea necesario.
+            this.clienteTableAdapter.Fill(this.bDADataSet.Cliente);
+            // TODO: esta línea de código carga datos en la tabla 'bDADataSet.Cliente' Puede moverla o quitarla según sea necesario.
             //this.clienteTableAdapter.Fill(this.bDADataSet.Cliente);
 
         }
@@ -152,7 +154,7 @@ namespace ProyectoA
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //SqlConnection sqlConnection1 = new SqlConnection("Data Source = C:\\Users\\Usuario\\Documents\\Proyecto_1_Alvaro\\ProyectoA\\ProyectoA\\BDA.accdb");
+            //SqlConnection sqlConnection1 = new SqlConnection("Data Source=|DataDirectory|\\BDA.accdb");
             //SqlCommand cmd = new SqlCommand();
             //SqlDataReader reader;
 
@@ -172,36 +174,42 @@ namespace ProyectoA
 
             ClienteTableAdapter tableAdapter = new ClienteTableAdapter();
 
+            dataGridView1.RowCount = 1;
+
             for(int i = 0; i < 3; i++)
             {
-                for(int j = 0; j < 5; j++)
+                dataGridView1.Rows.Add();
+
+                for(int j = 0; j < 12; j++)
                 {
-                    Console.WriteLine(tableAdapter.devolverCli()[i][j].ToString());
+                    dataGridView1.Rows[i].Cells[j].Value = tableAdapter.devolverCli()[i][j].ToString();
                 }
             }
 
-            string sConnectionString;
-            sConnectionString = "Data Source = . \\SQLEXPRESS";
-            SqlConnection objConn
-                = new SqlConnection(sConnectionString);
-            objConn.Open();
+            dataGridView1.AutoResizeColumns();
+             
+            //string sConnectionString;
+            //sConnectionString = "Data Source = localhost";
+            //SqlConnection objConn
+            //    = new SqlConnection(sConnectionString);
+            //objConn.Open();
 
-            SqlDataAdapter daAuthors
-                = new SqlDataAdapter("Select * From Cliente", objConn);
-            DataSet dsPubs = new DataSet("Pubs");
-            daAuthors.FillSchema(dsPubs, SchemaType.Source, "Clientes");
-            daAuthors.Fill(dsPubs, "Clientes");
+            //SqlDataAdapter daAuthors
+            //    = new SqlDataAdapter("Select * From Cliente", objConn);
+            //DataSet dsPubs = new DataSet("Pubs");
+            //daAuthors.FillSchema(dsPubs, SchemaType.Source, "Clientes");
+            //daAuthors.Fill(dsPubs, "Clientes");
 
-            DataTable tblAuthors;
-            tblAuthors = dsPubs.Tables["Cliente"];
+            //DataTable tblAuthors;
+            //tblAuthors = dsPubs.Tables["Cliente"];
 
-            foreach (DataRow drCurrent in tblAuthors.Rows)
-            {
-                Console.WriteLine("{0} {1}",
-                    drCurrent["au_fname"].ToString(),
-                    drCurrent["au_lname"].ToString());
-            }
-            Console.ReadLine();
+            //foreach (DataRow drCurrent in tblAuthors.Rows)
+            //{
+            //    Console.WriteLine("{0} {1}",
+            //        drCurrent["au_fname"].ToString(),
+            //        drCurrent["au_lname"].ToString());
+            //}
+            //Console.ReadLine();
 
         }
     }

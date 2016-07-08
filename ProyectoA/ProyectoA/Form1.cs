@@ -152,65 +152,62 @@ namespace ProyectoA
 
         }
 
+        private void comprobarLabelsCliB(string[] cad)
+        {
+
+            if (codigoTextBox.Text != "") cad[0] = codigoTextBox.Text;
+            else cad[0] = "%";
+
+            if (nombreEmpresaTextBox.Text != "") cad[1] = nombreEmpresaTextBox.Text;
+            else cad[1] = "%";
+
+            if (cadenaTextBox.Text != "") cad[2] = cadenaTextBox.Text;
+            else cad[2] = "%";
+
+            if (cifTextBox.Text != "") cad[3] = cifTextBox.Text;
+            else cad[3] = "%";
+
+            if (direccionTextBox.Text != "") cad[4] = direccionTextBox.Text;
+            else cad[4] = "%";
+
+            if (poblacionTextBox.Text != "") cad[5] = poblacionTextBox.Text;
+            else cad[5] = "%";
+
+            if (cpTextBox.Text != "") cad[6] = cpTextBox.Text;
+            else cad[6] = "%";
+
+            if (nombrApellidosTextBox.Text != "") cad[7] = nombrApellidosTextBox.Text;
+            else cad[7] = "%";
+
+            if (dniTextBox.Text != "") cad[8] = dniTextBox.Text;
+            else cad[8] = "%";
+
+            cad[9] = "%";
+
+            //TODO Checkbox Activo Actualizado
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            //SqlConnection sqlConnection1 = new SqlConnection("Data Source=|DataDirectory|\\BDA.accdb");
-            //SqlCommand cmd = new SqlCommand();
-            //SqlDataReader reader;
-
-            //cmd.CommandText = "SELECT * FROM Cliente";
-            //cmd.CommandType = CommandType.Text;
-            //cmd.Connection = sqlConnection1;
-
-            //sqlConnection1.Open();
-
-            //reader = cmd.ExecuteReader();
-            //// Data is accessible through the DataReader object here.
-
-            //Console.Write(reader[0].ToString());
-
-            //sqlConnection1.Close();
-
+            string[] cadi = new string[10];
+            comprobarLabelsCliB(cadi);
+            Console.WriteLine(cadi[6]);
 
             ClienteTableAdapter tableAdapter = new ClienteTableAdapter();
-
             dataGridView1.RowCount = 1;
-
-            for(int i = 0; i < 3; i++)
+            ProyectoA.BDADataSet.ClienteDataTable t = tableAdapter.Consulta(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], cadi[9]);
+            
+            for (int i = 0; i < t.Count(); i++)
             {
                 dataGridView1.Rows.Add();
 
-                for(int j = 0; j < 12; j++)
+                for(int j = 0; j < 11; j++)
                 {
-                    dataGridView1.Rows[i].Cells[j].Value = tableAdapter.devolverCli()[i][j].ToString();
+                    dataGridView1.Rows[i].Cells[j].Value = t[i][j].ToString();
                 }
             }
 
             dataGridView1.AutoResizeColumns();
-             
-            //string sConnectionString;
-            //sConnectionString = "Data Source = localhost";
-            //SqlConnection objConn
-            //    = new SqlConnection(sConnectionString);
-            //objConn.Open();
-
-            //SqlDataAdapter daAuthors
-            //    = new SqlDataAdapter("Select * From Cliente", objConn);
-            //DataSet dsPubs = new DataSet("Pubs");
-            //daAuthors.FillSchema(dsPubs, SchemaType.Source, "Clientes");
-            //daAuthors.Fill(dsPubs, "Clientes");
-
-            //DataTable tblAuthors;
-            //tblAuthors = dsPubs.Tables["Cliente"];
-
-            //foreach (DataRow drCurrent in tblAuthors.Rows)
-            //{
-            //    Console.WriteLine("{0} {1}",
-            //        drCurrent["au_fname"].ToString(),
-            //        drCurrent["au_lname"].ToString());
-            //}
-            //Console.ReadLine();
-
         }
     }
 }

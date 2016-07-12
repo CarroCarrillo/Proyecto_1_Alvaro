@@ -132,27 +132,46 @@ namespace ProyectoA
             cad[9] = "%";
 
             //TODO Checkbox Activo Actualizado
+
+            if (telefonoTextBox.Text != "") cad[11] = telefonoTextBox.Text;
+            else cad[11] = "%";
+            
         }
         
         //BOTON INICIAR BÚSQUEDA CLIENTE-BUSCAR
         private void button3_Click(object sender, EventArgs e)
         {
-            string[] cadi = new string[10];
+            string[] cadi = new string[12];
+            string tel;
             comprobarLabelsCliB(cadi);
             Console.WriteLine(cadi[6]);
 
             ClienteTableAdapter tableAdapter = new ClienteTableAdapter();
+            ClienteTelefonoTableAdapter tableAdapterCliTel = new ClienteTelefonoTableAdapter();
             dataGridView1.RowCount = 1;
             ProyectoA.BDADataSet.ClienteDataTable t = tableAdapter.Consulta(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], cadi[9]);
-
+            ProyectoA.BDADataSet.ClienteTelefonoDataTable tCliTel;
+            
             for (int i = 0; i < t.Count(); i++)
             {
                 dataGridView1.Rows.Add();
+                tCliTel = tableAdapterCliTel.ConsultaTelefono(t[i][0].ToString(), t[i][1].ToString());
+                
 
-                for (int j = 0; j < 11; j++)
+                for (int j = 0; j < 12; j++)
                 {
-                    dataGridView1.Rows[i].Cells[j].Value = t[i][j].ToString();
-
+                    if(j < 9) dataGridView1.Rows[i].Cells[j].Value = t[i][j].ToString();
+                    else if(j > 9) dataGridView1.Rows[i].Cells[j].Value = t[i][j-1].ToString();
+                    else
+                    {
+                        tel = "";
+                        for (int k = 0; k < tCliTel.Count(); k++)
+                        {
+                            if (k == 0) tel += tCliTel[k][2].ToString();
+                            else tel += ", " + tCliTel[k][2].ToString();
+                        }
+                        dataGridView1.Rows[i].Cells[j].Value = tel;
+                    }
                 }
 
             }
@@ -232,6 +251,7 @@ namespace ProyectoA
             if (cli_a_dir_textBox.Text == null || cli_a_dir_textBox.Text == "") error = true;
             if (cli_a_dni_textBox.Text == null || cli_a_dni_textBox.Text == "") error = true;
             if (cli_a_poblacion_textBox.Text == null || cli_a_poblacion_textBox.Text == "") error = true;
+            if (cli_a_activo_NO_radioButton.Checked == false && cli_a_activo_SI_radioButton.Checked == false) error = true;
 
             if(error == true) MessageBox.Show("Uno o más campos obligatorios no están rellenados.");
             else

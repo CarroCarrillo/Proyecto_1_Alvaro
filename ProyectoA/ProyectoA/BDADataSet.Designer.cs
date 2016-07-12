@@ -6689,11 +6689,18 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[2];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Codigo, NombreEmpresa, Telefono FROM ClienteTelefono";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        Codigo, NombreEmpresa, Telefono\r\nFROM            ClienteTelefono\r\nW" +
+                "HERE        (Codigo = Parameter1) AND (NombreEmpresa = Parameter2)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter2", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6715,6 +6722,54 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual BDADataSet.ClienteTelefonoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            BDADataSet.ClienteTelefonoDataTable dataTable = new BDADataSet.ClienteTelefonoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(BDADataSet.ClienteTelefonoDataTable dataTable, string Parameter1, string Parameter2) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BDADataSet.ClienteTelefonoDataTable ConsultaTelefono(string Parameter1, string Parameter2) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
             BDADataSet.ClienteTelefonoDataTable dataTable = new BDADataSet.ClienteTelefonoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

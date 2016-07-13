@@ -60,34 +60,6 @@ namespace ProyectoA
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.botonClienA = new System.Windows.Forms.Button();
             this.botonClienB = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cli_a_observacion_richTextBox = new System.Windows.Forms.RichTextBox();
-            this.checkBox_cli_a_tlf = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_dni = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_nomAp = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_poblacion = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cp = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_dir = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cif = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cad = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_nombEm = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cod = new System.Windows.Forms.CheckBox();
-            this.cli_a_LC_button = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cli_a_activo_NO_radioButton = new System.Windows.Forms.RadioButton();
-            this.cli_a_activo_SI_radioButton = new System.Windows.Forms.RadioButton();
-            this.cli_a_tlf_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_dni_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_nombApell_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_poblacion_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cp_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_dir_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cif_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cad_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_nombEm_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cod_textBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cli_a_Agregar_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.botonClienLC = new System.Windows.Forms.Button();
             this.botonClienLB = new System.Windows.Forms.Button();
@@ -122,6 +94,34 @@ namespace ProyectoA
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cli_a_observacion_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.checkBox_cli_a_tlf = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_dni = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_nomAp = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_poblacion = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cp = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_dir = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cif = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cad = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_nombEm = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cod = new System.Windows.Forms.CheckBox();
+            this.cli_a_LC_button = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cli_a_activo_NO_radioButton = new System.Windows.Forms.RadioButton();
+            this.cli_a_activo_SI_radioButton = new System.Windows.Forms.RadioButton();
+            this.cli_a_tlf_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_dni_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_nombApell_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_poblacion_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cp_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_dir_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cif_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cad_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_nombEm_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cod_textBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cli_a_Agregar_button = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.botonMaqA = new System.Windows.Forms.Button();
@@ -172,12 +172,12 @@ namespace ProyectoA
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -438,8 +438,8 @@ namespace ProyectoA
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -490,308 +490,6 @@ namespace ProyectoA
             this.botonClienB.Text = "BUSCAR";
             this.botonClienB.UseVisualStyleBackColor = true;
             this.botonClienB.Click += new System.EventHandler(this.botonClienB_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(label14);
-            this.panel2.Controls.Add(this.cli_a_observacion_richTextBox);
-            this.panel2.Controls.Add(this.checkBox_cli_a_tlf);
-            this.panel2.Controls.Add(this.checkBox_cli_a_dni);
-            this.panel2.Controls.Add(this.checkBox_cli_a_nomAp);
-            this.panel2.Controls.Add(this.checkBox_cli_a_poblacion);
-            this.panel2.Controls.Add(this.checkBox_cli_a_cp);
-            this.panel2.Controls.Add(this.checkBox_cli_a_dir);
-            this.panel2.Controls.Add(this.checkBox_cli_a_cif);
-            this.panel2.Controls.Add(this.checkBox_cli_a_cad);
-            this.panel2.Controls.Add(this.checkBox_cli_a_nombEm);
-            this.panel2.Controls.Add(this.checkBox_cli_a_cod);
-            this.panel2.Controls.Add(this.cli_a_LC_button);
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.cli_a_tlf_textBox);
-            this.panel2.Controls.Add(this.cli_a_dni_textBox);
-            this.panel2.Controls.Add(this.cli_a_nombApell_textBox);
-            this.panel2.Controls.Add(this.cli_a_poblacion_textBox);
-            this.panel2.Controls.Add(this.cli_a_cp_textBox);
-            this.panel2.Controls.Add(this.cli_a_dir_textBox);
-            this.panel2.Controls.Add(this.cli_a_cif_textBox);
-            this.panel2.Controls.Add(this.cli_a_cad_textBox);
-            this.panel2.Controls.Add(this.cli_a_nombEm_textBox);
-            this.panel2.Controls.Add(this.cli_a_cod_textBox);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(label3);
-            this.panel2.Controls.Add(label4);
-            this.panel2.Controls.Add(label5);
-            this.panel2.Controls.Add(label6);
-            this.panel2.Controls.Add(label7);
-            this.panel2.Controls.Add(label8);
-            this.panel2.Controls.Add(label9);
-            this.panel2.Controls.Add(label10);
-            this.panel2.Controls.Add(label11);
-            this.panel2.Controls.Add(label12);
-            this.panel2.Controls.Add(label13);
-            this.panel2.Controls.Add(this.cli_a_Agregar_button);
-            this.panel2.Location = new System.Drawing.Point(6, 63);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1166, 491);
-            this.panel2.TabIndex = 71;
-            // 
-            // cli_a_observacion_richTextBox
-            // 
-            this.cli_a_observacion_richTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_observacion_richTextBox.Location = new System.Drawing.Point(550, 68);
-            this.cli_a_observacion_richTextBox.Name = "cli_a_observacion_richTextBox";
-            this.cli_a_observacion_richTextBox.Size = new System.Drawing.Size(515, 109);
-            this.cli_a_observacion_richTextBox.TabIndex = 108;
-            this.cli_a_observacion_richTextBox.Text = "";
-            // 
-            // checkBox_cli_a_tlf
-            // 
-            this.checkBox_cli_a_tlf.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_tlf.AutoSize = true;
-            this.checkBox_cli_a_tlf.Location = new System.Drawing.Point(420, 322);
-            this.checkBox_cli_a_tlf.Name = "checkBox_cli_a_tlf";
-            this.checkBox_cli_a_tlf.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_tlf.TabIndex = 107;
-            this.checkBox_cli_a_tlf.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_dni
-            // 
-            this.checkBox_cli_a_dni.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_dni.AutoSize = true;
-            this.checkBox_cli_a_dni.Location = new System.Drawing.Point(420, 297);
-            this.checkBox_cli_a_dni.Name = "checkBox_cli_a_dni";
-            this.checkBox_cli_a_dni.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_dni.TabIndex = 106;
-            this.checkBox_cli_a_dni.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_nomAp
-            // 
-            this.checkBox_cli_a_nomAp.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_nomAp.AutoSize = true;
-            this.checkBox_cli_a_nomAp.Location = new System.Drawing.Point(420, 270);
-            this.checkBox_cli_a_nomAp.Name = "checkBox_cli_a_nomAp";
-            this.checkBox_cli_a_nomAp.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_nomAp.TabIndex = 105;
-            this.checkBox_cli_a_nomAp.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_poblacion
-            // 
-            this.checkBox_cli_a_poblacion.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_poblacion.AutoSize = true;
-            this.checkBox_cli_a_poblacion.Location = new System.Drawing.Point(420, 228);
-            this.checkBox_cli_a_poblacion.Name = "checkBox_cli_a_poblacion";
-            this.checkBox_cli_a_poblacion.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_poblacion.TabIndex = 104;
-            this.checkBox_cli_a_poblacion.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_cp
-            // 
-            this.checkBox_cli_a_cp.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_cp.AutoSize = true;
-            this.checkBox_cli_a_cp.Location = new System.Drawing.Point(420, 202);
-            this.checkBox_cli_a_cp.Name = "checkBox_cli_a_cp";
-            this.checkBox_cli_a_cp.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_cp.TabIndex = 103;
-            this.checkBox_cli_a_cp.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_dir
-            // 
-            this.checkBox_cli_a_dir.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_dir.AutoSize = true;
-            this.checkBox_cli_a_dir.Location = new System.Drawing.Point(420, 177);
-            this.checkBox_cli_a_dir.Name = "checkBox_cli_a_dir";
-            this.checkBox_cli_a_dir.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_dir.TabIndex = 102;
-            this.checkBox_cli_a_dir.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_cif
-            // 
-            this.checkBox_cli_a_cif.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_cif.AutoSize = true;
-            this.checkBox_cli_a_cif.Location = new System.Drawing.Point(420, 130);
-            this.checkBox_cli_a_cif.Name = "checkBox_cli_a_cif";
-            this.checkBox_cli_a_cif.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_cif.TabIndex = 101;
-            this.checkBox_cli_a_cif.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_cad
-            // 
-            this.checkBox_cli_a_cad.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_cad.AutoSize = true;
-            this.checkBox_cli_a_cad.Location = new System.Drawing.Point(420, 103);
-            this.checkBox_cli_a_cad.Name = "checkBox_cli_a_cad";
-            this.checkBox_cli_a_cad.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_cad.TabIndex = 100;
-            this.checkBox_cli_a_cad.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_nombEm
-            // 
-            this.checkBox_cli_a_nombEm.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_nombEm.AutoSize = true;
-            this.checkBox_cli_a_nombEm.Location = new System.Drawing.Point(420, 77);
-            this.checkBox_cli_a_nombEm.Name = "checkBox_cli_a_nombEm";
-            this.checkBox_cli_a_nombEm.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_nombEm.TabIndex = 99;
-            this.checkBox_cli_a_nombEm.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_cli_a_cod
-            // 
-            this.checkBox_cli_a_cod.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBox_cli_a_cod.AutoSize = true;
-            this.checkBox_cli_a_cod.Location = new System.Drawing.Point(420, 52);
-            this.checkBox_cli_a_cod.Name = "checkBox_cli_a_cod";
-            this.checkBox_cli_a_cod.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_cli_a_cod.TabIndex = 98;
-            this.checkBox_cli_a_cod.UseVisualStyleBackColor = true;
-            // 
-            // cli_a_LC_button
-            // 
-            this.cli_a_LC_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_LC_button.Location = new System.Drawing.Point(565, 277);
-            this.cli_a_LC_button.Name = "cli_a_LC_button";
-            this.cli_a_LC_button.Size = new System.Drawing.Size(133, 28);
-            this.cli_a_LC_button.TabIndex = 97;
-            this.cli_a_LC_button.Text = "Limpiar campos";
-            this.cli_a_LC_button.UseVisualStyleBackColor = true;
-            this.cli_a_LC_button.Click += new System.EventHandler(this.cli_a_LC_button_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox2.Controls.Add(this.cli_a_activo_NO_radioButton);
-            this.groupBox2.Controls.Add(this.cli_a_activo_SI_radioButton);
-            this.groupBox2.Location = new System.Drawing.Point(184, 366);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(127, 36);
-            this.groupBox2.TabIndex = 94;
-            this.groupBox2.TabStop = false;
-            // 
-            // cli_a_activo_NO_radioButton
-            // 
-            this.cli_a_activo_NO_radioButton.AutoSize = true;
-            this.cli_a_activo_NO_radioButton.Location = new System.Drawing.Point(82, 13);
-            this.cli_a_activo_NO_radioButton.Name = "cli_a_activo_NO_radioButton";
-            this.cli_a_activo_NO_radioButton.Size = new System.Drawing.Size(39, 17);
-            this.cli_a_activo_NO_radioButton.TabIndex = 1;
-            this.cli_a_activo_NO_radioButton.TabStop = true;
-            this.cli_a_activo_NO_radioButton.Text = "No";
-            this.cli_a_activo_NO_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // cli_a_activo_SI_radioButton
-            // 
-            this.cli_a_activo_SI_radioButton.AutoSize = true;
-            this.cli_a_activo_SI_radioButton.Location = new System.Drawing.Point(16, 13);
-            this.cli_a_activo_SI_radioButton.Name = "cli_a_activo_SI_radioButton";
-            this.cli_a_activo_SI_radioButton.Size = new System.Drawing.Size(36, 17);
-            this.cli_a_activo_SI_radioButton.TabIndex = 0;
-            this.cli_a_activo_SI_radioButton.TabStop = true;
-            this.cli_a_activo_SI_radioButton.Text = "Sí";
-            this.cli_a_activo_SI_radioButton.UseVisualStyleBackColor = true;
-            // 
-            // cli_a_tlf_textBox
-            // 
-            this.cli_a_tlf_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_tlf_textBox.Location = new System.Drawing.Point(169, 320);
-            this.cli_a_tlf_textBox.Name = "cli_a_tlf_textBox";
-            this.cli_a_tlf_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_tlf_textBox.TabIndex = 93;
-            // 
-            // cli_a_dni_textBox
-            // 
-            this.cli_a_dni_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_dni_textBox.Location = new System.Drawing.Point(169, 294);
-            this.cli_a_dni_textBox.Name = "cli_a_dni_textBox";
-            this.cli_a_dni_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_dni_textBox.TabIndex = 92;
-            // 
-            // cli_a_nombApell_textBox
-            // 
-            this.cli_a_nombApell_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_nombApell_textBox.Location = new System.Drawing.Point(169, 268);
-            this.cli_a_nombApell_textBox.Name = "cli_a_nombApell_textBox";
-            this.cli_a_nombApell_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_nombApell_textBox.TabIndex = 91;
-            // 
-            // cli_a_poblacion_textBox
-            // 
-            this.cli_a_poblacion_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_poblacion_textBox.Location = new System.Drawing.Point(169, 226);
-            this.cli_a_poblacion_textBox.Name = "cli_a_poblacion_textBox";
-            this.cli_a_poblacion_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_poblacion_textBox.TabIndex = 90;
-            // 
-            // cli_a_cp_textBox
-            // 
-            this.cli_a_cp_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cp_textBox.Location = new System.Drawing.Point(169, 200);
-            this.cli_a_cp_textBox.Name = "cli_a_cp_textBox";
-            this.cli_a_cp_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_cp_textBox.TabIndex = 89;
-            // 
-            // cli_a_dir_textBox
-            // 
-            this.cli_a_dir_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_dir_textBox.Location = new System.Drawing.Point(169, 174);
-            this.cli_a_dir_textBox.Name = "cli_a_dir_textBox";
-            this.cli_a_dir_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_dir_textBox.TabIndex = 88;
-            // 
-            // cli_a_cif_textBox
-            // 
-            this.cli_a_cif_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cif_textBox.Location = new System.Drawing.Point(169, 127);
-            this.cli_a_cif_textBox.Name = "cli_a_cif_textBox";
-            this.cli_a_cif_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_cif_textBox.TabIndex = 87;
-            // 
-            // cli_a_cad_textBox
-            // 
-            this.cli_a_cad_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cad_textBox.Location = new System.Drawing.Point(169, 101);
-            this.cli_a_cad_textBox.Name = "cli_a_cad_textBox";
-            this.cli_a_cad_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_cad_textBox.TabIndex = 86;
-            // 
-            // cli_a_nombEm_textBox
-            // 
-            this.cli_a_nombEm_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_nombEm_textBox.Location = new System.Drawing.Point(169, 75);
-            this.cli_a_nombEm_textBox.Name = "cli_a_nombEm_textBox";
-            this.cli_a_nombEm_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_nombEm_textBox.TabIndex = 85;
-            // 
-            // cli_a_cod_textBox
-            // 
-            this.cli_a_cod_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cod_textBox.Location = new System.Drawing.Point(169, 49);
-            this.cli_a_cod_textBox.Name = "cli_a_cod_textBox";
-            this.cli_a_cod_textBox.Size = new System.Drawing.Size(217, 20);
-            this.cli_a_cod_textBox.TabIndex = 84;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 323);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 83;
-            this.label2.Text = "  Teléfono:";
-            this.toolTip1.SetToolTip(this.label2, "Añadir los números que se desee separados por una coma.");
-            // 
-            // cli_a_Agregar_button
-            // 
-            this.cli_a_Agregar_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_Agregar_button.Location = new System.Drawing.Point(800, 272);
-            this.cli_a_Agregar_button.Name = "cli_a_Agregar_button";
-            this.cli_a_Agregar_button.Size = new System.Drawing.Size(241, 38);
-            this.cli_a_Agregar_button.TabIndex = 82;
-            this.cli_a_Agregar_button.Text = "AGREGAR";
-            this.cli_a_Agregar_button.UseVisualStyleBackColor = true;
-            this.cli_a_Agregar_button.Click += new System.EventHandler(this.cli_a_Agregar_button_Click);
             // 
             // panel1
             // 
@@ -1113,6 +811,308 @@ namespace ProyectoA
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(label14);
+            this.panel2.Controls.Add(this.cli_a_observacion_richTextBox);
+            this.panel2.Controls.Add(this.checkBox_cli_a_tlf);
+            this.panel2.Controls.Add(this.checkBox_cli_a_dni);
+            this.panel2.Controls.Add(this.checkBox_cli_a_nomAp);
+            this.panel2.Controls.Add(this.checkBox_cli_a_poblacion);
+            this.panel2.Controls.Add(this.checkBox_cli_a_cp);
+            this.panel2.Controls.Add(this.checkBox_cli_a_dir);
+            this.panel2.Controls.Add(this.checkBox_cli_a_cif);
+            this.panel2.Controls.Add(this.checkBox_cli_a_cad);
+            this.panel2.Controls.Add(this.checkBox_cli_a_nombEm);
+            this.panel2.Controls.Add(this.checkBox_cli_a_cod);
+            this.panel2.Controls.Add(this.cli_a_LC_button);
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Controls.Add(this.cli_a_tlf_textBox);
+            this.panel2.Controls.Add(this.cli_a_dni_textBox);
+            this.panel2.Controls.Add(this.cli_a_nombApell_textBox);
+            this.panel2.Controls.Add(this.cli_a_poblacion_textBox);
+            this.panel2.Controls.Add(this.cli_a_cp_textBox);
+            this.panel2.Controls.Add(this.cli_a_dir_textBox);
+            this.panel2.Controls.Add(this.cli_a_cif_textBox);
+            this.panel2.Controls.Add(this.cli_a_cad_textBox);
+            this.panel2.Controls.Add(this.cli_a_nombEm_textBox);
+            this.panel2.Controls.Add(this.cli_a_cod_textBox);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(label3);
+            this.panel2.Controls.Add(label4);
+            this.panel2.Controls.Add(label5);
+            this.panel2.Controls.Add(label6);
+            this.panel2.Controls.Add(label7);
+            this.panel2.Controls.Add(label8);
+            this.panel2.Controls.Add(label9);
+            this.panel2.Controls.Add(label10);
+            this.panel2.Controls.Add(label11);
+            this.panel2.Controls.Add(label12);
+            this.panel2.Controls.Add(label13);
+            this.panel2.Controls.Add(this.cli_a_Agregar_button);
+            this.panel2.Location = new System.Drawing.Point(6, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1166, 491);
+            this.panel2.TabIndex = 71;
+            // 
+            // cli_a_observacion_richTextBox
+            // 
+            this.cli_a_observacion_richTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_observacion_richTextBox.Location = new System.Drawing.Point(550, 68);
+            this.cli_a_observacion_richTextBox.Name = "cli_a_observacion_richTextBox";
+            this.cli_a_observacion_richTextBox.Size = new System.Drawing.Size(515, 109);
+            this.cli_a_observacion_richTextBox.TabIndex = 108;
+            this.cli_a_observacion_richTextBox.Text = "";
+            // 
+            // checkBox_cli_a_tlf
+            // 
+            this.checkBox_cli_a_tlf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_tlf.AutoSize = true;
+            this.checkBox_cli_a_tlf.Location = new System.Drawing.Point(420, 322);
+            this.checkBox_cli_a_tlf.Name = "checkBox_cli_a_tlf";
+            this.checkBox_cli_a_tlf.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_tlf.TabIndex = 107;
+            this.checkBox_cli_a_tlf.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_dni
+            // 
+            this.checkBox_cli_a_dni.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_dni.AutoSize = true;
+            this.checkBox_cli_a_dni.Location = new System.Drawing.Point(420, 297);
+            this.checkBox_cli_a_dni.Name = "checkBox_cli_a_dni";
+            this.checkBox_cli_a_dni.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_dni.TabIndex = 106;
+            this.checkBox_cli_a_dni.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_nomAp
+            // 
+            this.checkBox_cli_a_nomAp.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_nomAp.AutoSize = true;
+            this.checkBox_cli_a_nomAp.Location = new System.Drawing.Point(420, 270);
+            this.checkBox_cli_a_nomAp.Name = "checkBox_cli_a_nomAp";
+            this.checkBox_cli_a_nomAp.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_nomAp.TabIndex = 105;
+            this.checkBox_cli_a_nomAp.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_poblacion
+            // 
+            this.checkBox_cli_a_poblacion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_poblacion.AutoSize = true;
+            this.checkBox_cli_a_poblacion.Location = new System.Drawing.Point(420, 228);
+            this.checkBox_cli_a_poblacion.Name = "checkBox_cli_a_poblacion";
+            this.checkBox_cli_a_poblacion.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_poblacion.TabIndex = 104;
+            this.checkBox_cli_a_poblacion.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_cp
+            // 
+            this.checkBox_cli_a_cp.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_cp.AutoSize = true;
+            this.checkBox_cli_a_cp.Location = new System.Drawing.Point(420, 202);
+            this.checkBox_cli_a_cp.Name = "checkBox_cli_a_cp";
+            this.checkBox_cli_a_cp.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_cp.TabIndex = 103;
+            this.checkBox_cli_a_cp.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_dir
+            // 
+            this.checkBox_cli_a_dir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_dir.AutoSize = true;
+            this.checkBox_cli_a_dir.Location = new System.Drawing.Point(420, 177);
+            this.checkBox_cli_a_dir.Name = "checkBox_cli_a_dir";
+            this.checkBox_cli_a_dir.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_dir.TabIndex = 102;
+            this.checkBox_cli_a_dir.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_cif
+            // 
+            this.checkBox_cli_a_cif.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_cif.AutoSize = true;
+            this.checkBox_cli_a_cif.Location = new System.Drawing.Point(420, 130);
+            this.checkBox_cli_a_cif.Name = "checkBox_cli_a_cif";
+            this.checkBox_cli_a_cif.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_cif.TabIndex = 101;
+            this.checkBox_cli_a_cif.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_cad
+            // 
+            this.checkBox_cli_a_cad.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_cad.AutoSize = true;
+            this.checkBox_cli_a_cad.Location = new System.Drawing.Point(420, 103);
+            this.checkBox_cli_a_cad.Name = "checkBox_cli_a_cad";
+            this.checkBox_cli_a_cad.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_cad.TabIndex = 100;
+            this.checkBox_cli_a_cad.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_nombEm
+            // 
+            this.checkBox_cli_a_nombEm.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_nombEm.AutoSize = true;
+            this.checkBox_cli_a_nombEm.Location = new System.Drawing.Point(420, 77);
+            this.checkBox_cli_a_nombEm.Name = "checkBox_cli_a_nombEm";
+            this.checkBox_cli_a_nombEm.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_nombEm.TabIndex = 99;
+            this.checkBox_cli_a_nombEm.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cli_a_cod
+            // 
+            this.checkBox_cli_a_cod.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBox_cli_a_cod.AutoSize = true;
+            this.checkBox_cli_a_cod.Location = new System.Drawing.Point(420, 52);
+            this.checkBox_cli_a_cod.Name = "checkBox_cli_a_cod";
+            this.checkBox_cli_a_cod.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_cli_a_cod.TabIndex = 98;
+            this.checkBox_cli_a_cod.UseVisualStyleBackColor = true;
+            // 
+            // cli_a_LC_button
+            // 
+            this.cli_a_LC_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_LC_button.Location = new System.Drawing.Point(565, 277);
+            this.cli_a_LC_button.Name = "cli_a_LC_button";
+            this.cli_a_LC_button.Size = new System.Drawing.Size(133, 28);
+            this.cli_a_LC_button.TabIndex = 97;
+            this.cli_a_LC_button.Text = "Limpiar campos";
+            this.cli_a_LC_button.UseVisualStyleBackColor = true;
+            this.cli_a_LC_button.Click += new System.EventHandler(this.cli_a_LC_button_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Controls.Add(this.cli_a_activo_NO_radioButton);
+            this.groupBox2.Controls.Add(this.cli_a_activo_SI_radioButton);
+            this.groupBox2.Location = new System.Drawing.Point(184, 366);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(127, 36);
+            this.groupBox2.TabIndex = 94;
+            this.groupBox2.TabStop = false;
+            // 
+            // cli_a_activo_NO_radioButton
+            // 
+            this.cli_a_activo_NO_radioButton.AutoSize = true;
+            this.cli_a_activo_NO_radioButton.Location = new System.Drawing.Point(82, 13);
+            this.cli_a_activo_NO_radioButton.Name = "cli_a_activo_NO_radioButton";
+            this.cli_a_activo_NO_radioButton.Size = new System.Drawing.Size(39, 17);
+            this.cli_a_activo_NO_radioButton.TabIndex = 1;
+            this.cli_a_activo_NO_radioButton.TabStop = true;
+            this.cli_a_activo_NO_radioButton.Text = "No";
+            this.cli_a_activo_NO_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // cli_a_activo_SI_radioButton
+            // 
+            this.cli_a_activo_SI_radioButton.AutoSize = true;
+            this.cli_a_activo_SI_radioButton.Location = new System.Drawing.Point(16, 13);
+            this.cli_a_activo_SI_radioButton.Name = "cli_a_activo_SI_radioButton";
+            this.cli_a_activo_SI_radioButton.Size = new System.Drawing.Size(36, 17);
+            this.cli_a_activo_SI_radioButton.TabIndex = 0;
+            this.cli_a_activo_SI_radioButton.TabStop = true;
+            this.cli_a_activo_SI_radioButton.Text = "Sí";
+            this.cli_a_activo_SI_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // cli_a_tlf_textBox
+            // 
+            this.cli_a_tlf_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_tlf_textBox.Location = new System.Drawing.Point(169, 320);
+            this.cli_a_tlf_textBox.Name = "cli_a_tlf_textBox";
+            this.cli_a_tlf_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_tlf_textBox.TabIndex = 93;
+            // 
+            // cli_a_dni_textBox
+            // 
+            this.cli_a_dni_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_dni_textBox.Location = new System.Drawing.Point(169, 294);
+            this.cli_a_dni_textBox.Name = "cli_a_dni_textBox";
+            this.cli_a_dni_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_dni_textBox.TabIndex = 92;
+            // 
+            // cli_a_nombApell_textBox
+            // 
+            this.cli_a_nombApell_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_nombApell_textBox.Location = new System.Drawing.Point(169, 268);
+            this.cli_a_nombApell_textBox.Name = "cli_a_nombApell_textBox";
+            this.cli_a_nombApell_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_nombApell_textBox.TabIndex = 91;
+            // 
+            // cli_a_poblacion_textBox
+            // 
+            this.cli_a_poblacion_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_poblacion_textBox.Location = new System.Drawing.Point(169, 226);
+            this.cli_a_poblacion_textBox.Name = "cli_a_poblacion_textBox";
+            this.cli_a_poblacion_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_poblacion_textBox.TabIndex = 90;
+            // 
+            // cli_a_cp_textBox
+            // 
+            this.cli_a_cp_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_cp_textBox.Location = new System.Drawing.Point(169, 200);
+            this.cli_a_cp_textBox.Name = "cli_a_cp_textBox";
+            this.cli_a_cp_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_cp_textBox.TabIndex = 89;
+            // 
+            // cli_a_dir_textBox
+            // 
+            this.cli_a_dir_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_dir_textBox.Location = new System.Drawing.Point(169, 174);
+            this.cli_a_dir_textBox.Name = "cli_a_dir_textBox";
+            this.cli_a_dir_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_dir_textBox.TabIndex = 88;
+            // 
+            // cli_a_cif_textBox
+            // 
+            this.cli_a_cif_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_cif_textBox.Location = new System.Drawing.Point(169, 127);
+            this.cli_a_cif_textBox.Name = "cli_a_cif_textBox";
+            this.cli_a_cif_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_cif_textBox.TabIndex = 87;
+            // 
+            // cli_a_cad_textBox
+            // 
+            this.cli_a_cad_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_cad_textBox.Location = new System.Drawing.Point(169, 101);
+            this.cli_a_cad_textBox.Name = "cli_a_cad_textBox";
+            this.cli_a_cad_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_cad_textBox.TabIndex = 86;
+            // 
+            // cli_a_nombEm_textBox
+            // 
+            this.cli_a_nombEm_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_nombEm_textBox.Location = new System.Drawing.Point(169, 75);
+            this.cli_a_nombEm_textBox.Name = "cli_a_nombEm_textBox";
+            this.cli_a_nombEm_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_nombEm_textBox.TabIndex = 85;
+            // 
+            // cli_a_cod_textBox
+            // 
+            this.cli_a_cod_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_cod_textBox.Location = new System.Drawing.Point(169, 49);
+            this.cli_a_cod_textBox.Name = "cli_a_cod_textBox";
+            this.cli_a_cod_textBox.Size = new System.Drawing.Size(217, 20);
+            this.cli_a_cod_textBox.TabIndex = 84;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(47, 323);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 83;
+            this.label2.Text = "  Teléfono:";
+            this.toolTip1.SetToolTip(this.label2, "Añadir los números que se desee separados por una coma.");
+            // 
+            // cli_a_Agregar_button
+            // 
+            this.cli_a_Agregar_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cli_a_Agregar_button.Location = new System.Drawing.Point(800, 272);
+            this.cli_a_Agregar_button.Name = "cli_a_Agregar_button";
+            this.cli_a_Agregar_button.Size = new System.Drawing.Size(241, 38);
+            this.cli_a_Agregar_button.TabIndex = 82;
+            this.cli_a_Agregar_button.Text = "AGREGAR";
+            this.cli_a_Agregar_button.UseVisualStyleBackColor = true;
+            this.cli_a_Agregar_button.Click += new System.EventHandler(this.cli_a_Agregar_button_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel2);
@@ -1332,10 +1332,6 @@ namespace ProyectoA
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -1343,6 +1339,10 @@ namespace ProyectoA
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);

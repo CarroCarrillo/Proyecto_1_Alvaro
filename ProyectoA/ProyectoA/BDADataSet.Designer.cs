@@ -5852,7 +5852,7 @@ namespace ProyectoA.BDADataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[4];
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[8];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Codigo, NombreEmpresa, Cadena, Cif, Direccion, Poblacion, Cp, NombreApelli" +
@@ -5867,7 +5867,9 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
                          Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
                          Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
                          NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
-                         Activo IS NULL AND Parameter9 = '%')";
+                         Activo IS NULL AND Parameter9 = '%') AND (Actualizado LIKE Parameter11 OR
+                         Actualizado IS NULL AND Parameter11 = '%')
+ORDER BY Codigo, NombreEmpresa";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter2", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
@@ -5879,29 +5881,105 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter8", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter9", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter10", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter11", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[2] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO `Cliente` (`Codigo`, `NombreEmpresa`, `Cadena`, `Cif`, `Direccion`, `" +
-                "Poblacion`, `Cp`, `NombreApellidos`, `Dni`, `Observaciones`, `Activo`, `Actualiz" +
-                "ado`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._commandCollection[2].CommandText = @"SELECT        Codigo, NombreEmpresa, Cadena, Cif, Direccion, Poblacion, Cp, NombreApellidos, Dni, Observaciones, Activo, Actualizado
+FROM            Cliente
+WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (Cadena LIKE Parameter3 OR
+                         Parameter3 = '%' AND Cadena IS NULL) AND (Cif LIKE Parameter4 OR
+                         Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
+                         Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
+                         NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
+                         Activo IS NULL AND Parameter9 = '%')  AND (Actualizado LIKE Parameter11 OR
+                         Actualizado IS NULL AND Parameter11 = '%')
+ORDER BY Codigo, NombreEmpresa";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Codigo", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Codigo", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NombreEmpresa", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NombreEmpresa", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Cadena", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Cadena", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Cif", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Cif", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Direccion", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Direccion", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Poblacion", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Poblacion", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Cp", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Cp", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NombreApellidos", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NombreApellidos", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Dni", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Dni", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Observaciones", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Observaciones", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Activo", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Activo", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Actualizado", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Actualizado", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter2", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter3", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter4", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter5", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter6", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter7", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter8", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter9", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter10", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter11", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        Codigo, NombreEmpresa, Cadena, Cif, Direccion, Poblacion, Cp, Nombr" +
-                "eApellidos, Dni, Observaciones, Activo, Actualizado\r\nFROM            Cliente";
+            this._commandCollection[3].CommandText = "SELECT Codigo, NombreEmpresa FROM Cliente WHERE (Codigo LIKE Parameter1) AND (Nom" +
+                "breEmpresa LIKE Parameter2)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter2", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"SELECT        Codigo, NombreEmpresa, Cadena, Cif, Direccion, Poblacion, Cp, NombreApellidos, Dni, Observaciones, Activo, Actualizado
+FROM            Cliente
+WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (Cadena LIKE Parameter3 OR
+                         Parameter3 = '%' AND Cadena IS NULL) AND (Cif LIKE Parameter4 OR
+                         Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
+                         Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
+                         NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
+                         Activo IS NULL AND Parameter9 = '%') AND (Actualizado IS NULL)
+ORDER BY Codigo, NombreEmpresa";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter2", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter3", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter4", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter5", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter6", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter7", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter8", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter9", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter10", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = @"SELECT        Codigo, NombreEmpresa, Cadena, Cif, Direccion, Poblacion, Cp, NombreApellidos, Dni, Observaciones, Activo, Actualizado
+FROM            Cliente
+WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (Cadena LIKE Parameter3 OR
+                         Parameter3 = '%' AND Cadena IS NULL) AND (Cif LIKE Parameter4 OR
+                         Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
+                         Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
+                         NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
+                         Activo IS NULL AND Parameter9 = '%')  AND (Actualizado IS NULL)
+ORDER BY Codigo, NombreEmpresa";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter2", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter3", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter4", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter5", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter6", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter7", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter8", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter9", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter10", global::System.Data.OleDb.OleDbType.Boolean, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "INSERT INTO `Cliente` (`Codigo`, `NombreEmpresa`, `Cadena`, `Cif`, `Direccion`, `" +
+                "Poblacion`, `Cp`, `NombreApellidos`, `Dni`, `Observaciones`, `Activo`, `Actualiz" +
+                "ado`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Codigo", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Codigo", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NombreEmpresa", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NombreEmpresa", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Cadena", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Cadena", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Cif", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Cif", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Direccion", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Direccion", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Poblacion", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Poblacion", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Cp", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Cp", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NombreApellidos", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NombreApellidos", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Dni", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Dni", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Observaciones", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Observaciones", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Activo", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Activo", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Actualizado", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Actualizado", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[7] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "SELECT        Codigo, NombreEmpresa, Cadena, Cif, Direccion, Poblacion, Cp, Nombr" +
+                "eApellidos, Dni, Observaciones, Activo, Actualizado\r\nFROM            Cliente";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5932,8 +6010,358 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(BDADataSet.ClienteDataTable dataTable, string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10) {
+        public virtual int FillBy(BDADataSet.ClienteDataTable dataTable, string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((Parameter3 == null)) {
+                throw new global::System.ArgumentNullException("Parameter3");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Parameter3));
+            }
+            if ((Parameter4 == null)) {
+                throw new global::System.ArgumentNullException("Parameter4");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Parameter4));
+            }
+            if ((Parameter5 == null)) {
+                throw new global::System.ArgumentNullException("Parameter5");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(Parameter5));
+            }
+            if ((Parameter6 == null)) {
+                throw new global::System.ArgumentNullException("Parameter6");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(Parameter6));
+            }
+            if ((Parameter7 == null)) {
+                throw new global::System.ArgumentNullException("Parameter7");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(Parameter7));
+            }
+            if ((Parameter8 == null)) {
+                throw new global::System.ArgumentNullException("Parameter8");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(Parameter8));
+            }
+            if ((Parameter9 == null)) {
+                throw new global::System.ArgumentNullException("Parameter9");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(Parameter9));
+            }
+            if ((Parameter10 == null)) {
+                throw new global::System.ArgumentNullException("Parameter10");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[9].Value = ((string)(Parameter10));
+            }
+            if ((Parameter11 == null)) {
+                throw new global::System.ArgumentNullException("Parameter11");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[10].Value = ((string)(Parameter11));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BDADataSet.ClienteDataTable Consulta(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10, string Parameter11) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((Parameter3 == null)) {
+                throw new global::System.ArgumentNullException("Parameter3");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Parameter3));
+            }
+            if ((Parameter4 == null)) {
+                throw new global::System.ArgumentNullException("Parameter4");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Parameter4));
+            }
+            if ((Parameter5 == null)) {
+                throw new global::System.ArgumentNullException("Parameter5");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(Parameter5));
+            }
+            if ((Parameter6 == null)) {
+                throw new global::System.ArgumentNullException("Parameter6");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(Parameter6));
+            }
+            if ((Parameter7 == null)) {
+                throw new global::System.ArgumentNullException("Parameter7");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(Parameter7));
+            }
+            if ((Parameter8 == null)) {
+                throw new global::System.ArgumentNullException("Parameter8");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(Parameter8));
+            }
+            if ((Parameter9 == null)) {
+                throw new global::System.ArgumentNullException("Parameter9");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(Parameter9));
+            }
+            if ((Parameter10 == null)) {
+                throw new global::System.ArgumentNullException("Parameter10");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[9].Value = ((string)(Parameter10));
+            }
+            if ((Parameter11 == null)) {
+                throw new global::System.ArgumentNullException("Parameter11");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[10].Value = ((string)(Parameter11));
+            }
+            BDADataSet.ClienteDataTable dataTable = new BDADataSet.ClienteDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy1(BDADataSet.ClienteDataTable dataTable, string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, bool Parameter10, string Parameter11) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((Parameter3 == null)) {
+                throw new global::System.ArgumentNullException("Parameter3");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Parameter3));
+            }
+            if ((Parameter4 == null)) {
+                throw new global::System.ArgumentNullException("Parameter4");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Parameter4));
+            }
+            if ((Parameter5 == null)) {
+                throw new global::System.ArgumentNullException("Parameter5");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(Parameter5));
+            }
+            if ((Parameter6 == null)) {
+                throw new global::System.ArgumentNullException("Parameter6");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(Parameter6));
+            }
+            if ((Parameter7 == null)) {
+                throw new global::System.ArgumentNullException("Parameter7");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(Parameter7));
+            }
+            if ((Parameter8 == null)) {
+                throw new global::System.ArgumentNullException("Parameter8");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(Parameter8));
+            }
+            if ((Parameter9 == null)) {
+                throw new global::System.ArgumentNullException("Parameter9");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(Parameter9));
+            }
+            this.Adapter.SelectCommand.Parameters[9].Value = ((bool)(Parameter10));
+            if ((Parameter11 == null)) {
+                throw new global::System.ArgumentNullException("Parameter11");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[10].Value = ((string)(Parameter11));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BDADataSet.ClienteDataTable ConsultaDos(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, bool Parameter10, string Parameter11) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((Parameter3 == null)) {
+                throw new global::System.ArgumentNullException("Parameter3");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Parameter3));
+            }
+            if ((Parameter4 == null)) {
+                throw new global::System.ArgumentNullException("Parameter4");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Parameter4));
+            }
+            if ((Parameter5 == null)) {
+                throw new global::System.ArgumentNullException("Parameter5");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(Parameter5));
+            }
+            if ((Parameter6 == null)) {
+                throw new global::System.ArgumentNullException("Parameter6");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(Parameter6));
+            }
+            if ((Parameter7 == null)) {
+                throw new global::System.ArgumentNullException("Parameter7");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(Parameter7));
+            }
+            if ((Parameter8 == null)) {
+                throw new global::System.ArgumentNullException("Parameter8");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(Parameter8));
+            }
+            if ((Parameter9 == null)) {
+                throw new global::System.ArgumentNullException("Parameter9");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(Parameter9));
+            }
+            this.Adapter.SelectCommand.Parameters[9].Value = ((bool)(Parameter10));
+            if ((Parameter11 == null)) {
+                throw new global::System.ArgumentNullException("Parameter11");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[10].Value = ((string)(Parameter11));
+            }
+            BDADataSet.ClienteDataTable dataTable = new BDADataSet.ClienteDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy2(BDADataSet.ClienteDataTable dataTable, string Parameter1, string Parameter2) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BDADataSet.ClienteDataTable ConsultaErrorInsert(string Parameter1, string Parameter2) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            BDADataSet.ClienteDataTable dataTable = new BDADataSet.ClienteDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy3(BDADataSet.ClienteDataTable dataTable, string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((Parameter1 == null)) {
                 throw new global::System.ArgumentNullException("Parameter1");
             }
@@ -6005,8 +6433,8 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual BDADataSet.ClienteDataTable Consulta(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+        public virtual BDADataSet.ClienteDataTable ConsultaTresActualizados(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, string Parameter10) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((Parameter1 == null)) {
                 throw new global::System.ArgumentNullException("Parameter1");
             }
@@ -6076,8 +6504,142 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy4(BDADataSet.ClienteDataTable dataTable, string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, bool Parameter10) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((Parameter3 == null)) {
+                throw new global::System.ArgumentNullException("Parameter3");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Parameter3));
+            }
+            if ((Parameter4 == null)) {
+                throw new global::System.ArgumentNullException("Parameter4");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Parameter4));
+            }
+            if ((Parameter5 == null)) {
+                throw new global::System.ArgumentNullException("Parameter5");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(Parameter5));
+            }
+            if ((Parameter6 == null)) {
+                throw new global::System.ArgumentNullException("Parameter6");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(Parameter6));
+            }
+            if ((Parameter7 == null)) {
+                throw new global::System.ArgumentNullException("Parameter7");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(Parameter7));
+            }
+            if ((Parameter8 == null)) {
+                throw new global::System.ArgumentNullException("Parameter8");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(Parameter8));
+            }
+            if ((Parameter9 == null)) {
+                throw new global::System.ArgumentNullException("Parameter9");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(Parameter9));
+            }
+            this.Adapter.SelectCommand.Parameters[9].Value = ((bool)(Parameter10));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BDADataSet.ClienteDataTable ConsultaCuatroActualizado(string Parameter1, string Parameter2, string Parameter3, string Parameter4, string Parameter5, string Parameter6, string Parameter7, string Parameter8, string Parameter9, bool Parameter10) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((Parameter1 == null)) {
+                throw new global::System.ArgumentNullException("Parameter1");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Parameter1));
+            }
+            if ((Parameter2 == null)) {
+                throw new global::System.ArgumentNullException("Parameter2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Parameter2));
+            }
+            if ((Parameter3 == null)) {
+                throw new global::System.ArgumentNullException("Parameter3");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Parameter3));
+            }
+            if ((Parameter4 == null)) {
+                throw new global::System.ArgumentNullException("Parameter4");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Parameter4));
+            }
+            if ((Parameter5 == null)) {
+                throw new global::System.ArgumentNullException("Parameter5");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(Parameter5));
+            }
+            if ((Parameter6 == null)) {
+                throw new global::System.ArgumentNullException("Parameter6");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(Parameter6));
+            }
+            if ((Parameter7 == null)) {
+                throw new global::System.ArgumentNullException("Parameter7");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(Parameter7));
+            }
+            if ((Parameter8 == null)) {
+                throw new global::System.ArgumentNullException("Parameter8");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(Parameter8));
+            }
+            if ((Parameter9 == null)) {
+                throw new global::System.ArgumentNullException("Parameter9");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(Parameter9));
+            }
+            this.Adapter.SelectCommand.Parameters[9].Value = ((bool)(Parameter10));
+            BDADataSet.ClienteDataTable dataTable = new BDADataSet.ClienteDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int rellenarCli(BDADataSet.ClienteDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -6090,7 +6652,7 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual BDADataSet.ClienteDataTable devolverCli() {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             BDADataSet.ClienteDataTable dataTable = new BDADataSet.ClienteDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6547,7 +7109,7 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertQueryCliente(string Codigo, string NombreEmpresa, string Cadena, string Cif, string Direccion, string Poblacion, string Cp, string NombreApellidos, string Dni, string Observaciones, bool Activo, string Actualizado) {
-            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[2];
+            global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[6];
             if ((Codigo == null)) {
                 throw new global::System.ArgumentNullException("Codigo");
             }

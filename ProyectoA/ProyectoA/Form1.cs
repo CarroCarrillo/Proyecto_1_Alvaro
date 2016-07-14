@@ -16,7 +16,7 @@ namespace ProyectoA
 {
     public partial class Form1 : Form
     {
-        private ClienteTableAdapter tableAdapter = new ClienteTableAdapter();
+        private ClienteTableAdapter tableAdapterCli = new ClienteTableAdapter();
         private ClienteTelefonoTableAdapter tableAdapterCliTel = new ClienteTelefonoTableAdapter();
         private TelefonoTableAdapter tableAdapterTlf = new TelefonoTableAdapter();
 
@@ -25,7 +25,6 @@ namespace ProyectoA
             InitializeComponent();
             panel1.Hide();
             panel2.Hide();
-            
         }
 
         private void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -131,8 +130,9 @@ namespace ProyectoA
 
             if (dniTextBox.Text != "") cad[8] = dniTextBox.Text;
             else cad[8] = "%";
-
-            cad[9] = "%";
+            
+            if (radioButton4.Checked) cad[9] = "_%";
+            else cad[9] = "%";
 
             //TODO Checkbox Activo Actualizado
 
@@ -161,19 +161,51 @@ namespace ProyectoA
         private void selectSinTlf(string[] cadi)
         {
             string tel;
-            
+            char[] colorearAct;
+
             dataGridView1.RowCount = 1;
-            ProyectoA.BDADataSet.ClienteDataTable t = tableAdapter.Consulta(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], cadi[9]);
+
+            ProyectoA.BDADataSet.ClienteDataTable t;
+            
+            if (!radioButton1.Checked && !radioButton2.Checked)
+            {
+                //Select (activos + no activos) y (no actualizados / actualizados + no actualizados)
+                if (!radioButton3.Checked) t = tableAdapterCli.Consulta(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%", cadi[9]);
+                //Select (activos + no activos) y (actualizados)
+                else t = tableAdapterCli.ConsultaTresActualizados(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%");
+            }
+            else
+            {
+                //Select (activos / no activos) y (no actualizados / actualizados + no actualizados)
+                if (!radioButton3.Checked) t = tableAdapterCli.ConsultaDos(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked, cadi[9]);
+                //Select (activos / no activos) y (actualizados)
+                else t = tableAdapterCli.ConsultaCuatroActualizado(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked);
+            }
+            
             ProyectoA.BDADataSet.ClienteTelefonoDataTable tCliTel;
 
             for (int i = 0; i < t.Count(); i++)
             {
                 dataGridView1.Rows.Add();
                 tCliTel = tableAdapterCliTel.ConsultaTelefono(t[i][0].ToString(), t[i][1].ToString());
+                colorearAct = null;
 
-
+                //Comprobamos si está actualizado, si no, guardamos en un charArray la columna actualizar
+                if (t[i][11].ToString() != "") colorearAct = t[i][11].ToString().ToCharArray();
+                
                 for (int j = 0; j < 12; j++)
                 {
+                    //Coloreamos las celdas correspondientes
+                    if (colorearAct != null) 
+                    {
+                        if (j < 10)
+                        {
+                            for (int z = 0; z < colorearAct.Length; z++)
+                            {
+                                if (j + 48 == (int)colorearAct[z]) dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.LightSkyBlue; 
+                            }
+                        }
+                    }
                     if (j < 9) dataGridView1.Rows[i].Cells[j].Value = t[i][j].ToString();
                     else if (j > 9) dataGridView1.Rows[i].Cells[j].Value = t[i][j - 1].ToString();
                     else
@@ -219,6 +251,12 @@ namespace ProyectoA
         //BOTON LIMPIAR CAMPOS CLIENTE-AÑADIR
         private void cli_a_LC_button_Click(object sender, EventArgs e)
         {
+            limpCampCliA();
+        }
+
+        //Funcion para limpiar los campos de cliente-añadir
+        private void limpCampCliA()
+        {
             cli_a_activo_NO_radioButton.Checked = false;
             cli_a_activo_SI_radioButton.Checked = false;
             cli_a_cad_textBox.Text = null;
@@ -249,28 +287,42 @@ namespace ProyectoA
         {
             string[] ccI = new string[11];
             string[] cadTlf;
-            bool act = false;
 
             //Comprobación de que los campos obligatorios están completos y los datos introducidos son correctos, en tal caso, añadir datos  
             if (!comprobarCamposCliA())
             {
-                DialogResult b = MessageBox.Show("Confirmar añadir cliente.", "Alerta", MessageBoxButtons.OKCancel);
-                if (b == DialogResult.OK)
+                try
                 {
-                    agregarCamposInsertCliente(ccI, act);
-
-                    tableAdapter.InsertQueryCliente(ccI[0], ccI[1], ccI[2], ccI[3], ccI[4], ccI[5], ccI[6], ccI[7], ccI[8], ccI[9], act, ccI[10]);
-
-                    if (cli_a_tlf_textBox.Text != "")
+                    DialogResult b = MessageBox.Show("          Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
+                    if (b == DialogResult.OK)
                     {
-                        cadTlf = agregarCamposTlf();
-                        for (int i = 0; i < cadTlf.Length; i++)
+                        agregarCamposInsertCliente(ccI);
+
+                        tableAdapterCli.InsertQueryCliente(ccI[0], ccI[1], ccI[2], ccI[3], ccI[4], ccI[5], ccI[6], ccI[7], ccI[8], ccI[9], cli_a_activo_SI_radioButton.Checked, ccI[10]);
+
+                        if (cli_a_tlf_textBox.Text != "")
                         {
-                            tableAdapterTlf.InsertQueryTlf(cadTlf[i]);
-                            tableAdapterCliTel.InsertQueryClienteTelefono(ccI[0], ccI[1], cadTlf[i]);
+                            cadTlf = agregarCamposTlf();
+                            for (int i = 0; i < cadTlf.Length; i++)
+                            {
+                                try
+                                {
+                                    tableAdapterTlf.InsertQueryTlf(cadTlf[i]);
+                                }
+                                catch {}
+                                tableAdapterCliTel.InsertQueryClienteTelefono(ccI[0], ccI[1], cadTlf[i]);
+                            }
                         }
+                        DialogResult q = MessageBox.Show("          Usuario añadido correctamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                        if (q == DialogResult.OK) limpCampCliA();
                     }
                 }
+                catch
+                {
+                    tableAdapterCli.ConsultaErrorInsert(cli_a_cod_textBox.Text, cli_a_nombEm_textBox.Text);
+                    MessageBox.Show("Se ha producido un error. No ha podido insertarse.");
+                }
+                
             }
         }
 
@@ -292,7 +344,7 @@ namespace ProyectoA
         }
 
         //Rellena los datos para realizar posteriormente el insert de cliente
-        private void agregarCamposInsertCliente(string[] cadenaCamposI, bool actI)
+        private void agregarCamposInsertCliente(string[] cadenaCamposI)
         {
             //campos normales TABLA CLIENTE
             cadenaCamposI[0] = cli_a_cod_textBox.Text;
@@ -305,18 +357,18 @@ namespace ProyectoA
             if (cli_a_nombApell_textBox.Text != "") cadenaCamposI[7] = cli_a_nombApell_textBox.Text;
             cadenaCamposI[8] = cli_a_dni_textBox.Text;
             if (cli_a_observacion_richTextBox.Text != "") cadenaCamposI[9] = cli_a_observacion_richTextBox.Text;
-            actI = cli_a_activo_SI_radioButton.Checked;
 
             //Actualizado TABLA CLIENTE
-            if (checkBox_cli_a_cod.Checked) cadenaCamposI[10] += "1,";
-            if (checkBox_cli_a_nombEm.Checked) cadenaCamposI[10] += "2,";
-            if (checkBox_cli_a_cad.Checked) cadenaCamposI[10] += "3,";
-            if (checkBox_cli_a_cif.Checked) cadenaCamposI[10] += "4,";
-            if (checkBox_cli_a_dir.Checked) cadenaCamposI[10] += "5,";
-            if (checkBox_cli_a_poblacion.Checked) cadenaCamposI[10] += "6,";
-            if (checkBox_cli_a_cp.Checked) cadenaCamposI[10] += "7,";
-            if (checkBox_cli_a_nomAp.Checked) cadenaCamposI[10] += "8,";
-            if (checkBox_cli_a_dni.Checked) cadenaCamposI[10] += "9";
+            if (checkBox_cli_a_cod.Checked) cadenaCamposI[10] += "0";
+            if (checkBox_cli_a_nombEm.Checked) cadenaCamposI[10] += "1";
+            if (checkBox_cli_a_cad.Checked) cadenaCamposI[10] += "2";
+            if (checkBox_cli_a_cif.Checked) cadenaCamposI[10] += "3";
+            if (checkBox_cli_a_dir.Checked) cadenaCamposI[10] += "4";
+            if (checkBox_cli_a_poblacion.Checked) cadenaCamposI[10] += "5";
+            if (checkBox_cli_a_cp.Checked) cadenaCamposI[10] += "6";
+            if (checkBox_cli_a_nomAp.Checked) cadenaCamposI[10] += "7";
+            if (checkBox_cli_a_dni.Checked) cadenaCamposI[10] += "8";
+            if (checkBox_cli_a_tlf.Checked) cadenaCamposI[10] += "9"; 
         }
 
         //Hace la comprobación de que los campos obligatorios correspondientes a CLIENTE-AÑADIR estén completos

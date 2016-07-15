@@ -19,6 +19,7 @@ namespace ProyectoA
         private ClienteTableAdapter tableAdapterCli = new ClienteTableAdapter();
         private ClienteTelefonoTableAdapter tableAdapterCliTel = new ClienteTelefonoTableAdapter();
         private TelefonoTableAdapter tableAdapterTlf = new TelefonoTableAdapter();
+        
 
         public Form1()
         {
@@ -192,7 +193,81 @@ namespace ProyectoA
         //SENTENCIA SQL SELECT cuando sí que hay teléfonos dentro de las búsquedas
         private void selectConTlf(string[] cadi)
         {
-            
+            string tel;
+            char[] colorearAct;
+            bool coincide;
+            int cont = 0;
+
+            dataGridView1.RowCount = 1;
+
+            ProyectoA.BDADataSet.ClienteDataTable t;
+
+            if (!radioButton1.Checked && !radioButton2.Checked)
+            {
+                //Select (activos + no activos) y (no actualizados / actualizados + no actualizados)
+                if (!radioButton3.Checked) t = tableAdapterCli.Consulta(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%", cadi[9]);
+                //Select (activos + no activos) y (actualizados)
+                else t = tableAdapterCli.ConsultaTresActualizados(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%");
+            }
+            else
+            {
+                //Select (activos / no activos) y (no actualizados / actualizados + no actualizados)
+                if (!radioButton3.Checked) t = tableAdapterCli.ConsultaDos(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked, cadi[9]);
+                //Select (activos / no activos) y (actualizados)
+                else t = tableAdapterCli.ConsultaCuatroActualizado(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked);
+            }
+
+            ProyectoA.BDADataSet.ClienteTelefonoDataTable tCliTel;
+
+            for (int i = 0; i < t.Count(); i++)
+            {
+                tel = "";
+                coincide = false;
+                tCliTel = tableAdapterCliTel.ConsultaTelefono(t[i][0].ToString(), t[i][1].ToString());
+                for(int r = 0; r < tCliTel.Count(); r++)
+                {
+                    if (tCliTel[r][2].ToString() == cadi[11]) coincide = true;
+                    if (r == 0) tel += tCliTel[r][2].ToString();
+                    else tel += ", " + tCliTel[r][2].ToString();
+                }
+                if (coincide == true)
+                {
+                    dataGridView1.Rows.Add();
+                    
+                    colorearAct = null;
+
+                    //Comprobamos si está actualizado, si no, guardamos en un charArray la columna actualizar
+                    if (t[i][11].ToString() != "") colorearAct = t[i][11].ToString().ToCharArray();
+
+                    for (int j = 0; j < 12; j++)
+                    {
+                        //Coloreamos las celdas correspondientes
+                        if (colorearAct != null)
+                        {
+                            if (j < 10)
+                            {
+                                for (int z = 0; z < colorearAct.Length; z++)
+                                {
+                                    if (j + 48 == (int)colorearAct[z]) dataGridView1.Rows[cont].Cells[j].Style.BackColor = Color.LightSkyBlue;
+                                }
+                            }
+                        }
+                        
+                        if (j < 9) dataGridView1.Rows[cont].Cells[j].Value = t[i][j].ToString();
+                        else if (j > 9)
+                        {
+                            if (j == 11)
+                            {
+                                if (t[i][j - 1].ToString() == "True") dataGridView1.Rows[cont].Cells[j].Value = "Sí";
+                                else dataGridView1.Rows[cont].Cells[j].Value = "No";
+                            }
+                            else dataGridView1.Rows[cont].Cells[j].Value = t[i][j - 1].ToString();
+                        }
+                        else dataGridView1.Rows[cont].Cells[j].Value = tel;
+                    }
+                    cont++;
+                }
+            }
         }
 
         //SENTENCIA SQL SELECT cuando no hay teléfonos dentro de las búsquedas  
@@ -303,6 +378,7 @@ namespace ProyectoA
                                 }
                                 catch {}
                                 tableAdapterCliTel.InsertQueryClienteTelefono(ccI[0], ccI[1], cadTlf[i]);
+                                
                             }
                         }
                         DialogResult q = MessageBox.Show("          Usuario añadido correctamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);

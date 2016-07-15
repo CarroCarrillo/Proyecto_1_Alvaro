@@ -5867,7 +5867,7 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
                          Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
                          Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
                          NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
-                         Activo IS NULL AND Parameter9 = '%') AND (Actualizado LIKE Parameter11 OR
+                         Activo IS NULL AND Parameter10 = '%') AND (Actualizado LIKE Parameter11 OR
                          Actualizado IS NULL AND Parameter11 = '%')
 ORDER BY Codigo, NombreEmpresa";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
@@ -5891,7 +5891,7 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
                          Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
                          Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
                          NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
-                         Activo IS NULL AND Parameter9 = '%')  AND (Actualizado LIKE Parameter11 OR
+                         Activo IS NULL AND Parameter10 = '%')  AND (Actualizado LIKE Parameter11 OR
                          Actualizado IS NULL AND Parameter11 = '%')
 ORDER BY Codigo, NombreEmpresa";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
@@ -5922,7 +5922,7 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
                          Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
                          Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
                          NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
-                         Activo IS NULL AND Parameter9 = '%') AND (Actualizado IS NULL)
+                         Activo IS NULL AND Parameter10 = '%') AND (Actualizado IS NULL)
 ORDER BY Codigo, NombreEmpresa";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
@@ -5944,7 +5944,7 @@ WHERE        (Codigo LIKE Parameter1) AND (NombreEmpresa LIKE Parameter2) AND (C
                          Cif IS NULL AND Parameter4 = '%') AND (Direccion LIKE Parameter5) AND (Poblacion LIKE Parameter6) AND (Cp LIKE Parameter7 OR
                          Cp IS NULL AND Parameter7 = '%') AND (NombreApellidos LIKE Parameter8 OR
                          NombreApellidos IS NULL AND Parameter8 = '%') AND (Dni LIKE Parameter9) AND (Activo LIKE Parameter10 OR
-                         Activo IS NULL AND Parameter9 = '%')  AND (Actualizado IS NULL)
+                         Activo IS NULL AND Parameter10 = '%')  AND (Actualizado IS NULL)
 ORDER BY Codigo, NombreEmpresa";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Parameter1", global::System.Data.OleDb.OleDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));

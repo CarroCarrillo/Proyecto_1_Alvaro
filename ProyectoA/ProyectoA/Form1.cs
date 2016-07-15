@@ -150,6 +150,8 @@ namespace ProyectoA
             radioButton2.Checked = false;
             radioButton3.Checked = false;
             radioButton4.Checked = false;
+            radioButton5.Checked = true;
+            radioButton6.Checked = true;
         }
 
         //Comprueba los labels con la información que filtrará la búsqueda
@@ -159,28 +161,28 @@ namespace ProyectoA
             if (codigoTextBox.Text != "") cad[0] = codigoTextBox.Text;
             else cad[0] = "%";
 
-            if (nombreEmpresaTextBox.Text != "") cad[1] = nombreEmpresaTextBox.Text;
+            if (nombreEmpresaTextBox.Text != "") cad[1] = "%"+nombreEmpresaTextBox.Text+ "%";
             else cad[1] = "%";
 
-            if (cadenaTextBox.Text != "") cad[2] = cadenaTextBox.Text;
+            if (cadenaTextBox.Text != "") cad[2] = "%"+cadenaTextBox.Text+ "%";
             else cad[2] = "%";
 
             if (cifTextBox.Text != "") cad[3] = cifTextBox.Text;
             else cad[3] = "%";
 
-            if (direccionTextBox.Text != "") cad[4] = direccionTextBox.Text;
+            if (direccionTextBox.Text != "") cad[4] = "%"+direccionTextBox.Text+"%";
             else cad[4] = "%";
 
-            if (poblacionTextBox.Text != "") cad[5] = poblacionTextBox.Text;
+            if (poblacionTextBox.Text != "") cad[5] = "%"+poblacionTextBox.Text+ "%";
             else cad[5] = "%";
 
             if (cpTextBox.Text != "") cad[6] = cpTextBox.Text;
             else cad[6] = "%";
 
-            if (nombrApellidosTextBox.Text != "") cad[7] = nombrApellidosTextBox.Text;
+            if (nombrApellidosTextBox.Text != "") cad[7] = "%"+nombrApellidosTextBox.Text+"%";
             else cad[7] = "%";
 
-            if (dniTextBox.Text != "") cad[8] = dniTextBox.Text;
+            if (dniTextBox.Text != "") cad[8] = dniTextBox.Text+ "%";
             else cad[8] = "%";
             
             if (radioButton4.Checked) cad[9] = "_%";
@@ -432,13 +434,14 @@ namespace ProyectoA
         private string[] agregarCamposTlf()
         {
             string[] cadenaTlf;
-            char[] separador = new char[5];
+            char[] separador = new char[6];
 
             separador[0] = ',';
             separador[1] = ';';
             separador[2] = '.';
             separador[3] = ':';
             separador[4] = '-';
+            separador[5] = ' ';
 
             cadenaTlf = cli_a_tlf_textBox.Text.Split(separador);
 
@@ -648,6 +651,7 @@ namespace ProyectoA
             }
             return error;
         }
-        
+
+     
     }
 }

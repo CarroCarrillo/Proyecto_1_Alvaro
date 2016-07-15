@@ -101,6 +101,57 @@ namespace ProyectoA
             
         }
 
+        
+
+        ///*
+        // * 
+        // * 
+        // * TODO LO REFERENTE AL APARTADO        CLIENTE
+        // * 
+        // * 
+        // */
+
+            ///*
+            // * BÚSQUEDA
+            // * 
+            // */
+
+        //BOTON INICIAR BÚSQUEDA CLIENTE-BUSCAR
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string[] cadenaLabels = new string[12];
+            comprobarLabelsCliB(cadenaLabels);
+
+            if (cadenaLabels[11] == "%") selectSinTlf(cadenaLabels);
+            else selectConTlf(cadenaLabels);
+        }
+
+        //BOTON LIMPIAR BUSQUEDA CLIENTE-BUSCAR
+        private void botonClienLB_Click(object sender, EventArgs e)
+        {
+            dataGridView1.RowCount = 1;
+        }
+
+        //BOTON LIMPIAR CAMPOS CLIENTE-BUSCAR
+        private void botonClienLC_Click(object sender, EventArgs e)
+        {
+            codigoTextBox.Text = null;
+            nombreEmpresaTextBox.Text = null;
+            cadenaTextBox.Text = null;
+            cifTextBox.Text = null;
+            direccionTextBox.Text = null;
+            poblacionTextBox.Text = null;
+            cpTextBox.Text = null;
+            nombrApellidosTextBox.Text = null;
+            dniTextBox.Text = null;
+            telefonoTextBox.Text = null;
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+        }
+
+        //Comprueba los labels con la información que filtrará la búsqueda
         private void comprobarLabelsCliB(string[] cad)
         {
 
@@ -134,30 +185,17 @@ namespace ProyectoA
             if (radioButton4.Checked) cad[9] = "_%";
             else cad[9] = "%";
 
-            //TODO Checkbox Activo Actualizado
-
             if (telefonoTextBox.Text != "") cad[11] = telefonoTextBox.Text;
             else cad[11] = "%";
-            
         }
         
-        //BOTON INICIAR BÚSQUEDA CLIENTE-BUSCAR
-        private void button3_Click(object sender, EventArgs e)
-        {
-            string[] cadenaLabels = new string[12];
-            comprobarLabelsCliB(cadenaLabels);
-
-            if (cadenaLabels[11] == "%") selectSinTlf(cadenaLabels);
-            else selectConTlf(cadenaLabels);
-        }
-
         //SENTENCIA SQL SELECT cuando sí que hay teléfonos dentro de las búsquedas
         private void selectConTlf(string[] cadi)
         {
             
         }
 
-        //SENTENCIA SQL SELECT cuando no hay teléfonos dentro de las búsquedas
+        //SENTENCIA SQL SELECT cuando no hay teléfonos dentro de las búsquedas  
         private void selectSinTlf(string[] cadi)
         {
             string tel;
@@ -207,7 +245,15 @@ namespace ProyectoA
                         }
                     }
                     if (j < 9) dataGridView1.Rows[i].Cells[j].Value = t[i][j].ToString();
-                    else if (j > 9) dataGridView1.Rows[i].Cells[j].Value = t[i][j - 1].ToString();
+                    else if (j > 9)
+                    {
+                        if (j == 11)
+                        {
+                            if (t[i][j - 1].ToString() == "True") dataGridView1.Rows[i].Cells[j].Value = "Sí";
+                            else dataGridView1.Rows[i].Cells[j].Value = "No";
+                        }
+                        else dataGridView1.Rows[i].Cells[j].Value = t[i][j - 1].ToString();
+                    }
                     else
                     {
                         tel = "";
@@ -223,66 +269,12 @@ namespace ProyectoA
             }
         }
 
-        //BOTON LIMPIAR BUSQUEDA CLIENTE-BUSCAR
-        private void botonClienLB_Click(object sender, EventArgs e)
-        {
-            dataGridView1.RowCount = 1;
-        }
+            ///*
+            // * AÑADIR
+            // * 
+            // */
 
-        //BOTON LIMPIAR CAMPOS CLIENTE-BUSCAR
-        private void botonClienLC_Click(object sender, EventArgs e)
-        {
-            codigoTextBox.Text = null;
-            nombreEmpresaTextBox.Text = null;
-            cadenaTextBox.Text = null;
-            cifTextBox.Text = null;
-            direccionTextBox.Text = null;
-            poblacionTextBox.Text = null;
-            cpTextBox.Text = null;
-            nombrApellidosTextBox.Text = null;
-            dniTextBox.Text = null;
-            telefonoTextBox.Text = null;
-            radioButton1.Checked = false;
-            radioButton2.Checked = false;
-            radioButton3.Checked = false;
-            radioButton4.Checked = false;
-        }
-
-        //BOTON LIMPIAR CAMPOS CLIENTE-AÑADIR
-        private void cli_a_LC_button_Click(object sender, EventArgs e)
-        {
-            limpCampCliA();
-        }
-
-        //Funcion para limpiar los campos de cliente-añadir
-        private void limpCampCliA()
-        {
-            cli_a_activo_NO_radioButton.Checked = false;
-            cli_a_activo_SI_radioButton.Checked = false;
-            cli_a_cad_textBox.Text = null;
-            cli_a_cif_textBox.Text = null;
-            cli_a_cod_textBox.Text = null;
-            cli_a_cp_textBox.Text = null;
-            cli_a_dir_textBox.Text = null;
-            cli_a_dni_textBox.Text = null;
-            cli_a_nombApell_textBox.Text = null;
-            cli_a_nombEm_textBox.Text = null;
-            cli_a_observacion_richTextBox.Text = null;
-            cli_a_poblacion_textBox.Text = null;
-            cli_a_tlf_textBox.Text = null;
-            checkBox_cli_a_cad.Checked = false;
-            checkBox_cli_a_cif.Checked = false;
-            checkBox_cli_a_cod.Checked = false;
-            checkBox_cli_a_cp.Checked = false;
-            checkBox_cli_a_dir.Checked = false;
-            checkBox_cli_a_dni.Checked = false;
-            checkBox_cli_a_nomAp.Checked = false;
-            checkBox_cli_a_nombEm.Checked = false;
-            checkBox_cli_a_poblacion.Checked = false;
-            checkBox_cli_a_tlf.Checked = false;
-        }
-
-        //BOTON AGREGAR CLIENTE CLIENTE-AÑADIR
+        //BOTON AGREGAR CLIENTE CLIENTE-AÑADIR   ----- TODO las excepciones a la hora de agregar
         private void cli_a_Agregar_button_Click(object sender, EventArgs e)
         {
             string[] ccI = new string[11];
@@ -324,6 +316,40 @@ namespace ProyectoA
                 }
                 
             }
+        }
+
+        //BOTON LIMPIAR CAMPOS CLIENTE-AÑADIR
+        private void cli_a_LC_button_Click(object sender, EventArgs e)
+        {
+            limpCampCliA();
+        }
+
+        //Funcion para limpiar los campos de cliente-añadir
+        private void limpCampCliA()
+        {
+            cli_a_activo_NO_radioButton.Checked = false;
+            cli_a_activo_SI_radioButton.Checked = false;
+            cli_a_cad_textBox.Text = null;
+            cli_a_cif_textBox.Text = null;
+            cli_a_cod_textBox.Text = null;
+            cli_a_cp_textBox.Text = null;
+            cli_a_dir_textBox.Text = null;
+            cli_a_dni_textBox.Text = null;
+            cli_a_nombApell_textBox.Text = null;
+            cli_a_nombEm_textBox.Text = null;
+            cli_a_observacion_richTextBox.Text = null;
+            cli_a_poblacion_textBox.Text = null;
+            cli_a_tlf_textBox.Text = null;
+            checkBox_cli_a_cad.Checked = false;
+            checkBox_cli_a_cif.Checked = false;
+            checkBox_cli_a_cod.Checked = false;
+            checkBox_cli_a_cp.Checked = false;
+            checkBox_cli_a_dir.Checked = false;
+            checkBox_cli_a_dni.Checked = false;
+            checkBox_cli_a_nomAp.Checked = false;
+            checkBox_cli_a_nombEm.Checked = false;
+            checkBox_cli_a_poblacion.Checked = false;
+            checkBox_cli_a_tlf.Checked = false;
         }
 
         //Rellena los datos de telefono en un array
@@ -371,7 +397,7 @@ namespace ProyectoA
             if (checkBox_cli_a_tlf.Checked) cadenaCamposI[10] += "9"; 
         }
 
-        //Hace la comprobación de que los campos obligatorios correspondientes a CLIENTE-AÑADIR estén completos
+        //Hace la comprobación de que los campos obligatorios correspondientes a CLIENTE-AÑADIR estén completos  TODO -- filtro teléfono
         private bool comprobarCamposCliA()
         {
             bool error = false;

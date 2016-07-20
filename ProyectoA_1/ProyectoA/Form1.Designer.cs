@@ -64,9 +64,11 @@ namespace ProyectoA
             this.botonClienLC = new System.Windows.Forms.Button();
             this.botonClienLB = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.telefonoTextBox = new System.Windows.Forms.TextBox();
@@ -139,15 +141,10 @@ namespace ProyectoA
             this.informaciónClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónMáquinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informaciónContratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bDADataSet = new ProyectoA.BDADataSet();
             this.bDADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bdaDataSet1 = new ProyectoA.BDADataSet();
-            this.clienteTableAdapter = new ProyectoA.BDADataSetTableAdapters.ClienteTableAdapter();
-            this.tableAdapterManager = new ProyectoA.BDADataSetTableAdapters.TableAdapterManager();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
             nombreEmpresaLabel = new System.Windows.Forms.Label();
             cadenaLabel = new System.Windows.Forms.Label();
             cifLabel = new System.Windows.Forms.Label();
@@ -186,9 +183,7 @@ namespace ProyectoA
             this.tableLayoutPanel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdaDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // nombreEmpresaLabel
@@ -305,7 +300,7 @@ namespace ProyectoA
             // 
             label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(47, 78);
+            label3.Location = new System.Drawing.Point(71, 68);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(97, 13);
             label3.TabIndex = 72;
@@ -315,7 +310,7 @@ namespace ProyectoA
             // 
             label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(47, 104);
+            label4.Location = new System.Drawing.Point(71, 94);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(53, 13);
             label4.TabIndex = 73;
@@ -325,7 +320,7 @@ namespace ProyectoA
             // 
             label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(47, 130);
+            label5.Location = new System.Drawing.Point(71, 120);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(32, 13);
             label5.TabIndex = 74;
@@ -335,7 +330,7 @@ namespace ProyectoA
             // 
             label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(46, 177);
+            label6.Location = new System.Drawing.Point(70, 167);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(62, 13);
             label6.TabIndex = 75;
@@ -345,7 +340,7 @@ namespace ProyectoA
             // 
             label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(46, 229);
+            label7.Location = new System.Drawing.Point(70, 219);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(64, 13);
             label7.TabIndex = 76;
@@ -355,7 +350,7 @@ namespace ProyectoA
             // 
             label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(46, 203);
+            label8.Location = new System.Drawing.Point(70, 193);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(30, 13);
             label8.TabIndex = 77;
@@ -365,7 +360,7 @@ namespace ProyectoA
             // 
             label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(47, 271);
+            label9.Location = new System.Drawing.Point(71, 261);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(105, 13);
             label9.TabIndex = 78;
@@ -375,7 +370,7 @@ namespace ProyectoA
             // 
             label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(47, 297);
+            label10.Location = new System.Drawing.Point(71, 287);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(36, 13);
             label10.TabIndex = 79;
@@ -385,7 +380,7 @@ namespace ProyectoA
             // 
             label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(108, 381);
+            label11.Location = new System.Drawing.Point(132, 371);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(47, 13);
             label11.TabIndex = 80;
@@ -397,7 +392,7 @@ namespace ProyectoA
             // 
             label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(47, 52);
+            label13.Location = new System.Drawing.Point(71, 42);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(53, 13);
             label13.TabIndex = 71;
@@ -407,7 +402,7 @@ namespace ProyectoA
             // 
             label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(30, 446);
+            label12.Location = new System.Drawing.Point(54, 436);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(431, 39);
             label12.TabIndex = 81;
@@ -417,7 +412,7 @@ namespace ProyectoA
             // 
             label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(549, 52);
+            label14.Location = new System.Drawing.Point(573, 42);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(81, 13);
             label14.TabIndex = 109;
@@ -440,8 +435,8 @@ namespace ProyectoA
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -566,6 +561,17 @@ namespace ProyectoA
             this.groupBox8.TabIndex = 68;
             this.groupBox8.TabStop = false;
             // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Checked = true;
+            this.radioButton6.Location = new System.Drawing.Point(93, 16);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(14, 13);
+            this.radioButton6.TabIndex = 2;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
@@ -597,6 +603,17 @@ namespace ProyectoA
             this.groupBox7.Size = new System.Drawing.Size(117, 36);
             this.groupBox7.TabIndex = 67;
             this.groupBox7.TabStop = false;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Checked = true;
+            this.radioButton5.Location = new System.Drawing.Point(93, 15);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(14, 13);
+            this.radioButton5.TabIndex = 2;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -861,7 +878,7 @@ namespace ProyectoA
             // cli_a_observacion_richTextBox
             // 
             this.cli_a_observacion_richTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_observacion_richTextBox.Location = new System.Drawing.Point(550, 68);
+            this.cli_a_observacion_richTextBox.Location = new System.Drawing.Point(574, 58);
             this.cli_a_observacion_richTextBox.Name = "cli_a_observacion_richTextBox";
             this.cli_a_observacion_richTextBox.Size = new System.Drawing.Size(515, 109);
             this.cli_a_observacion_richTextBox.TabIndex = 108;
@@ -871,7 +888,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_tlf.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_tlf.AutoSize = true;
-            this.checkBox_cli_a_tlf.Location = new System.Drawing.Point(420, 322);
+            this.checkBox_cli_a_tlf.Location = new System.Drawing.Point(444, 312);
             this.checkBox_cli_a_tlf.Name = "checkBox_cli_a_tlf";
             this.checkBox_cli_a_tlf.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_tlf.TabIndex = 107;
@@ -881,7 +898,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_dni.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_dni.AutoSize = true;
-            this.checkBox_cli_a_dni.Location = new System.Drawing.Point(420, 297);
+            this.checkBox_cli_a_dni.Location = new System.Drawing.Point(444, 287);
             this.checkBox_cli_a_dni.Name = "checkBox_cli_a_dni";
             this.checkBox_cli_a_dni.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_dni.TabIndex = 106;
@@ -891,7 +908,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_nomAp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_nomAp.AutoSize = true;
-            this.checkBox_cli_a_nomAp.Location = new System.Drawing.Point(420, 270);
+            this.checkBox_cli_a_nomAp.Location = new System.Drawing.Point(444, 260);
             this.checkBox_cli_a_nomAp.Name = "checkBox_cli_a_nomAp";
             this.checkBox_cli_a_nomAp.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_nomAp.TabIndex = 105;
@@ -901,7 +918,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_poblacion.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_poblacion.AutoSize = true;
-            this.checkBox_cli_a_poblacion.Location = new System.Drawing.Point(420, 228);
+            this.checkBox_cli_a_poblacion.Location = new System.Drawing.Point(444, 218);
             this.checkBox_cli_a_poblacion.Name = "checkBox_cli_a_poblacion";
             this.checkBox_cli_a_poblacion.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_poblacion.TabIndex = 104;
@@ -911,7 +928,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_cp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_cp.AutoSize = true;
-            this.checkBox_cli_a_cp.Location = new System.Drawing.Point(420, 202);
+            this.checkBox_cli_a_cp.Location = new System.Drawing.Point(444, 192);
             this.checkBox_cli_a_cp.Name = "checkBox_cli_a_cp";
             this.checkBox_cli_a_cp.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_cp.TabIndex = 103;
@@ -921,7 +938,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_dir.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_dir.AutoSize = true;
-            this.checkBox_cli_a_dir.Location = new System.Drawing.Point(420, 177);
+            this.checkBox_cli_a_dir.Location = new System.Drawing.Point(444, 167);
             this.checkBox_cli_a_dir.Name = "checkBox_cli_a_dir";
             this.checkBox_cli_a_dir.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_dir.TabIndex = 102;
@@ -931,7 +948,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_cif.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_cif.AutoSize = true;
-            this.checkBox_cli_a_cif.Location = new System.Drawing.Point(420, 130);
+            this.checkBox_cli_a_cif.Location = new System.Drawing.Point(444, 120);
             this.checkBox_cli_a_cif.Name = "checkBox_cli_a_cif";
             this.checkBox_cli_a_cif.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_cif.TabIndex = 101;
@@ -941,7 +958,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_cad.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_cad.AutoSize = true;
-            this.checkBox_cli_a_cad.Location = new System.Drawing.Point(420, 103);
+            this.checkBox_cli_a_cad.Location = new System.Drawing.Point(444, 93);
             this.checkBox_cli_a_cad.Name = "checkBox_cli_a_cad";
             this.checkBox_cli_a_cad.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_cad.TabIndex = 100;
@@ -951,7 +968,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_nombEm.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_nombEm.AutoSize = true;
-            this.checkBox_cli_a_nombEm.Location = new System.Drawing.Point(420, 77);
+            this.checkBox_cli_a_nombEm.Location = new System.Drawing.Point(444, 67);
             this.checkBox_cli_a_nombEm.Name = "checkBox_cli_a_nombEm";
             this.checkBox_cli_a_nombEm.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_nombEm.TabIndex = 99;
@@ -961,7 +978,7 @@ namespace ProyectoA
             // 
             this.checkBox_cli_a_cod.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.checkBox_cli_a_cod.AutoSize = true;
-            this.checkBox_cli_a_cod.Location = new System.Drawing.Point(420, 52);
+            this.checkBox_cli_a_cod.Location = new System.Drawing.Point(444, 42);
             this.checkBox_cli_a_cod.Name = "checkBox_cli_a_cod";
             this.checkBox_cli_a_cod.Size = new System.Drawing.Size(15, 14);
             this.checkBox_cli_a_cod.TabIndex = 98;
@@ -970,7 +987,7 @@ namespace ProyectoA
             // cli_a_LC_button
             // 
             this.cli_a_LC_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_LC_button.Location = new System.Drawing.Point(565, 277);
+            this.cli_a_LC_button.Location = new System.Drawing.Point(589, 267);
             this.cli_a_LC_button.Name = "cli_a_LC_button";
             this.cli_a_LC_button.Size = new System.Drawing.Size(133, 28);
             this.cli_a_LC_button.TabIndex = 97;
@@ -983,7 +1000,7 @@ namespace ProyectoA
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox2.Controls.Add(this.cli_a_activo_NO_radioButton);
             this.groupBox2.Controls.Add(this.cli_a_activo_SI_radioButton);
-            this.groupBox2.Location = new System.Drawing.Point(184, 366);
+            this.groupBox2.Location = new System.Drawing.Point(208, 356);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(127, 36);
             this.groupBox2.TabIndex = 94;
@@ -1014,7 +1031,7 @@ namespace ProyectoA
             // cli_a_tlf_textBox
             // 
             this.cli_a_tlf_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_tlf_textBox.Location = new System.Drawing.Point(169, 320);
+            this.cli_a_tlf_textBox.Location = new System.Drawing.Point(193, 310);
             this.cli_a_tlf_textBox.Name = "cli_a_tlf_textBox";
             this.cli_a_tlf_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_tlf_textBox.TabIndex = 93;
@@ -1022,7 +1039,7 @@ namespace ProyectoA
             // cli_a_dni_textBox
             // 
             this.cli_a_dni_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_dni_textBox.Location = new System.Drawing.Point(169, 294);
+            this.cli_a_dni_textBox.Location = new System.Drawing.Point(193, 284);
             this.cli_a_dni_textBox.Name = "cli_a_dni_textBox";
             this.cli_a_dni_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_dni_textBox.TabIndex = 92;
@@ -1030,7 +1047,7 @@ namespace ProyectoA
             // cli_a_nombApell_textBox
             // 
             this.cli_a_nombApell_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_nombApell_textBox.Location = new System.Drawing.Point(169, 268);
+            this.cli_a_nombApell_textBox.Location = new System.Drawing.Point(193, 258);
             this.cli_a_nombApell_textBox.Name = "cli_a_nombApell_textBox";
             this.cli_a_nombApell_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_nombApell_textBox.TabIndex = 91;
@@ -1038,7 +1055,7 @@ namespace ProyectoA
             // cli_a_poblacion_textBox
             // 
             this.cli_a_poblacion_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_poblacion_textBox.Location = new System.Drawing.Point(169, 226);
+            this.cli_a_poblacion_textBox.Location = new System.Drawing.Point(193, 216);
             this.cli_a_poblacion_textBox.Name = "cli_a_poblacion_textBox";
             this.cli_a_poblacion_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_poblacion_textBox.TabIndex = 90;
@@ -1046,7 +1063,7 @@ namespace ProyectoA
             // cli_a_cp_textBox
             // 
             this.cli_a_cp_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cp_textBox.Location = new System.Drawing.Point(169, 200);
+            this.cli_a_cp_textBox.Location = new System.Drawing.Point(193, 190);
             this.cli_a_cp_textBox.Name = "cli_a_cp_textBox";
             this.cli_a_cp_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_cp_textBox.TabIndex = 89;
@@ -1054,7 +1071,7 @@ namespace ProyectoA
             // cli_a_dir_textBox
             // 
             this.cli_a_dir_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_dir_textBox.Location = new System.Drawing.Point(169, 174);
+            this.cli_a_dir_textBox.Location = new System.Drawing.Point(193, 164);
             this.cli_a_dir_textBox.Name = "cli_a_dir_textBox";
             this.cli_a_dir_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_dir_textBox.TabIndex = 88;
@@ -1062,7 +1079,7 @@ namespace ProyectoA
             // cli_a_cif_textBox
             // 
             this.cli_a_cif_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cif_textBox.Location = new System.Drawing.Point(169, 127);
+            this.cli_a_cif_textBox.Location = new System.Drawing.Point(193, 117);
             this.cli_a_cif_textBox.Name = "cli_a_cif_textBox";
             this.cli_a_cif_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_cif_textBox.TabIndex = 87;
@@ -1070,7 +1087,7 @@ namespace ProyectoA
             // cli_a_cad_textBox
             // 
             this.cli_a_cad_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cad_textBox.Location = new System.Drawing.Point(169, 101);
+            this.cli_a_cad_textBox.Location = new System.Drawing.Point(193, 91);
             this.cli_a_cad_textBox.Name = "cli_a_cad_textBox";
             this.cli_a_cad_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_cad_textBox.TabIndex = 86;
@@ -1078,7 +1095,7 @@ namespace ProyectoA
             // cli_a_nombEm_textBox
             // 
             this.cli_a_nombEm_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_nombEm_textBox.Location = new System.Drawing.Point(169, 75);
+            this.cli_a_nombEm_textBox.Location = new System.Drawing.Point(193, 65);
             this.cli_a_nombEm_textBox.Name = "cli_a_nombEm_textBox";
             this.cli_a_nombEm_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_nombEm_textBox.TabIndex = 85;
@@ -1086,7 +1103,7 @@ namespace ProyectoA
             // cli_a_cod_textBox
             // 
             this.cli_a_cod_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_cod_textBox.Location = new System.Drawing.Point(169, 49);
+            this.cli_a_cod_textBox.Location = new System.Drawing.Point(193, 39);
             this.cli_a_cod_textBox.Name = "cli_a_cod_textBox";
             this.cli_a_cod_textBox.Size = new System.Drawing.Size(217, 20);
             this.cli_a_cod_textBox.TabIndex = 84;
@@ -1095,7 +1112,7 @@ namespace ProyectoA
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 323);
+            this.label2.Location = new System.Drawing.Point(71, 313);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 83;
@@ -1105,7 +1122,7 @@ namespace ProyectoA
             // cli_a_Agregar_button
             // 
             this.cli_a_Agregar_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cli_a_Agregar_button.Location = new System.Drawing.Point(800, 272);
+            this.cli_a_Agregar_button.Location = new System.Drawing.Point(824, 262);
             this.cli_a_Agregar_button.Name = "cli_a_Agregar_button";
             this.cli_a_Agregar_button.Size = new System.Drawing.Size(241, 38);
             this.cli_a_Agregar_button.TabIndex = 82;
@@ -1250,7 +1267,8 @@ namespace ProyectoA
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.informaciónClientesToolStripMenuItem,
             this.informaciónMáquinasToolStripMenuItem,
-            this.informaciónContratosToolStripMenuItem});
+            this.informaciónContratosToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
@@ -1276,66 +1294,11 @@ namespace ProyectoA
             this.informaciónContratosToolStripMenuItem.Text = "Información Contratos";
             this.informaciónContratosToolStripMenuItem.Click += new System.EventHandler(this.informaciónContratosToolStripMenuItem_Click);
             // 
-            // clienteBindingSource
+            // aboutToolStripMenuItem
             // 
-            this.clienteBindingSource.DataMember = "Cliente";
-            this.clienteBindingSource.DataSource = this.bDADataSet;
-            // 
-            // bDADataSet
-            // 
-            this.bDADataSet.DataSetName = "BDADataSet";
-            this.bDADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bDADataSetBindingSource
-            // 
-            this.bDADataSetBindingSource.DataSource = this.bDADataSet;
-            this.bDADataSetBindingSource.Position = 0;
-            // 
-            // bdaDataSet1
-            // 
-            this.bdaDataSet1.DataSetName = "BDADataSet";
-            this.bdaDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clienteTableAdapter
-            // 
-            this.clienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ClienteTableAdapter = this.clienteTableAdapter;
-            this.tableAdapterManager.ClienteTelefonoTableAdapter = null;
-            this.tableAdapterManager.ContratoTableAdapter = null;
-            this.tableAdapterManager.EstadosContratoTableAdapter = null;
-            this.tableAdapterManager.EstadosMaquinaTableAdapter = null;
-            this.tableAdapterManager.FamiliaTableAdapter = null;
-            this.tableAdapterManager.MaquinaTableAdapter = null;
-            this.tableAdapterManager.ModeloTableAdapter = null;
-            this.tableAdapterManager.TelefonoTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = ProyectoA.BDADataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.UsuarioTableAdapter = null;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Checked = true;
-            this.radioButton5.Location = new System.Drawing.Point(93, 15);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(14, 13);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Checked = true;
-            this.radioButton6.Location = new System.Drawing.Point(93, 16);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(14, 13);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // Form1
             // 
@@ -1372,9 +1335,7 @@ namespace ProyectoA
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDADataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdaDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1400,7 +1361,6 @@ namespace ProyectoA
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button botonClienB;
         private System.Windows.Forms.Button botonClienA;
-        private BDADataSet bDADataSet;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button botonMaqA;
         private System.Windows.Forms.Button botonMaqB;
@@ -1408,10 +1368,7 @@ namespace ProyectoA
         private System.Windows.Forms.Button botonConB;
         private System.Windows.Forms.Button botonConG;
         private System.Windows.Forms.BindingSource bDADataSetBindingSource;
-        private BDADataSet bdaDataSet1;
         private System.Windows.Forms.BindingSource clienteBindingSource;
-        private BDADataSetTableAdapters.ClienteTableAdapter clienteTableAdapter;
-        private BDADataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button botonClienLC;
         private System.Windows.Forms.Button botonClienLB;
@@ -1477,6 +1434,7 @@ namespace ProyectoA
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

@@ -1,5 +1,4 @@
-﻿using ProyectoA.BDADataSetTableAdapters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 
 
@@ -16,10 +16,9 @@ namespace ProyectoA
 {
     public partial class Form1 : Form
     {
-        private ClienteTableAdapter tableAdapterCli = new ClienteTableAdapter();
-        private ClienteTelefonoTableAdapter tableAdapterCliTel = new ClienteTelefonoTableAdapter();
-        private TelefonoTableAdapter tableAdapterTlf = new TelefonoTableAdapter();
-        
+        public string conexion;
+        public string consulta;
+        public MySqlConnection con = new MySqlConnection();
 
         public Form1()
         {
@@ -36,15 +35,10 @@ namespace ProyectoA
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'bDADataSet.Cliente' Puede moverla o quitarla según sea necesario.
-            this.clienteTableAdapter.Fill(this.bDADataSet.Cliente);
-            // TODO: esta línea de código carga datos en la tabla 'bDADataSet.Cliente' Puede moverla o quitarla según sea necesario.
-            //this.clienteTableAdapter.Fill(this.bDADataSet.Cliente);
-
-            //Para que esté siempre ajustado el datagridview cuando se mueva la ventana
+            
             dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[10].MinimumWidth = 120;
-
+            
             
         }
         
@@ -121,11 +115,234 @@ namespace ProyectoA
         private void button3_Click(object sender, EventArgs e)
         {
             string[] cadenaLabels = new string[12];
-            comprobarLabelsCliB(cadenaLabels);
+            
+            string consulta;
 
-            if (cadenaLabels[11] == "%") selectSinTlf(cadenaLabels);
-            else selectConTlf(cadenaLabels);
+            consulta = "select c.*, group_concat(t.NumeroTlf separator ', ') as ntlf " +
+                       "from cliente c left join telefono t on c.Codigo = t.Cliente_Codigo "+
+                       "and c.NombreEmpresa = t.Cliente_NombreEmpresa";
+
+            consulta += rellenarSelect();
+
+            consulta += " group by Codigo, NombreEmpresa";
+            //consulta += " order by codigo and codigo limit 1,2";
+
+            devolverConsulta(consulta);
         }
+
+        //CREA EL WHERE DE LA SELECT
+        private string rellenarSelect()
+        {
+            bool a = false;
+            string c = " where";
+
+            if (codigoTextBox.Text != "")
+            {
+                c += " Codigo like '%" + codigoTextBox.Text + "%'";
+                a = true;
+            }
+
+            if (nombreEmpresaTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " NombreEmpresa like '%" + nombreEmpresaTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and NombreEmpresa like '%" + nombreEmpresaTextBox.Text + "%'";
+            }
+
+            if (cadenaTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " Cadena like '%" + cadenaTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and Cadena like '%" + cadenaTextBox.Text + "%'";
+            }
+
+            if (cifTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " Cif like '%" + cifTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and Cif like '%" + cifTextBox.Text + "%'";
+            }
+
+            if (direccionTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " Direccion like '%" + direccionTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and Direccion like '%" + direccionTextBox.Text + "%'";
+            }
+
+            if (poblacionTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " Poblacion like '%" + poblacionTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and Poblacion like '%" + poblacionTextBox.Text + "%'";
+            }
+
+            if (cpTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " Cp like '%" + cpTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and Cp like '%" + cpTextBox.Text + "%'";
+            }
+
+            if (nombrApellidosTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " NombreApellidos like '%" + nombrApellidosTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and NombreApellidos like '%" + nombrApellidosTextBox.Text + "%'";
+            }
+
+            if (dniTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " Dni like '%" + dniTextBox.Text + "%'";
+                    a = true;
+                }
+                else c += " and Dni like '%" + dniTextBox.Text + "%'";
+            }
+
+            if (radioButton1.Checked)
+            {
+                if (a == false)
+                {
+                    c += " Activo = 'Sí'";
+                    a = true;
+                }
+                else c += " and Activo = 'Sí'";
+            }
+
+            else if (radioButton2.Checked)
+            {
+                if (a == false)
+                {
+                    c += " Activo = 'No'";
+                    a = true;
+                }
+                else c += " and Activo = 'No'";
+            }
+
+            if (radioButton3.Checked)
+            {
+                if (a == false)
+                {
+                    c += " Actualizado != ''";
+                    a = true;
+                }
+                else c += " and Actualizado != ''";
+            }
+            else if (radioButton4.Checked)
+            {
+                if (a == false)
+                {
+                    c += " Actualizado = ''";
+                    a = true;
+                }
+                else c += " and Actualizado = ''";
+            }
+
+            if (telefonoTextBox.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " NumeroTlf like '%" + telefonoTextBox.Text + "%'";
+                }
+                else c += " and NumeroTlf like '%" + telefonoTextBox.Text + "%'";
+            }
+
+            if (c.Length > 6) return c;
+            else return "";
+        }
+
+        //REALIZA LA CONEXION CON LA BD Y REALIZA LA SELECT
+        private void devolverConsulta(string consulta)
+        {
+            try
+            {
+                dataGridView1.RowCount = 1;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                int cont = 0;
+                char[] cad;
+
+                MySqlCommand comandos = new MySqlCommand();
+                comandos.Connection = con;
+                comandos.CommandText = consulta;
+                MySqlDataReader leer = comandos.ExecuteReader();
+
+
+                if (leer.HasRows)
+                {
+                    while (leer.Read())
+                    {                       
+                        dataGridView1.Rows.Add();
+
+                        dataGridView1.Rows[cont].Cells[0].Value = leer["Codigo"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[1].Value = leer["NombreEmpresa"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[2].Value = leer["Cadena"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[3].Value = leer["Cif"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[4].Value = leer["Direccion"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[5].Value = leer["Poblacion"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[6].Value = leer["Cp"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[7].Value = leer["NombreApellidos"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[8].Value = leer["Dni"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[9].Value = leer["ntlf"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[10].Value = leer["Observaciones"] + Environment.NewLine;
+                        dataGridView1.Rows[cont].Cells[11].Value = leer["Activo"] + Environment.NewLine;
+
+                        if(leer["Actualizado"] + Environment.NewLine != "")
+                        {
+                            cad = leer["Actualizado"].ToString().ToCharArray();
+
+                            for(int x = 0; x < cad.Length; x++)
+                            {
+                                dataGridView1.Rows[cont].Cells[(int)cad[x] - 48].Style.BackColor = Color.LightSkyBlue;
+                            }
+                        }
+                       
+                        cont++;
+                    }
+                }
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error: " + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+
 
         //BOTON LIMPIAR BUSQUEDA CLIENTE-BUSCAR
         private void botonClienLB_Click(object sender, EventArgs e)
@@ -154,198 +371,7 @@ namespace ProyectoA
             radioButton6.Checked = true;
         }
 
-        //Comprueba los labels con la información que filtrará la búsqueda
-        private void comprobarLabelsCliB(string[] cad)
-        {
-
-            if (codigoTextBox.Text != "") cad[0] = codigoTextBox.Text;
-            else cad[0] = "%";
-
-            if (nombreEmpresaTextBox.Text != "") cad[1] = "%"+nombreEmpresaTextBox.Text+ "%";
-            else cad[1] = "%";
-
-            if (cadenaTextBox.Text != "") cad[2] = "%"+cadenaTextBox.Text+ "%";
-            else cad[2] = "%";
-
-            if (cifTextBox.Text != "") cad[3] = cifTextBox.Text;
-            else cad[3] = "%";
-
-            if (direccionTextBox.Text != "") cad[4] = "%"+direccionTextBox.Text+"%";
-            else cad[4] = "%";
-
-            if (poblacionTextBox.Text != "") cad[5] = "%"+poblacionTextBox.Text+ "%";
-            else cad[5] = "%";
-
-            if (cpTextBox.Text != "") cad[6] = cpTextBox.Text;
-            else cad[6] = "%";
-
-            if (nombrApellidosTextBox.Text != "") cad[7] = "%"+nombrApellidosTextBox.Text+"%";
-            else cad[7] = "%";
-
-            if (dniTextBox.Text != "") cad[8] = dniTextBox.Text+ "%";
-            else cad[8] = "%";
-            
-            if (radioButton4.Checked) cad[9] = "_%";
-            else cad[9] = "%";
-
-            if (telefonoTextBox.Text != "") cad[11] = telefonoTextBox.Text;
-            else cad[11] = "%";
-        }
-        
-        //SENTENCIA SQL SELECT cuando sí que hay teléfonos dentro de las búsquedas
-        private void selectConTlf(string[] cadi)
-        {
-            string tel;
-            char[] colorearAct;
-            bool coincide;
-            int cont = 0;
-
-            dataGridView1.RowCount = 1;
-
-            ProyectoA.BDADataSet.ClienteDataTable t;
-
-            if (!radioButton1.Checked && !radioButton2.Checked)
-            {
-                //Select (activos + no activos) y (no actualizados / actualizados + no actualizados)
-                if (!radioButton3.Checked) t = tableAdapterCli.Consulta(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%", cadi[9]);
-                //Select (activos + no activos) y (actualizados)
-                else t = tableAdapterCli.ConsultaTresActualizados(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%");
-            }
-            else
-            {
-                //Select (activos / no activos) y (no actualizados / actualizados + no actualizados)
-                if (!radioButton3.Checked) t = tableAdapterCli.ConsultaDos(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked, cadi[9]);
-                //Select (activos / no activos) y (actualizados)
-                else t = tableAdapterCli.ConsultaCuatroActualizado(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked);
-            }
-
-            ProyectoA.BDADataSet.ClienteTelefonoDataTable tCliTel;
-
-            for (int i = 0; i < t.Count(); i++)
-            {
-                tel = "";
-                coincide = false;
-                tCliTel = tableAdapterCliTel.ConsultaTelefono(t[i][0].ToString(), t[i][1].ToString());
-                for(int r = 0; r < tCliTel.Count(); r++)
-                {
-                    if (tCliTel[r][2].ToString() == cadi[11]) coincide = true;
-                    if (r == 0) tel += tCliTel[r][2].ToString();
-                    else tel += ", " + tCliTel[r][2].ToString();
-                }
-                if (coincide == true)
-                {
-                    dataGridView1.Rows.Add();
-                    
-                    colorearAct = null;
-
-                    //Comprobamos si está actualizado, si no, guardamos en un charArray la columna actualizar
-                    if (t[i][11].ToString() != "") colorearAct = t[i][11].ToString().ToCharArray();
-
-                    for (int j = 0; j < 12; j++)
-                    {
-                        //Coloreamos las celdas correspondientes
-                        if (colorearAct != null)
-                        {
-                            if (j < 10)
-                            {
-                                for (int z = 0; z < colorearAct.Length; z++)
-                                {
-                                    if (j + 48 == (int)colorearAct[z]) dataGridView1.Rows[cont].Cells[j].Style.BackColor = Color.LightSkyBlue;
-                                }
-                            }
-                        }
-                        
-                        if (j < 9) dataGridView1.Rows[cont].Cells[j].Value = t[i][j].ToString();
-                        else if (j > 9)
-                        {
-                            if (j == 11)
-                            {
-                                if (t[i][j - 1].ToString() == "True") dataGridView1.Rows[cont].Cells[j].Value = "Sí";
-                                else dataGridView1.Rows[cont].Cells[j].Value = "No";
-                            }
-                            else dataGridView1.Rows[cont].Cells[j].Value = t[i][j - 1].ToString();
-                        }
-                        else dataGridView1.Rows[cont].Cells[j].Value = tel;
-                    }
-                    cont++;
-                }
-            }
-        }
-
-        //SENTENCIA SQL SELECT cuando no hay teléfonos dentro de las búsquedas  
-        private void selectSinTlf(string[] cadi)
-        {
-            string tel;
-            char[] colorearAct;
-
-            dataGridView1.RowCount = 1;
-
-            ProyectoA.BDADataSet.ClienteDataTable t;
-            
-            if (!radioButton1.Checked && !radioButton2.Checked)
-            {
-                //Select (activos + no activos) y (no actualizados / actualizados + no actualizados)
-                if (!radioButton3.Checked) t = tableAdapterCli.Consulta(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%", cadi[9]);
-                //Select (activos + no activos) y (actualizados)
-                else t = tableAdapterCli.ConsultaTresActualizados(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], "%");
-            }
-            else
-            {
-                //Select (activos / no activos) y (no actualizados / actualizados + no actualizados)
-                if (!radioButton3.Checked) t = tableAdapterCli.ConsultaDos(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked, cadi[9]);
-                //Select (activos / no activos) y (actualizados)
-                else t = tableAdapterCli.ConsultaCuatroActualizado(cadi[0], cadi[1], cadi[2], cadi[3], cadi[4], cadi[5], cadi[6], cadi[7], cadi[8], radioButton1.Checked);
-            }
-            
-            ProyectoA.BDADataSet.ClienteTelefonoDataTable tCliTel;
-
-            for (int i = 0; i < t.Count(); i++)
-            {
-                dataGridView1.Rows.Add();
-                tCliTel = tableAdapterCliTel.ConsultaTelefono(t[i][0].ToString(), t[i][1].ToString());
-                colorearAct = null;
-
-                //Comprobamos si está actualizado, si no, guardamos en un charArray la columna actualizar
-                if (t[i][11].ToString() != "") colorearAct = t[i][11].ToString().ToCharArray();
-                
-                for (int j = 0; j < 12; j++)
-                {
-                    //Coloreamos las celdas correspondientes
-                    if (colorearAct != null) 
-                    {
-                        if (j < 10)
-                        {
-                            for (int z = 0; z < colorearAct.Length; z++)
-                            {
-                                if (j + 48 == (int)colorearAct[z]) dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.LightSkyBlue; 
-                            }
-                        }
-                    }
-                    if (j < 9) dataGridView1.Rows[i].Cells[j].Value = t[i][j].ToString();
-                    else if (j > 9)
-                    {
-                        if (j == 11)
-                        {
-                            if (t[i][j - 1].ToString() == "True") dataGridView1.Rows[i].Cells[j].Value = "Sí";
-                            else dataGridView1.Rows[i].Cells[j].Value = "No";
-                        }
-                        else dataGridView1.Rows[i].Cells[j].Value = t[i][j - 1].ToString();
-                    }
-                    else
-                    {
-                        tel = "";
-                        for (int k = 0; k < tCliTel.Count(); k++)
-                        {
-                            if (k == 0) tel += tCliTel[k][2].ToString();
-                            else tel += ", " + tCliTel[k][2].ToString();
-                        }
-                        dataGridView1.Rows[i].Cells[j].Value = tel;
-                    }
-                }
-
-            }
-        }
-
+       
             ///*
             // * AÑADIR
             // * 
@@ -354,46 +380,121 @@ namespace ProyectoA
         //BOTON AGREGAR CLIENTE CLIENTE-AÑADIR   ----- TODO las excepciones a la hora de agregar
         private void cli_a_Agregar_button_Click(object sender, EventArgs e)
         {
-            string[] ccI = new string[11];
             string[] cadTlf;
+            string insercion;
+            bool ba=true, bo=true;
 
             //Comprobación de que los campos obligatorios están completos y los datos introducidos son correctos, en tal caso, añadir datos  
             if (!comprobarCamposCliA())
             {
-                try
+                
+                DialogResult b = MessageBox.Show("          Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
+                if (b == DialogResult.OK)
                 {
-                    DialogResult b = MessageBox.Show("          Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
-                    if (b == DialogResult.OK)
+                    insercion = "insert cliente values ('";
+
+                    insercion += agregarCamposInsertCliente();
+
+                    ba=insertClientes(insercion);
+
+                    if (cli_a_tlf_textBox.Text != "")
                     {
-                        agregarCamposInsertCliente(ccI);
+                        cadTlf = agregarCamposTlf(cli_a_tlf_textBox.Text);
+                        bo=insertarTelefono(cadTlf, cli_a_cod_textBox.Text, cli_a_nombEm_textBox.Text);
+                    }
 
-                        tableAdapterCli.InsertQueryCliente(ccI[0], ccI[1], ccI[2], ccI[3], ccI[4], ccI[5], ccI[6], ccI[7], ccI[8], ccI[9], cli_a_activo_SI_radioButton.Checked, ccI[10]);
-
-                        if (cli_a_tlf_textBox.Text != "")
-                        {
-                            cadTlf = agregarCamposTlf();
-                            for (int i = 0; i < cadTlf.Length; i++)
-                            {
-                                try
-                                {
-                                    tableAdapterTlf.InsertQueryTlf(cadTlf[i]);
-                                }
-                                catch {}
-                                tableAdapterCliTel.InsertQueryClienteTelefono(ccI[0], ccI[1], cadTlf[i]);
-                                
-                            }
-                        }
+                    if(ba && bo)
+                    {
                         DialogResult q = MessageBox.Show("          Usuario añadido correctamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
                         if (q == DialogResult.OK) limpCampCliA();
                     }
+                    else if(ba && !bo)
+                    {
+                        DialogResult q = MessageBox.Show("          Usuario añadido correctamente, pero error a la hora de insertar los teléfonos"+
+                            "\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                        if (q == DialogResult.OK) limpCampCliA();
+                    }
+                    else if(!ba && bo)
+                    {
+                        DialogResult q = MessageBox.Show("          Error al añadir cliente, pero teléfono insertado correctamente. "+
+                            "El usuario debía de existir previamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                        if (q == DialogResult.OK) limpCampCliA();
+                    }
                 }
-                catch
-                {
-                    tableAdapterCli.ConsultaErrorInsert(cli_a_cod_textBox.Text, cli_a_nombEm_textBox.Text);
-                    MessageBox.Show("Se ha producido un error. No ha podido insertarse.");
-                }
-                
             }
+        }
+
+        private bool insertarTelefono(string[] cadTlf, string text1, string text2)
+        {
+            string sentencia;
+            bool resultado = true;
+
+            try
+            {
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+                for (int x = 0; x < cadTlf.Length; x++)
+                {
+                    sentencia = "insert telefono values ('" + cadTlf[x] + "','" + text1 + "','" + text2 + "')";
+                    MySqlCommand comandos = new MySqlCommand();
+                    comandos.Connection = con;
+                    comandos.CommandText = sentencia;
+                    comandos.ExecuteNonQuery();
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error insertando uno o más teléfonos: \n\n" + Convert.ToString(error));
+                resultado = false;
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+            return resultado;
+        }
+
+        //GENERA LA SENTENCIA SQL PARA INSERTAR EL CLIENTE
+        private bool insertClientes(string insercion)
+        {
+            bool resultado=false;
+            try
+            {
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+                
+                MySqlCommand comandos = new MySqlCommand();
+                comandos.Connection = con;
+                comandos.CommandText = insercion;
+                comandos.ExecuteNonQuery();
+
+                resultado = true;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Error: " + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+            return resultado;
         }
 
         //BOTON LIMPIAR CAMPOS CLIENTE-AÑADIR
@@ -403,7 +504,7 @@ namespace ProyectoA
         }
 
         //Funcion para limpiar los campos de cliente-añadir
-        private void limpCampCliA()
+        public void limpCampCliA()
         {
             cli_a_activo_NO_radioButton.Checked = false;
             cli_a_activo_SI_radioButton.Checked = false;
@@ -431,7 +532,7 @@ namespace ProyectoA
         }
 
         //Rellena los datos de telefono en un array
-        private string[] agregarCamposTlf()
+        public string[] agregarCamposTlf(string texto)
         {
             string[] cadenaTlf;
             char[] separador = new char[6];
@@ -443,37 +544,44 @@ namespace ProyectoA
             separador[4] = '-';
             separador[5] = ' ';
 
-            cadenaTlf = cli_a_tlf_textBox.Text.Split(separador);
-
+            texto = texto.Replace(" ", string.Empty);
+            cadenaTlf = texto.Split(separador);
             return cadenaTlf;
         }
 
         //Rellena los datos para realizar posteriormente el insert de cliente
-        private void agregarCamposInsertCliente(string[] cadenaCamposI)
+        private string agregarCamposInsertCliente()
         {
+            string cadenaCamposI = "";
             //campos normales TABLA CLIENTE
-            cadenaCamposI[0] = cli_a_cod_textBox.Text;
-            cadenaCamposI[1] = cli_a_nombEm_textBox.Text;
-            if (cli_a_cad_textBox.Text != "") cadenaCamposI[2] = cli_a_cad_textBox.Text;
-            if (cli_a_cif_textBox.Text != "") cadenaCamposI[3] = cli_a_cif_textBox.Text;
-            cadenaCamposI[4] = cli_a_dir_textBox.Text;
-            cadenaCamposI[5] = cli_a_poblacion_textBox.Text;
-            if (cli_a_cp_textBox.Text != "") cadenaCamposI[6] = cli_a_cp_textBox.Text;
-            if (cli_a_nombApell_textBox.Text != "") cadenaCamposI[7] = cli_a_nombApell_textBox.Text;
-            cadenaCamposI[8] = cli_a_dni_textBox.Text;
-            if (cli_a_observacion_richTextBox.Text != "") cadenaCamposI[9] = cli_a_observacion_richTextBox.Text;
+            cadenaCamposI += cli_a_cod_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_nombEm_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_cad_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_cif_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_dir_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_poblacion_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_cp_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_nombApell_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_dni_textBox.Text;
+            cadenaCamposI += "', '" + cli_a_observacion_richTextBox.Text;
+            if (cli_a_activo_SI_radioButton.Checked) cadenaCamposI += "', 'Sí'";
+            else cadenaCamposI += "', 'No'";
 
             //Actualizado TABLA CLIENTE
-            if (checkBox_cli_a_cod.Checked) cadenaCamposI[10] += "0";
-            if (checkBox_cli_a_nombEm.Checked) cadenaCamposI[10] += "1";
-            if (checkBox_cli_a_cad.Checked) cadenaCamposI[10] += "2";
-            if (checkBox_cli_a_cif.Checked) cadenaCamposI[10] += "3";
-            if (checkBox_cli_a_dir.Checked) cadenaCamposI[10] += "4";
-            if (checkBox_cli_a_poblacion.Checked) cadenaCamposI[10] += "5";
-            if (checkBox_cli_a_cp.Checked) cadenaCamposI[10] += "6";
-            if (checkBox_cli_a_nomAp.Checked) cadenaCamposI[10] += "7";
-            if (checkBox_cli_a_dni.Checked) cadenaCamposI[10] += "8";
-            if (checkBox_cli_a_tlf.Checked) cadenaCamposI[10] += "9"; 
+            cadenaCamposI += ",'";
+            if (checkBox_cli_a_cod.Checked) cadenaCamposI += "0";
+            if (checkBox_cli_a_nombEm.Checked) cadenaCamposI += "1";
+            if (checkBox_cli_a_cad.Checked) cadenaCamposI += "2";
+            if (checkBox_cli_a_cif.Checked) cadenaCamposI += "3";
+            if (checkBox_cli_a_dir.Checked) cadenaCamposI += "4";
+            if (checkBox_cli_a_poblacion.Checked) cadenaCamposI += "5";
+            if (checkBox_cli_a_cp.Checked) cadenaCamposI += "6";
+            if (checkBox_cli_a_nomAp.Checked) cadenaCamposI += "7";
+            if (checkBox_cli_a_dni.Checked) cadenaCamposI += "8";
+            if (checkBox_cli_a_tlf.Checked) cadenaCamposI += "9";
+            cadenaCamposI += "')";
+
+            return cadenaCamposI;
         }
 
         //Hace la comprobación de que los campos obligatorios correspondientes a CLIENTE-AÑADIR estén completos  TODO -- filtro teléfono
@@ -646,7 +754,6 @@ namespace ProyectoA
                         }
                     }
                 }
-                
                 //TODO Comprobar que los TLF cumplen los requisitos
             }
             return error;

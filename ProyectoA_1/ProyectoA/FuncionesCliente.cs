@@ -11,9 +11,9 @@ namespace ProyectoA
 {
     class FuncionesCliente
     {
-        public string conexion;
-        public string consultaGlobal;
-        public MySqlConnection con = new MySqlConnection();
+        private string conexion;
+        private string consultaGlobal;
+        private MySqlConnection con = new MySqlConnection();
         private int indicePgn, tamPgn = 30, totalPgn;
 
 
@@ -45,7 +45,7 @@ namespace ProyectoA
                        "and c.NombreEmpresa = t.Cliente_NombreEmpresa";
             consulta += camposWhere + " group by Codigo, NombreEmpresa";
 
-            if (totalPgn > 10)
+            if (totalPgn > tamPgn)
             {
                 consultaGlobal = consulta;
                 consulta += " order by codigo and codigo limit 0, " + tamPgn.ToString();
@@ -401,8 +401,7 @@ namespace ProyectoA
         private void mostrarPgn(Form1 f)
         {
             double x = 1, y = 1;
-            
-            //FUNCIONA??               
+                      
             if (indicePgn != 0) x=Math.Truncate((double)indicePgn / (double)tamPgn) + 1;
             y = Math.Ceiling((double)totalPgn / (double)tamPgn);
             
@@ -419,15 +418,14 @@ namespace ProyectoA
         //PRIMER MÉTODO LLAMADO PARA AGREGAR CLIENTE 
         public void botonAgregarClientes(Form1 f)
         {
-            string[] cadTlf;
-            string insercion;
-            bool ba = true, bo = true;
-
             //Comprobación de que los campos obligatorios están completos y los datos introducidos son correctos, en tal caso, añadir datos  
             if (!comprobarCamposCliA(f))
             {
+                string[] cadTlf;
+                string insercion;
+                bool ba = true, bo = false;
 
-                DialogResult b = MessageBox.Show("          Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
+                DialogResult b = MessageBox.Show("Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
                 if (b == DialogResult.OK)
                 {
                     insercion = "insert cliente values ('";
@@ -444,19 +442,19 @@ namespace ProyectoA
 
                     if (ba && bo)
                     {
-                        DialogResult q = MessageBox.Show("          Usuario añadido correctamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                        DialogResult q = MessageBox.Show("Usuario añadido correctamente.\n\n¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
                         if (q == DialogResult.OK) limpCampCliA(f);
                     }
                     else if (ba && !bo)
                     {
-                        DialogResult q = MessageBox.Show("          Usuario añadido correctamente, pero error a la hora de insertar los teléfonos" +
+                        DialogResult q = MessageBox.Show("Usuario añadido correctamente, pero error a la hora de insertar los teléfonos" +
                             "\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
                         if (q == DialogResult.OK) limpCampCliA(f);
                     }
                     else if (!ba && bo)
                     {
-                        DialogResult q = MessageBox.Show("          Error al añadir cliente, pero teléfono insertado correctamente. " +
-                            "El usuario debía de existir previamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                        DialogResult q = MessageBox.Show("Error al añadir cliente, pero teléfono insertado correctamente. " +
+                            "El usuario debía de existir previamente.\n\n¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
                         if (q == DialogResult.OK) limpCampCliA(f);
                     }
                 }
@@ -482,7 +480,7 @@ namespace ProyectoA
             }
             catch (Exception error)
             {
-                MessageBox.Show("Error: " + Convert.ToString(error));
+                MessageBox.Show("Error producido. Compruebe que el cliente no exista ya:\n\n" + Convert.ToString(error));
             }
             finally
             {
@@ -490,9 +488,9 @@ namespace ProyectoA
                 {
                     con.Close();
                 }
-                catch (Exception e)
+                catch(Exception erro)
                 {
-                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                    MessageBox.Show("Error producido al cerrar sesión:\n\n" + Convert.ToString(erro));
                 }
             }
             return resultado;
@@ -532,22 +530,20 @@ namespace ProyectoA
 
             return cadenaCamposI;
         }
-
+                
         //Rellena los datos de telefono en un array
-        public string[] agregarCamposTlf(string texto)
+        public string[] agregarCamposTlf(string tlfs)
         {
             string[] cadenaTlf;
-            char[] separador = new char[6];
 
-            separador[0] = ',';
-            separador[1] = ';';
-            separador[2] = '.';
-            separador[3] = ':';
-            separador[4] = '-';
-            separador[5] = ' ';
+            tlfs = tlfs.Replace(" ", string.Empty);
+            tlfs = tlfs.Replace(';', ',');
+            tlfs = tlfs.Replace(':', ',');
+            tlfs = tlfs.Replace('-', ',');
+            tlfs = tlfs.Replace('.', ',');
 
-            texto = texto.Replace(" ", string.Empty);
-            cadenaTlf = texto.Split(separador);
+            cadenaTlf = tlfs.Split(',');
+
             return cadenaTlf;
         }
 
@@ -631,37 +627,33 @@ namespace ProyectoA
             if (f.cli_a_poblacion_textBox.Text == null || f.cli_a_poblacion_textBox.Text == "") error = true;
             if (f.cli_a_activo_NO_radioButton.Checked == false && f.cli_a_activo_SI_radioButton.Checked == false) error = true;
 
-            if (error == true) MessageBox.Show("Uno o más campos obligatorios no están rellenados.");
-            else
+            if (error != true) 
             {
                 //Comprobar que el CODIGO cumple los requisitos
                 error = comprobarCodigo(f);
 
                 //Comprobar que el CIF cumple los requisitos
-                if (!error)
-                {
-                    error = comprobarCif(f);
-                }
-
+                if (!error) error = comprobarCif(f); 
 
                 //Comprobar que el DNI cumple los requisitos
-                if (!error)
-                {
-                    error = comprobarDni(f);
-                }
+                if (!error) error = comprobarDni(f);
 
                 //Comprobar que el CP cumple los requisitos
-                if (!error)
-                {
-                    error = comprobarCp(f);
-                }
+                if (!error) error = comprobarCp(f);
 
                 //Comprobar que los TLF cumplen los requisitos
-                if (!error)
-                {
-                    error = comprobarTlf(f);
-                }
+                if (!error) error = comprobarTlf(f);
+
+                //Comprueba longitud de campos
+                if (!error) if (f.cli_a_nombEm_textBox.TextLength > 45) error = true;
+                if (!error) if (f.cli_a_cad_textBox.TextLength > 45) error = true;
+                if (!error) if (f.cli_a_dir_textBox.TextLength > 45) error = true;
+                if (!error) if (f.cli_a_poblacion_textBox.TextLength > 45) error = true;
+                if (!error) if (f.cli_a_nombEm_textBox.TextLength > 45) error = true;
+                if (!error) if (f.cli_a_observacion_richTextBox.TextLength > 700) error = true;
+
             }
+            if(error==true) MessageBox.Show("No puede agregarse el cliente, compruebe los campos obligatorios y el cumplimiento de las condiciones.");
             return error;
         }
 
@@ -680,6 +672,7 @@ namespace ProyectoA
                 tlfs = tlfs.Replace(';', ',');
                 tlfs = tlfs.Replace(':', ',');
                 tlfs = tlfs.Replace('-', ',');
+                tlfs = tlfs.Replace('.', ',');
 
                 cadenaTlf = tlfs.Split(',');
 
@@ -688,24 +681,9 @@ namespace ProyectoA
                     tlfDesc = cadenaTlf[x].ToCharArray();
                     if (tlfDesc.Length == 9)
                     {
-                        for (int i = 0; i < 9; i++)
-                        {
-                            if (tlfDesc[i] < 48 || tlfDesc[i] > 57)
-                            {
-                                MessageBox.Show("El campo 'Teléfono' no se ha rellenado correctamente.\nComprobar que se han escrito 9 dígitos por teléfono y, en caso de haber" +
-                                " más de un teléfono, se han separado por una coma. Pueden escribirse espacios mientras no se usen para separar un teléfono de otro." +
-                                "\n\n          Ejemplo: '123456789, 987654321'");
-                                return true;
-                            }
-                        }
+                        for (int i = 0; i < 9; i++) if (tlfDesc[i] < 48 || tlfDesc[i] > 57) return true;
                     }
-                    else
-                    {
-                        MessageBox.Show("El campo 'Teléfono' no se ha rellenado correctamente.\nComprobar que se han escrito 9 dígitos por teléfono y, en caso de haber" +
-                                " más de un teléfono, se han separado por una coma. Pueden escribirse espacios mientras no se usen para separar un teléfono de otro." +
-                                "\n\n          Ejemplo: '123456789, 987654321'");
-                        return true;
-                    }
+                    else return true;
                 }
             }
             return false;
@@ -719,22 +697,9 @@ namespace ProyectoA
                 char[] cpArray = f.cli_a_cp_textBox.Text.ToCharArray();
                 if (cpArray.Length == 5)
                 {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        if (cpArray[i] < 48 || cpArray[i] > 57)
-                        {
-                            MessageBox.Show("El campo 'Código Postal' no se ha rellenado correctamente.\nEs obligatorio que se componga por un número de cinco cifras.\n\n" +
-                                "          Ejemplo: '03500'");
-                            return true;
-                        }
-                    }
+                    for (int i = 0; i < 5; i++) if (cpArray[i] < 48 || cpArray[i] > 57) return true;
                 }
-                else
-                {
-                    MessageBox.Show("El campo 'Código Postal' no se ha rellenado correctamente.\nEs obligatorio que se componga por un número de cinco cifras.\n\n" +
-                                "          Ejemplo: '03500'");
-                    return true;
-                }
+                else return true;
             }
             return false;
         }
@@ -748,43 +713,20 @@ namespace ProyectoA
                 {
                     if (i == 0)
                     {
-                        if ((dniArray[i] < 48 || dniArray[i] > 57) && (dniArray[i] < 65 || dniArray[i] > 90) && (dniArray[i] < 97 || dniArray[i] > 122))
-                        {
-                            MessageBox.Show("El campo 'DNI/NIE' no se ha rellenado correctamente.\nDependiendo de si se trata de un DNI o un NIE, puede componerse por un número de ocho cifras y una letra," +
-                            " o bien por una letra, siete dígitos y otra letra." + "\n\n          Ejemplo DNI: '12345678A'" +
-                            "\n\n          Ejemplo NIE: 'X1234567A'");
-                            return true;
-                        }
+                        if ((dniArray[i] < 48 || dniArray[i] > 57) && (dniArray[i] < 65 || dniArray[i] > 90) && (dniArray[i] < 97 || dniArray[i] > 122))  return true; 
                     }
                     else if (i == 8)
                     {
-                        if ((dniArray[i] < 65 || dniArray[i] > 90) && (dniArray[i] < 97 || dniArray[i] > 122))
-                        {
-                            MessageBox.Show("El campo 'DNI/NIE' no se ha rellenado correctamente.\nDependiendo de si se trata de un DNI o un NIE, puede componerse por un número de ocho cifras y una letra," +
-                            " o bien por una letra, siete dígitos y otra letra." + "\n\n          Ejemplo DNI: '12345678A'" +
-                            "\n\n          Ejemplo NIE: 'X1234567A'");
-                            return true;
-                        }
+                        if ((dniArray[i] < 65 || dniArray[i] > 90) && (dniArray[i] < 97 || dniArray[i] > 122))  return true;
                     }
                     else
                     {
-                        if (dniArray[i] < 48 || dniArray[i] > 57)
-                        {
-                            MessageBox.Show("El campo 'DNI/NIE' no se ha rellenado correctamente.\nDependiendo de si se trata de un DNI o un NIE, puede componerse por un número de ocho cifras y una letra," +
-                            " o bien por una letra, siete dígitos y otra letra." + "\n\n          Ejemplo DNI: '12345678A'" +
-                            "\n\n          Ejemplo NIE: 'X1234567A'");
-                            return true;
-                        }
+                        if (dniArray[i] < 48 || dniArray[i] > 57) return true;
                     }
                 }
             }
-            else
-            {
-                MessageBox.Show("El campo 'DNI/NIE' no se ha rellenado correctamente.\nDependiendo de si se trata de un DNI o un NIE, puede componerse por un número de ocho cifras y una letra," +
-                            " o bien por una letra, siete dígitos y otra letra." + "\n\n          Ejemplo DNI: '12345678A'" +
-                            "\n\n          Ejemplo NIE: 'X1234567A'");
-                return true;
-            }
+            else return true;
+            
             return false;
         }
         //Complementa a comprobarCamposCliA()
@@ -800,39 +742,17 @@ namespace ProyectoA
                     {
                         if (i == 8)
                         {
-                            if ((cifArray[i] < 48 || cifArray[i] > 57) && (cifArray[i] < 65 || cifArray[i] > 90) && (cifArray[i] < 97 || cifArray[i] > 122))
-                            {
-                                MessageBox.Show("El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve carácteres: el primero es una letra, los siete siguientes números" +
-                                    " y el último puede ser una letra o un número.\n\n          Ejemplo: 'A1234567B', 'A12345678'...");
-                                return true;
-                            }
+                            if ((cifArray[i] < 48 || cifArray[i] > 57) && (cifArray[i] < 65 || cifArray[i] > 90) && (cifArray[i] < 97 || cifArray[i] > 122)) return true;
                         }
                         else if (i == 0)
                         {
-                            if ((cifArray[i] < 65 || cifArray[i] > 90) && (cifArray[i] < 97 || cifArray[i] > 122))
-                            {
-                                MessageBox.Show("El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve carácteres: el primero es una letra, los siete siguientes números" +
-                                    " y el último puede ser una letra o un número.\n\n          Ejemplo: 'A1234567B', 'A12345678'...");
-                                return true;
-                            }
+                            if ((cifArray[i] < 65 || cifArray[i] > 90) && (cifArray[i] < 97 || cifArray[i] > 122)) return true;
+                            
                         }
-                        else
-                        {
-                            if (cifArray[i] < 48 || cifArray[i] > 57)
-                            {
-                                MessageBox.Show("El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve carácteres: el primero es una letra, los siete siguientes números" +
-                                    " y el último puede ser una letra o un número.\n\n          Ejemplo: 'A1234567B', 'A12345678'...");
-                                return true;
-                            }
-                        }
+                        else if (cifArray[i] < 48 || cifArray[i] > 57)  return true;
                     }
                 }
-                else
-                {
-                    MessageBox.Show("El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve carácteres: el primero es una letra, los siete siguientes números" +
-                                    " y el último puede ser una letra o un número.\n\n          Ejemplo: 'A1234567B', 'A12345678'...");
-                    return true;
-                }
+                else return true;
             }
             return false;
         }

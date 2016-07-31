@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ProyectoA
@@ -7,6 +8,7 @@ namespace ProyectoA
     public partial class Form1 : Form
     {
         private FuncionesCliente funClien = new FuncionesCliente();
+        private FuncionesMaquina funM = new FuncionesMaquina();
 
         public Form1()
         {
@@ -29,8 +31,31 @@ namespace ProyectoA
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Panel1   Cliente Buscar
             dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[10].MinimumWidth = 120;
+            
+            //Panel2   Cliente Añadir
+            modificacionTextosClienteA();
+            explicacionErrorCamposCA();
+            
+            //Panel3   Máquina Añadir
+            
+            //Panel4   Máquina Buscar
+            dataGridView2.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView2.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView2.Columns[6].MinimumWidth = 120;
+            dataGridView2.Columns[10].MinimumWidth = 120;
+
+            //Panel5
+
+            //Panel6
+            
+        }
+
+        //Cada vez que se modifica un label comprueba los errores
+        private void modificacionTextosClienteA()
+        {
             cli_a_cod_textBox.TextChanged += Cli_a_cod_textBox_TextChanged;
             cli_a_nombEm_textBox.TextChanged += Cli_a_nombEm_textBox_TextChanged;
             cli_a_cif_textBox.TextChanged += Cli_a_cif_textBox_TextChanged;
@@ -39,54 +64,261 @@ namespace ProyectoA
             cli_a_poblacion_textBox.TextChanged += Cli_a_poblacion_textBox_TextChanged;
             cli_a_dni_textBox.TextChanged += Cli_a_dni_textBox_TextChanged;
             cli_a_tlf_textBox.TextChanged += Cli_a_tlf_textBox_TextChanged;
+            cli_a_activo_SI_radioButton.CheckedChanged += Cli_a_activo_SI_radioButton_CheckedChanged;
+            cli_a_activo_NO_radioButton.CheckedChanged += Cli_a_activo_NO_radioButton_CheckedChanged;
+            cli_a_cad_textBox.TextChanged += Cli_a_cad_textBox_TextChanged;
+            cli_a_nombApell_textBox.TextChanged += Cli_a_nombApell_textBox_TextChanged;
+            cli_a_observacion_richTextBox.TextChanged += Cli_a_observacion_richTextBox_TextChanged;
+        }
+
+        //Muestra el error de los campos que son obligatorios cuando no se ha tocado ningún label
+        private void explicacionErrorCamposCA()
+        {
+            if (cli_a_cod_textBox.TextLength == 0) toolTip1.SetToolTip(pictureBox1, "Campo obligatorio.\nSe compone por cinco números.\n\nEjemplo: '00001'");
+            if (cli_a_nombEm_textBox.TextLength == 0) toolTip1.SetToolTip(pictureBox2, "Campo obligatorio.");
+            if (cli_a_dir_textBox.TextLength == 0) toolTip1.SetToolTip(pictureBox4, "Campo obligatorio.");
+            if (cli_a_poblacion_textBox.TextLength == 0) toolTip1.SetToolTip(pictureBox6, "Campo obligatorio.");
+            if (cli_a_dni_textBox.TextLength == 0) toolTip1.SetToolTip(pictureBox7, "Campo obligatorio.\n" +
+                            "Dependiendo de si se trata de un DNI o un NIE, puede componerse por un número de ocho cifras y una letra," +
+                            " o bien por una letra, siete dígitos y otra letra." + "\n\n          Ejemplo DNI: '12345678A'" +
+                            "\n\n          Ejemplo NIE: 'X1234567A'");
+            if (!cli_a_activo_SI_radioButton.Checked && !cli_a_activo_NO_radioButton.Checked) toolTip1.SetToolTip(pictureBox9, "Campo obligatorio.");
+        }
+        
+        private void Cli_a_observacion_richTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (cli_a_observacion_richTextBox.TextLength > 700)
+            {
+                toolTip1.SetToolTip(pictureBox12, "Se ha superado la cantidad de carácteres permitidos: "+ cli_a_observacion_richTextBox.TextLength + "/700");
+                pictureBox12.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox12, "");
+                pictureBox12.Image = null;
+            }
+        }
+
+        private void Cli_a_nombApell_textBox_TextChanged(object sender, EventArgs e)
+        {
+            if (cli_a_nombApell_textBox.TextLength > 45)
+            {
+                toolTip1.SetToolTip(pictureBox11, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_nombApell_textBox.TextLength + "/45");
+                pictureBox11.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox11, "");
+                pictureBox11.Image = null;
+            }
+        }
+
+        private void Cli_a_cad_textBox_TextChanged(object sender, EventArgs e)
+        {
+            if (cli_a_cad_textBox.TextLength > 45)
+            {
+                toolTip1.SetToolTip(pictureBox10, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_cad_textBox.TextLength + "/45");
+                pictureBox10.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox10, "");
+                pictureBox10.Image = null;
+            }
+        }
+
+        private void Cli_a_activo_NO_radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cli_a_activo_SI_radioButton.Checked && !cli_a_activo_NO_radioButton.Checked)
+            {
+                toolTip1.SetToolTip(pictureBox9, "Campo obligatorio.");
+                pictureBox9.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox9, "");
+                pictureBox9.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+        }
+
+        private void Cli_a_activo_SI_radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cli_a_activo_SI_radioButton.Checked && !cli_a_activo_NO_radioButton.Checked)
+            {
+                toolTip1.SetToolTip(pictureBox9, "Campo obligatorio.");
+                pictureBox9.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox9, "");
+                pictureBox9.Image = ProyectoA.Properties.Resources.tickPos;
+            }
         }
 
         private void Cli_a_tlf_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (!funClien.comprobarTlf(this)) cli_a_tlf_textBox.ForeColor = Color.Blue;
-            else cli_a_tlf_textBox.ForeColor = Color.Red;
+            if (cli_a_tlf_textBox.TextLength != 0)
+            {
+                if (!funClien.comprobarTlf(this))
+                {
+                    toolTip1.SetToolTip(pictureBox8, "");
+                    pictureBox8.Image = ProyectoA.Properties.Resources.tickPos;
+                }
+                else
+                {
+                    toolTip1.SetToolTip(pictureBox8, "El campo 'Teléfono' no se ha rellenado correctamente.\nComprobar que se han escrito 9 dígitos por teléfono y, en caso de haber" +
+                                " más de un teléfono, se han separado por una coma. Pueden escribirse espacios mientras no se usen para separar un teléfono de otro." +
+                                "\n\n          Ejemplo: '123456789, 987654321'");
+                    pictureBox8.Image = ProyectoA.Properties.Resources.tickNeg;
+                }
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox8, "");
+                pictureBox8.Image = null;
+            }
         }
 
         private void Cli_a_dni_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (!funClien.comprobarDni(this)) cli_a_dni_textBox.ForeColor = Color.Blue;
-            else cli_a_dni_textBox.ForeColor = Color.Red;
+            if (!funClien.comprobarDni(this))
+            {
+                toolTip1.SetToolTip(pictureBox7, "");
+                pictureBox7.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox7, "Campo obligatorio.\n" +
+                            "Dependiendo de si se trata de un DNI o un NIE, puede componerse por un número de ocho cifras y una letra," +
+                            " o bien por una letra, siete dígitos y otra letra." + "\n\n          Ejemplo DNI: '12345678A'" +
+                            "\n\n          Ejemplo NIE: 'X1234567A'");
+                pictureBox7.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
         }
 
         private void Cli_a_poblacion_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (cli_a_poblacion_textBox.TextLength!=0) cli_a_poblacion_textBox.ForeColor = Color.Blue;
-            else cli_a_poblacion_textBox.BackColor = Color.Red;
+            if (cli_a_poblacion_textBox.TextLength != 0)
+            {
+                if (cli_a_poblacion_textBox.TextLength > 45)
+                {
+                    toolTip1.SetToolTip(pictureBox6, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_poblacion_textBox.TextLength + "/45");
+                    pictureBox6.Image = ProyectoA.Properties.Resources.tickNeg;
+                }
+                else
+                {
+                    toolTip1.SetToolTip(pictureBox6, "");
+                    pictureBox6.Image = ProyectoA.Properties.Resources.tickPos;
+                }
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox6, "Campo obligatorio.");
+                pictureBox6.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
         }
 
         private void Cli_a_cp_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (!funClien.comprobarCp(this)) cli_a_cp_textBox.ForeColor = Color.Blue;
-            else cli_a_cp_textBox.ForeColor = Color.Red;
+            if (cli_a_cp_textBox.TextLength != 0)
+            {
+                if (!funClien.comprobarCp(this))
+                {
+                    toolTip1.SetToolTip(pictureBox5, "");
+                    pictureBox5.Image = ProyectoA.Properties.Resources.tickPos;
+                }
+                else
+                {
+                    toolTip1.SetToolTip(pictureBox5, "Se ha de componer por cinco números.");
+                    pictureBox5.Image = ProyectoA.Properties.Resources.tickNeg;
+                }
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox5, "");
+                pictureBox5.Image = null;
+            }
         }
 
         private void Cli_a_dir_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (cli_a_dir_textBox.TextLength!=0) cli_a_dir_textBox.ForeColor = Color.Blue;
-            else cli_a_dir_textBox.BackColor = Color.Red;
+            if (cli_a_dir_textBox.TextLength != 0)
+            {
+                if (cli_a_dir_textBox.TextLength > 45)
+                {
+                    toolTip1.SetToolTip(pictureBox4, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_dir_textBox.TextLength + "/45");
+                    pictureBox4.Image = ProyectoA.Properties.Resources.tickNeg;
+                }
+                else
+                {
+                    toolTip1.SetToolTip(pictureBox4, "");
+                    pictureBox4.Image = ProyectoA.Properties.Resources.tickPos;
+                }
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox4, "Campo obligatorio.");
+                pictureBox4.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
         }
 
         private void Cli_a_cif_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (!funClien.comprobarCif(this)) cli_a_cif_textBox.ForeColor = Color.Blue;
-            else cli_a_cif_textBox.ForeColor = Color.Red;
+            if (cli_a_cif_textBox.TextLength != 0)
+            {
+                if (!funClien.comprobarCif(this))
+                {
+                    toolTip1.SetToolTip(pictureBox3, "");
+                    pictureBox3.Image = ProyectoA.Properties.Resources.tickPos;
+                }
+                else
+                {
+                    toolTip1.SetToolTip(pictureBox3, "El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve carácteres: el primero es una letra, los siete siguientes números" +
+                                    " y el último puede ser una letra o un número.\n\n          Ejemplo: 'A1234567B', 'A12345678'...");
+                    pictureBox3.Image = ProyectoA.Properties.Resources.tickNeg;
+                }
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox3, "");
+                pictureBox3.Image = null;
+            }
         }
         
         private void Cli_a_nombEm_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (cli_a_nombEm_textBox.TextLength!=0) cli_a_cod_textBox.ForeColor = Color.Blue;
-            else cli_a_nombEm_textBox.BackColor = Color.Red;
+            if (cli_a_nombEm_textBox.TextLength != 0)
+            {
+                if (cli_a_nombEm_textBox.TextLength > 45)
+                {
+                    toolTip1.SetToolTip(pictureBox2, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_nombEm_textBox.TextLength + "/45");
+                    pictureBox2.Image = ProyectoA.Properties.Resources.tickNeg;
+                }
+                else
+                {
+                    toolTip1.SetToolTip(pictureBox2, "");
+                    pictureBox2.Image = ProyectoA.Properties.Resources.tickPos;
+                }
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox2, "Campo obligatorio.");
+                pictureBox2.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
         }
 
         private void Cli_a_cod_textBox_TextChanged(object sender, EventArgs e)
         {
-            if(!funClien.comprobarCodigo(this)) cli_a_cod_textBox.ForeColor = Color.Blue;
-            else cli_a_cod_textBox.ForeColor = Color.Red;
+            if (!funClien.comprobarCodigo(this))
+            {
+                toolTip1.SetToolTip(pictureBox1, "");
+                pictureBox1.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox1, "Campo obligatorio. Se compone por cinco números.\n\nEjemplo: '00001'");
+                pictureBox1.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
         }
 
 
@@ -231,12 +463,49 @@ namespace ProyectoA
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string a = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            string b = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-            a = a.Replace(Environment.NewLine, string.Empty);
-            b = b.Replace(Environment.NewLine, string.Empty);
-            Form perfilClient = new PerfilCliente(a, b);
-            perfilClient.Show();
+            try
+            {
+                string a = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string b = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+                a = a.Replace(Environment.NewLine, string.Empty);
+                b = b.Replace(Environment.NewLine, string.Empty);
+                Form perfilClient = new PerfilCliente(a, b);
+                perfilClient.Show();
+            }
+            catch(System.NullReferenceException p) { }
+        }
+
+        //Boton limpiar campos búsqueda máquina
+        private void button8_Click(object sender, EventArgs e)
+        {
+            funM.limpCampCliB(this);
+        }
+
+        private void BOTONprueba_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = "";
+            openFileDialog1.RestoreDirectory = true;
+
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string fileName = textBox10.Text + Path.GetExtension(openFileDialog1.FileName);
+                    string sourcePath = openFileDialog1.FileName;
+                    string targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas";
+                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+                    
+                    if (!System.IO.Directory.Exists(targetPath))
+                    {
+                        System.IO.Directory.CreateDirectory(targetPath);
+                    }
+                    System.IO.File.Copy(sourcePath, destFile, true);
+                }
+                catch
+                {
+                    MessageBox.Show("Error a la hora de subir archivo.");
+                }
+            }
         }
 
         ///*

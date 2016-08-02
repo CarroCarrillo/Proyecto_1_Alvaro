@@ -14,7 +14,7 @@ namespace ProyectoA
         private string conexion;
         private string consultaGlobal;
         private MySqlConnection con = new MySqlConnection();
-        private int indicePgn, tamPgn = 30, totalPgn;
+        private int indicePgn, tamPgn = 2, totalPgn;
 
 
         ///*
@@ -396,6 +396,16 @@ namespace ProyectoA
             visibilidadBotonesPgn(f);
             mostrarPgn(f);
         }
+
+        //Botón que reinicia la misma página
+        public void reiniciarPgn(Form1 f)
+        {
+            string cons;
+            cons = consultaGlobal + " order by codigo and codigo limit " + indicePgn.ToString() + "," + tamPgn.ToString();
+            devolverConsulta(cons, f);
+            visibilidadBotonesPgn(f);
+            mostrarPgn(f);
+        }
         
         //Método que muestra la página en la que se está
         private void mostrarPgn(Form1 f)
@@ -768,5 +778,7 @@ namespace ProyectoA
             
             return false;
         }
+
+       
     }
 }

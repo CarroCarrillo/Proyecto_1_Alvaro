@@ -65,6 +65,12 @@
     <Compile Include="AyudaMaquina.Designer.cs">
       <DependentUpon>AyudaMaquina.cs</DependentUpon>
     </Compile>
+    <Compile Include="EdicMacFM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EdicMacFM.Designer.cs">
+      <DependentUpon>EdicMacFM.cs</DependentUpon>
+    </Compile>
     <Compile Include="FuncionesContrato.cs" />
     <Compile Include="FuncionesMaquina.cs" />
     <Compile Include="Form1.cs">
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EdicMacFM.resx">
+      <DependentUpon>EdicMacFM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PerfilCliente.resx">
       <DependentUpon>PerfilCliente.cs</DependentUpon>

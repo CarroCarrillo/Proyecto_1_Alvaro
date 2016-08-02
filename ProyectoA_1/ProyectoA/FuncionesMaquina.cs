@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -474,8 +475,8 @@ namespace ProyectoA
 
             cadenaCamposI += "', '" + f.comboBox1.Text;
             cadenaCamposI += "', '" + f.dateTimePicker1.Text;
-            cadenaCamposI += "', '" + f.textBox3.Text;
-            cadenaCamposI += "', '" + f.textBox2.Text;
+            //cadenaCamposI += "', '" + f.textBox3.Text;
+            //cadenaCamposI += "', '" + f.textBox2.Text;
             cadenaCamposI += "', '" + f.richTextBox2.Text;
 
             //añadir aquí lo de los archivos pdf
@@ -535,15 +536,22 @@ namespace ProyectoA
             f.dateTimePicker2.Text = null;
             f.textBox8.Text = null;
             f.comboBox1.Text = null;
-            f.textBox3.Text = null;
-            f.textBox2.Text = null;
+            f.comboBox7.Text = null;
+            f.comboBox3.Text = null;
             f.dateTimePicker1.Text = null;
             f.checkBox10.Checked = false;
             f.checkBox8.Checked = false;
+            f.checkBox5.Checked = false;
+            f.checkBox4.Checked = false;
             f.checkBox7.Checked = false;
             f.checkBox3.Checked = false;
             f.checkBox2.Checked = false;
             f.checkBox1.Checked = false;
+            f.textBox11.Text = null;
+            f.textBox7.Text = null;
+            f.dateTimePicker5.Text = null;
+            f.richTextBox1.Text = null;
+            f.richTextBox2.Text = null;
         }
 
         //Hace la comprobación de que los campos obligatorios correspondientes a CLIENTE-AÑADIR estén completos
@@ -559,8 +567,6 @@ namespace ProyectoA
 
             if (error != true)
             {
-                //Comprobar que el CODIGO cumple los requisitos
-               //error = comprobarCodigo(f);
                
                 //Comprobar que el CP cumple los requisitos
                 if (!error) error = comprobarNum(f);
@@ -603,6 +609,44 @@ namespace ProyectoA
             else return true;
 
             return false;
+        }
+
+        //Incorpora el fichero
+        private void añadirFichero(Form1 f)
+        {
+            f.openFileDialog1.InitialDirectory = "";
+            f.openFileDialog1.RestoreDirectory = true;
+
+            if (f.openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string fileName = f.textBox10.Text + Path.GetExtension(f.openFileDialog1.FileName);
+                    string sourcePath = f.openFileDialog1.FileName;
+                    string targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas";
+                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+
+                    if (!System.IO.Directory.Exists(targetPath))
+                    {
+                        System.IO.Directory.CreateDirectory(targetPath);
+                    }
+                    System.IO.File.Copy(sourcePath, destFile, true);
+                }
+                catch
+                {
+                    MessageBox.Show("Error a la hora de subir archivo.");
+                }
+            }
+        }
+        public void abreDialogo(Form1 f)
+        {
+            f.openFileDialog1.InitialDirectory = "";
+            f.openFileDialog1.RestoreDirectory = true;
+
+            if (f.openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                f.textBox11.Text = f.openFileDialog1.FileName;
+            }
         }
     }
 }

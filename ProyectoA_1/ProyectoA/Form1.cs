@@ -471,42 +471,18 @@ namespace ProyectoA
                 b = b.Replace(Environment.NewLine, string.Empty);
                 Form perfilClient = new PerfilCliente(a, b);
                 perfilClient.Show();
+                perfilClient.FormClosed += PerfilClient_FormClosed;
+                
             }
-            catch(System.NullReferenceException p) { }
+            catch{ }
         }
 
-        //Boton limpiar campos búsqueda máquina
-        private void button8_Click(object sender, EventArgs e)
+        private void PerfilClient_FormClosed(object sender, FormClosedEventArgs e)
         {
-            funM.limpCampCliB(this);
+            funClien.reiniciarPgn(this);
         }
 
-        private void BOTONprueba_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.InitialDirectory = "";
-            openFileDialog1.RestoreDirectory = true;
 
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string fileName = textBox10.Text + Path.GetExtension(openFileDialog1.FileName);
-                    string sourcePath = openFileDialog1.FileName;
-                    string targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas";
-                    string destFile = System.IO.Path.Combine(targetPath, fileName);
-                    
-                    if (!System.IO.Directory.Exists(targetPath))
-                    {
-                        System.IO.Directory.CreateDirectory(targetPath);
-                    }
-                    System.IO.File.Copy(sourcePath, destFile, true);
-                }
-                catch
-                {
-                    MessageBox.Show("Error a la hora de subir archivo.");
-                }
-            }
-        }
 
         ///*
         // * 
@@ -517,5 +493,36 @@ namespace ProyectoA
         // */
 
 
+        //Boton limpiar campos búsqueda máquina
+        private void button8_Click(object sender, EventArgs e)
+        {
+            funM.limpCampCliB(this);
+        }
+
+        //BOTÓN AÑADIR ARCHIVO
+        private void BOTONprueba_Click(object sender, EventArgs e)
+        {
+            funM.abreDialogo(this);
+            
+        }
+
+        //BOTÓN DE AGREGAR MÁQUINA
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Console.WriteLine(dateTimePicker1.Text);
+        }
+
+        //BOTÓN LIMPIA CAMPOS AÑADIR MAQUINA
+        private void button1_Click(object sender, EventArgs e)
+        {
+            funM.limpCampCliA(this);
+        }
+
+        //PESTAÑA EDICIÓN MÁQUINAS FAMILIAS Y MODELOS
+        private void familiasYModelosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form EdicM = new EdicMacFM();
+            EdicM.Show();
+        }
     }
 }

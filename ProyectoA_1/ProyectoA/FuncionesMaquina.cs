@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,10 +13,9 @@ namespace ProyectoA
 {
     class FuncionesMaquina
     {
-        private string conexion;
         private string consultaGlobal;
-        private MySqlConnection con = new MySqlConnection();
         private int indicePgn, tamPgn = 30, totalPgn;
+        
 
 
         ///*
@@ -51,9 +51,14 @@ namespace ProyectoA
             mostrarPgn(f);
         }
 
+        
+
+
         //Devuelve el count
         private int devolverContar(string consulta, Form1 f)
         {
+            MySqlConnection con = new MySqlConnection();
+            string conexion;
             try
             {
                 f.dataGridView1.RowCount = 1;
@@ -201,6 +206,8 @@ namespace ProyectoA
         //TODO retocar parametros entrada y el actualizado
         public void devolverConsulta(string consulta, Form1 f)
         {
+            MySqlConnection con = new MySqlConnection();
+            string conexion;
             try
             {
                 f.dataGridView2.RowCount = 1;
@@ -270,7 +277,6 @@ namespace ProyectoA
         public void limpCampCliB(Form1 f)
         {
             f.comboBox4.Text = null;
-            f.textBox6.Text = null;
             f.comboBox5.Text = null;
             f.dateTimePicker3.Text = null;
             f.textBox5.Text = null;
@@ -374,52 +380,55 @@ namespace ProyectoA
         //PRIMER MÉTODO LLAMADO PARA AGREGAR MAQUINA 
         public void botonAgregarMaquina(Form1 f)
         {
+            
             //Comprobación de que los campos obligatorios están completos y los datos introducidos son correctos, en tal caso, añadir datos  
-            if (!comprobarCamposCliA(f))
+            if (!comprobarCamposMaq(f))
             {
-                string[] cadTlf;
-                string insercion;
-                bool ba = true, bo = true;
+                //string[] cadTlf;
+                //string insercion;
+                //bool ba = true, bo = true;
 
-                DialogResult b = MessageBox.Show("          Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
-                if (b == DialogResult.OK)
-                {
-                    insercion = "insert maquina values ('";
+                //DialogResult b = MessageBox.Show("          Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
+                //if (b == DialogResult.OK)
+                //{
+                //    insercion = "insert maquina values ('";
 
-                    insercion += agregarCamposInsertMaquinas(f);
+                //    insercion += agregarCamposInsertMaquinas(f);
 
-                    ba = insertMaquinas(insercion);
+                //    ba = insertMaquinas(insercion);
 
-                    if (f.cli_a_tlf_textBox.Text != "")
-                    {
-                        //cadTlf = agregarCamposTlf(f.cli_a_tlf_textBox.Text);
-                        //bo = insertarTelefono(cadTlf, f.cli_a_cod_textBox.Text, f.cli_a_nombEm_textBox.Text);
-                    }
+                //    if (f.cli_a_tlf_textBox.Text != "")
+                //    {
+                //        //cadTlf = agregarCamposTlf(f.cli_a_tlf_textBox.Text);
+                //        //bo = insertarTelefono(cadTlf, f.cli_a_cod_textBox.Text, f.cli_a_nombEm_textBox.Text);
+                //    }
 
-                    if (ba && bo)
-                    {
-                        DialogResult q = MessageBox.Show("          Usuario añadido correctamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
-                        if (q == DialogResult.OK) limpCampCliA(f);
-                    }
-                    else if (ba && !bo)
-                    {
-                        DialogResult q = MessageBox.Show("          Usuario añadido correctamente, pero error a la hora de insertar los teléfonos" +
-                            "\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
-                        if (q == DialogResult.OK) limpCampCliA(f);
-                    }
-                    else if (!ba && bo)
-                    {
-                        DialogResult q = MessageBox.Show("          Error al añadir cliente, pero teléfono insertado correctamente. " +
-                            "El usuario debía de existir previamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
-                        if (q == DialogResult.OK) limpCampCliA(f);
-                    }
-                }
+                //    if (ba && bo)
+                //    {
+                //        DialogResult q = MessageBox.Show("          Usuario añadido correctamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                //        if (q == DialogResult.OK) limpCampMaqA(f);
+                //    }
+                //    else if (ba && !bo)
+                //    {
+                //        DialogResult q = MessageBox.Show("          Usuario añadido correctamente, pero error a la hora de insertar los teléfonos" +
+                //            "\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                //        if (q == DialogResult.OK) limpCampMaqA(f);
+                //    }
+                //    else if (!ba && bo)
+                //    {
+                //        DialogResult q = MessageBox.Show("          Error al añadir cliente, pero teléfono insertado correctamente. " +
+                //            "El usuario debía de existir previamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                //        if (q == DialogResult.OK) limpCampMaqA(f);
+                //    }
+                //}
             }
         }
 
         //GENERA LA SENTENCIA SQL PARA INSERTAR EL CLIENTE
         private bool insertMaquinas(string insercion)
         {
+            MySqlConnection con = new MySqlConnection();
+            string conexion;
             bool resultado = false;
             try
             {
@@ -493,6 +502,8 @@ namespace ProyectoA
         {
             string sentencia;
             bool resultado = true;
+            string conexion;
+            MySqlConnection con = new MySqlConnection();
 
             try
             {
@@ -528,16 +539,11 @@ namespace ProyectoA
             return resultado;
         }
 
-        //Limpia los campos de cliente añadir
-        public void limpCampCliA(Form1 f)
+        //Limpia los campos de máquina añadir
+        public void limpCampMaqA(Form1 f)
         {
-            f.textBox10.Text = null;
-            f.comboBox2.Text = null;
+            f.dateTimePicker5.Text = null;
             f.dateTimePicker2.Text = null;
-            f.textBox8.Text = null;
-            f.comboBox1.Text = null;
-            f.comboBox7.Text = null;
-            f.comboBox3.Text = null;
             f.dateTimePicker1.Text = null;
             f.checkBox10.Checked = false;
             f.checkBox8.Checked = false;
@@ -547,47 +553,107 @@ namespace ProyectoA
             f.checkBox3.Checked = false;
             f.checkBox2.Checked = false;
             f.checkBox1.Checked = false;
-            f.textBox11.Text = null;
-            f.textBox7.Text = null;
-            f.dateTimePicker5.Text = null;
             f.richTextBox1.Text = null;
             f.richTextBox2.Text = null;
+            f.comboBox3.SelectedItem = null;
+            f.comboBox7.SelectedItem = null;
+            f.comboBox8.SelectedItem = null;
+            f.comboBox1.SelectedItem = null;
+            f.comboBox2.SelectedItem = null;
+            f.textBox11.Text = null;
+            f.textBox10.Text = null;
+            f.textBox8.Text = null;
+            f.textBox7.Text = null;
+
         }
 
-        //Hace la comprobación de que los campos obligatorios correspondientes a CLIENTE-AÑADIR estén completos
-        private bool comprobarCamposCliA(Form1 f)
+        //Hace la comprobación de que los campos obligatorios correspondientes a MÁQUINA-AÑADIR estén completos
+        private bool comprobarCamposMaq(Form1 f)
         {
             bool error = false;
 
-            if (f.textBox10.Text == null || f.textBox10.Text == "") error = true;
+            if (f.comboBox8.Text == null || f.comboBox8.Text == "") error = true;
             if (f.comboBox2.Text == null || f.comboBox2.Text == "") error = true;
+            if (f.dateTimePicker2.Text == null || f.dateTimePicker2.Text == "") error = true;
+            if (f.textBox10.Text == null || f.textBox10.Text == "") error = true;
             if (f.comboBox1.Text == null || f.comboBox1.Text == "") error = true;
-            //if (f.textBox3.Text == null || f.textBox3.Text == "") error = true;
-            //if (f.textBox2.Text == null || f.textBox2.Text == "") error = true;
 
             if (error != true)
             {
                
                 //Comprobar que el CP cumple los requisitos
-                if (!error) error = comprobarNum(f);
-                
+                if (!error) error = comprobarFamilia("familia", f.comboBox8.Text);
+                if (!error) error = comprobarFamilia("modelo", f.comboBox2.Text);
+                if (!error) error = comprobarFamilia("estadosmaquina", f.comboBox1.Text);
+                if (!error) error = comprobarNumero(f.textBox10.Text);
+
                 //Comprueba longitud de campos
-                if (!error) if (f.textBox8.TextLength > 45) error = true;
+                if (!error) if (f.textBox7.TextLength > 45) error = true;
                 if (!error) if (f.richTextBox1.TextLength > 700) error = true;
                 if (!error) if (f.richTextBox2.TextLength > 700) error = true;
+                if (!error) error = comprobarDatosVenta(f.comboBox7.Text, f.comboBox3.Text);
 
             }
-            if (error == true) MessageBox.Show("No puede agregarse el cliente, compruebe los campos obligatorios y el cumplimiento de las condiciones.");
+            if (error == true) MessageBox.Show("No puede agregarse la máquina, compruebe los campos obligatorios y el cumplimiento de las condiciones.");
             return error;
         }
-
-        //Complementa a comprobarCamposCliA()
-        public bool comprobarNum(Form1 f)
+        //Comprueba el valor del número de la máquina -------------TODO Comprobar si funciona
+        private bool comprobarDatosVenta(string f, string f2)
         {
-            if (f.textBox10.Text == null || f.textBox10.Text == "") { }
+            if ((f == null || f == "") && (f2 == null || f2 == "")) { return false; }
             else
             {
-                char[] numArray = f.textBox10.Text.ToCharArray();
+                MySqlConnection con = new MySqlConnection();
+                string conexion;
+                try
+                {
+                    conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                    con.ConnectionString = conexion;
+                    con.Open();
+
+                    MySqlCommand comandos = new MySqlCommand();
+                    comandos.Connection = con;
+                    comandos.CommandText = "select count(*) as contado from cliente where Codigo = '" + f + "' and NombreEmpresa = '" + f2 +"';";
+                    MySqlDataReader leer = comandos.ExecuteReader();
+
+                    if (leer.HasRows)
+                    {
+                        while (leer.Read())
+                        {
+                            if (Int32.Parse(leer["contado"].ToString()) > 0)
+                            {
+                                return false;
+                            }
+                            else return true;
+                        }
+                    }
+                    return true;
+                }
+                catch (MySqlException error)
+                {
+                    MessageBox.Show("Error: " + Convert.ToString(error));
+                }
+                finally
+                {
+                    try
+                    {
+                        con.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                    }
+                }
+                return false;
+            }
+        }
+        //Comprueba el valor del número de la máquina
+        private bool comprobarNumero(string f)
+        {
+            if (f == null || f == "") { }
+            else
+            {
+                char[] numArray = f.ToCharArray();
                 if (numArray.Length == 4)
                 {
                     for (int i = 0; i < 4; i++) if (numArray[i] < 48 || numArray[i] > 57) return true;
@@ -596,21 +662,59 @@ namespace ProyectoA
             }
             return false;
         }
-        
-        
-        //Complementa a comprobarCamposCliA()
-        public bool comprobarCodigo(Form1 f)
+        //Comprueba el valor de la familia, estado y modelo
+        private bool comprobarFamilia(string f, string f2)
         {
-            char[] codigoArray = f.cli_a_cod_textBox.Text.ToCharArray();
-            if (codigoArray.Length == 5)
+            if (f == null || f == "") { return true;  }
+            else
             {
-                for (int i = 0; i < 5; i++) if (codigoArray[i] < 48 || codigoArray[i] > 57) return true;
-            }
-            else return true;
+                MySqlConnection con = new MySqlConnection();
+                string conexion;
+                try
+                {
+                    conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                    con.ConnectionString = conexion;
+                    con.Open();
 
-            return false;
+                    MySqlCommand comandos = new MySqlCommand();
+                    comandos.Connection = con;
+                    comandos.CommandText = "select count(*) as contado from " + f + " where Nombre = '" + f2 + "';";
+                    MySqlDataReader leer = comandos.ExecuteReader();
+
+                    if (leer.HasRows)
+                    {
+                        while (leer.Read())
+                        {
+                            if (Int32.Parse(leer["contado"].ToString()) > 0)
+                            {
+                                return false;
+                            }
+                            else return true;
+                        }
+                    }
+                    return true;
+                }
+                catch (MySqlException error)
+                {
+                    MessageBox.Show("Error: " + Convert.ToString(error));
+                }
+                finally
+                {
+                    try
+                    {
+                        con.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                    }
+                }
+                return false;
+            }
+            
         }
 
+        
         //Incorpora el fichero
         private void añadirFichero(Form1 f)
         {
@@ -648,5 +752,317 @@ namespace ProyectoA
                 f.textBox11.Text = f.openFileDialog1.FileName;
             }
         }
+
+        internal void rellenarComboBoxFamiliaA(Form1 f)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select * from familia";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                BindingSource bindingSource1 = new BindingSource();
+                bindingSource1.DataSource = table;
+                f.comboBox8.DisplayMember = "Nombre";
+                //f.comboBox8.ValueMember = "ID";
+                f.comboBox8.DataSource = bindingSource1;
+                f.comboBox8.SelectedItem = null;
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+        internal void rellenarComboBoxModeloA(Form1 f)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select * from modelo where Familia_Nombre = '"+ f.comboBox8.Text +"';";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table1 = new DataTable();
+                adapter.Fill(table1);
+
+                BindingSource bindingSource3 = new BindingSource();
+                bindingSource3.DataSource = table1;
+                f.comboBox2.DisplayMember = "Nombre";
+                //f.comboBox8.ValueMember = "ID";
+                f.comboBox2.DataSource = bindingSource3;
+                f.comboBox2.SelectedItem = null;
+                
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+        internal void rellenarComboBoxFamiliaB(Form1 f)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select * from familia";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                BindingSource bindingSource2 = new BindingSource();
+                bindingSource2.DataSource = table;
+                f.comboBox4.DisplayMember = "Nombre";
+                f.comboBox4.DataSource = bindingSource2;
+                f.comboBox4.SelectedItem = null;
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+        internal void rellenarComboBoxModeloB(Form1 f)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select * from modelo where Familia_Nombre = '" + f.comboBox4.Text + "';";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table1 = new DataTable();
+                adapter.Fill(table1);
+
+                BindingSource bindingSource4 = new BindingSource();
+                bindingSource4.DataSource = table1;
+                f.comboBox5.DisplayMember = "Nombre";
+                //f.comboBox5.ValueMember = "ID";
+                f.comboBox5.DataSource = bindingSource4;
+                f.comboBox5.SelectedItem = null;
+
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+        internal void rellenarComboBoxEstadoB(Form1 f)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select * from estadosmaquina";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                BindingSource bindingSource5 = new BindingSource();
+                bindingSource5.DataSource = table;
+                f.comboBox6.DisplayMember = "Nombre";
+                //f.comboBox8.ValueMember = "ID";
+                f.comboBox6.DataSource = bindingSource5;
+                f.comboBox6.SelectedItem = null;
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+        internal void rellenarComboBoxEstadoA(Form1 f)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select * from estadosmaquina";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                BindingSource bindingSource6 = new BindingSource();
+                bindingSource6.DataSource = table;
+                f.comboBox1.DisplayMember = "Nombre";
+                //f.comboBox1.ValueMember = "ID";
+                f.comboBox1.DataSource = bindingSource6;
+                f.comboBox1.SelectedItem = null;
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+
+        internal void actualizarTextBoxVentaN(string valor, string valor2, ComboBox x)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select distinct NombreEmpresa from cliente where Codigo like '%" + valor +"%' and NombreEmpresa like '%" + valor2 + "%'limit 0, 10;";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                BindingSource bindingSource1 = new BindingSource();
+                bindingSource1.DataSource = table;
+                x.DataSource = bindingSource1;
+                x.SelectedItem = null;
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+        internal void actualizarTextBoxVentaC(string valor, string valor2, ComboBox x)
+        {
+            MySqlConnection con = new MySqlConnection();
+            try
+            {
+                string conexion;
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+
+                string query = "select distinct Codigo from cliente where NombreEmpresa like '%" + valor + "%' and Codigo like '%" + valor2 + "%' limit 0, 10;";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                BindingSource bindingSource1 = new BindingSource();
+                bindingSource1.DataSource = table;
+                x.DataSource = bindingSource1;
+                x.SelectedItem = null;
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error:\n\n" + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+
     }
 }

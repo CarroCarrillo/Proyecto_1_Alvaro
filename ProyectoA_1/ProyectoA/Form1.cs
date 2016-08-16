@@ -38,9 +38,16 @@ namespace ProyectoA
             //Panel2   Cliente Añadir
             modificacionTextosClienteA();
             explicacionErrorCamposCA();
-            
+
             //Panel3   Máquina Añadir
-            
+            funM.rellenarComboBoxFamiliaA(this);
+            funM.rellenarComboBoxFamiliaB(this);
+            funM.rellenarComboBoxEstadoA(this);
+            funM.rellenarComboBoxEstadoB(this);
+            funM.actualizarTextBoxVentaC("", "", comboBox7);
+            funM.actualizarTextBoxVentaN("", "", comboBox3);
+            //comprobarCambiosTextBox();
+
             //Panel4   Máquina Buscar
             dataGridView2.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView2.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -52,6 +59,42 @@ namespace ProyectoA
             //Panel6
             
         }
+
+        private void comprobarCambiosTextBox()
+        {
+            comboBox8.TextChanged += ComboBox8_TextChanged;
+            comboBox4.TextChanged += ComboBox4_TextChanged;
+            comboBox7.TextChanged += ComboBox7_TextChanged;
+            comboBox3.TextChanged += ComboBox3_TextChanged;
+        }
+
+        private void ComboBox3_TextChanged(object sender, EventArgs e)
+        {
+            string a = comboBox7.Text;
+            string b = comboBox3.Text;
+            funM.actualizarTextBoxVentaN(a, b, comboBox3);
+            funM.actualizarTextBoxVentaC(b,a, comboBox7);
+
+        }
+        private void ComboBox7_TextChanged(object sender, EventArgs e)
+        {
+            string a = comboBox7.Text;
+            string b = comboBox3.Text;
+            funM.actualizarTextBoxVentaC(b,a, comboBox7);
+            funM.actualizarTextBoxVentaN(a,b, comboBox3);
+
+        }
+
+        private void ComboBox4_TextChanged(object sender, EventArgs e)
+        {
+            funM.rellenarComboBoxModeloB(this);
+        }
+
+        private void ComboBox8_TextChanged(object sender, EventArgs e)
+        {
+            funM.rellenarComboBoxModeloA(this);
+        }
+
 
         //Cada vez que se modifica un label comprueba los errores
         private void modificacionTextosClienteA()
@@ -89,7 +132,7 @@ namespace ProyectoA
         {
             if (cli_a_observacion_richTextBox.TextLength > 700)
             {
-                toolTip1.SetToolTip(pictureBox12, "Se ha superado la cantidad de carácteres permitidos: "+ cli_a_observacion_richTextBox.TextLength + "/700");
+                toolTip1.SetToolTip(pictureBox12, "Se ha superado la cantidad de caracteres permitidos: "+ cli_a_observacion_richTextBox.TextLength + "/700");
                 pictureBox12.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -103,7 +146,7 @@ namespace ProyectoA
         {
             if (cli_a_nombApell_textBox.TextLength > 45)
             {
-                toolTip1.SetToolTip(pictureBox11, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_nombApell_textBox.TextLength + "/45");
+                toolTip1.SetToolTip(pictureBox11, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_nombApell_textBox.TextLength + "/45");
                 pictureBox11.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -117,7 +160,7 @@ namespace ProyectoA
         {
             if (cli_a_cad_textBox.TextLength > 45)
             {
-                toolTip1.SetToolTip(pictureBox10, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_cad_textBox.TextLength + "/45");
+                toolTip1.SetToolTip(pictureBox10, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_cad_textBox.TextLength + "/45");
                 pictureBox10.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -202,7 +245,7 @@ namespace ProyectoA
             {
                 if (cli_a_poblacion_textBox.TextLength > 45)
                 {
-                    toolTip1.SetToolTip(pictureBox6, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_poblacion_textBox.TextLength + "/45");
+                    toolTip1.SetToolTip(pictureBox6, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_poblacion_textBox.TextLength + "/45");
                     pictureBox6.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
                 else
@@ -246,7 +289,7 @@ namespace ProyectoA
             {
                 if (cli_a_dir_textBox.TextLength > 45)
                 {
-                    toolTip1.SetToolTip(pictureBox4, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_dir_textBox.TextLength + "/45");
+                    toolTip1.SetToolTip(pictureBox4, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_dir_textBox.TextLength + "/45");
                     pictureBox4.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
                 else
@@ -273,7 +316,7 @@ namespace ProyectoA
                 }
                 else
                 {
-                    toolTip1.SetToolTip(pictureBox3, "El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve carácteres: el primero es una letra, los siete siguientes números" +
+                    toolTip1.SetToolTip(pictureBox3, "El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve caracteres: el primero es una letra, los siete siguientes números" +
                                     " y el último puede ser una letra o un número.\n\n          Ejemplo: 'A1234567B', 'A12345678'...");
                     pictureBox3.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
@@ -291,7 +334,7 @@ namespace ProyectoA
             {
                 if (cli_a_nombEm_textBox.TextLength > 45)
                 {
-                    toolTip1.SetToolTip(pictureBox2, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_nombEm_textBox.TextLength + "/45");
+                    toolTip1.SetToolTip(pictureBox2, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_nombEm_textBox.TextLength + "/45");
                     pictureBox2.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
                 else
@@ -432,6 +475,12 @@ namespace ProyectoA
         private void cli_a_Agregar_button_Click(object sender, EventArgs e)
         {
             funClien.botonAgregarClientes(this);
+
+            //Reiniciar select de clientes en el apartado Máquina-añadir
+            //funM.actualizarTextBoxVentaC("");
+            //funM.actualizarTextBoxVentaN("");
+            comboBox3.SelectedItem = null;
+            comboBox7.SelectedItem = null;
         }
         
         //BOTON LIMPIAR CAMPOS CLIENTE-AÑADIR
@@ -509,13 +558,13 @@ namespace ProyectoA
         //BOTÓN DE AGREGAR MÁQUINA
         private void button2_Click(object sender, EventArgs e)
         {
-            //Console.WriteLine(dateTimePicker1.Text);
+            funM.botonAgregarMaquina(this);
         }
 
         //BOTÓN LIMPIA CAMPOS AÑADIR MAQUINA
         private void button1_Click(object sender, EventArgs e)
         {
-            funM.limpCampCliA(this);
+            funM.limpCampMaqA(this);
         }
 
         //PESTAÑA EDICIÓN MÁQUINAS FAMILIAS Y MODELOS
@@ -523,6 +572,29 @@ namespace ProyectoA
         {
             Form EdicM = new EdicMacFM();
             EdicM.Show();
+            EdicM.FormClosed += EdicM_FormClosed;
+        }
+
+        private void EdicM_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            funM.rellenarComboBoxFamiliaA(this);
+            funM.rellenarComboBoxFamiliaB(this);
+            comboBox5.SelectedItem = null;
+            comboBox2.SelectedItem = null;
+        }
+
+        //PESTAÑA EDICIÓN MÁQUINAS ESTADOS
+        private void estadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form estMa = new estadoMaquina();
+            estMa.Show();
+            estMa.FormClosed += EstMa_FormClosed;
+        }
+
+        private void EstMa_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            funM.rellenarComboBoxEstadoA(this);
+            funM.rellenarComboBoxEstadoB(this);
         }
     }
 }

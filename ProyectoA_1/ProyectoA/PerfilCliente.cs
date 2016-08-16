@@ -121,7 +121,7 @@ namespace ProyectoA
         {
             if (cli_a_observacion_richTextBox.TextLength > 700)
             {
-                toolTip1.SetToolTip(pictureBox12, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_observacion_richTextBox.TextLength + "/700");
+                toolTip1.SetToolTip(pictureBox12, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_observacion_richTextBox.TextLength + "/700");
                 pictureBox12.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -135,7 +135,7 @@ namespace ProyectoA
         {
             if (cli_a_nombApell_textBox.TextLength > 45)
             {
-                toolTip1.SetToolTip(pictureBox11, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_nombApell_textBox.TextLength + "/45");
+                toolTip1.SetToolTip(pictureBox11, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_nombApell_textBox.TextLength + "/45");
                 pictureBox11.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -149,7 +149,7 @@ namespace ProyectoA
         {
             if (cli_a_cad_textBox.TextLength > 45)
             {
-                toolTip1.SetToolTip(pictureBox10, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_cad_textBox.TextLength + "/45");
+                toolTip1.SetToolTip(pictureBox10, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_cad_textBox.TextLength + "/45");
                 pictureBox10.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -234,7 +234,7 @@ namespace ProyectoA
             {
                 if (cli_a_poblacion_textBox.TextLength > 45)
                 {
-                    toolTip1.SetToolTip(pictureBox6, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_poblacion_textBox.TextLength + "/45");
+                    toolTip1.SetToolTip(pictureBox6, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_poblacion_textBox.TextLength + "/45");
                     pictureBox6.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
                 else
@@ -278,7 +278,7 @@ namespace ProyectoA
             {
                 if (cli_a_dir_textBox.TextLength > 45)
                 {
-                    toolTip1.SetToolTip(pictureBox4, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_dir_textBox.TextLength + "/45");
+                    toolTip1.SetToolTip(pictureBox4, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_dir_textBox.TextLength + "/45");
                     pictureBox4.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
                 else
@@ -305,7 +305,7 @@ namespace ProyectoA
                 }
                 else
                 {
-                    toolTip1.SetToolTip(pictureBox3, "El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve carácteres: el primero es una letra, los siete siguientes números" +
+                    toolTip1.SetToolTip(pictureBox3, "El campo 'CIF' no se ha rellenado correctamente.\nSe compone por nueve caracteres: el primero es una letra, los siete siguientes números" +
                                     " y el último puede ser una letra o un número.\n\n          Ejemplo: 'A1234567B', 'A12345678'...");
                     pictureBox3.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
@@ -323,7 +323,7 @@ namespace ProyectoA
             {
                 if (cli_a_nombEm_textBox.TextLength > 45)
                 {
-                    toolTip1.SetToolTip(pictureBox2, "Se ha superado la cantidad de carácteres permitidos: " + cli_a_nombEm_textBox.TextLength + "/45");
+                    toolTip1.SetToolTip(pictureBox2, "Se ha superado la cantidad de caracteres permitidos: " + cli_a_nombEm_textBox.TextLength + "/45");
                     pictureBox2.Image = ProyectoA.Properties.Resources.tickNeg;
                 }
                 else
@@ -824,7 +824,7 @@ namespace ProyectoA
                 }
                 catch (Exception error)
                 {
-                    MessageBox.Show("Error en el proceso de modificación de los teléfonos: \n\n" + Convert.ToString(error));
+                    MessageBox.Show("Error en el proceso de eliminación: \n\n" + Convert.ToString(error));
                 }
                 finally
                 {
@@ -834,7 +834,7 @@ namespace ProyectoA
                     }
                     catch (Exception et)
                     {
-                        MessageBox.Show("Error en el proceso de modificación de los teléfonos: \n\n" + Convert.ToString(et));
+                        MessageBox.Show("Error en el proceso de eliminación: \n\n" + Convert.ToString(et));
                     }
                 }
                 this.Close();

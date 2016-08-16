@@ -14,7 +14,7 @@ namespace ProyectoA
         private string conexion;
         private string consultaGlobal;
         private MySqlConnection con = new MySqlConnection();
-        private int indicePgn, tamPgn = 2, totalPgn;
+        private int indicePgn, tamPgn = 30, totalPgn;
 
 
         ///*

@@ -278,15 +278,20 @@ namespace ProyectoA
         {
             f.comboBox4.Text = null;
             f.comboBox5.Text = null;
-            f.dateTimePicker3.Text = null;
+            f.textBox2.Text = null;
+            f.textBox3.Text = null;
+            f.textBox9.Text = null;
+            f.textBox6.Text = null;
             f.textBox5.Text = null;
             f.comboBox6.Text = null;
-            f.textBox4.Text = null;
             f.textBox1.Text = null;
-            f.dateTimePicker4.Text = null;
             f.radioButton8.Checked = false;
             f.radioButton9.Checked = false;
             f.radioButton7.Checked = true;
+            actualizarTextBoxVentaC("", "", f.comboBox9);
+            actualizarTextBoxVentaN("", "", f.comboBox10);
+            f.comboBox9.SelectedItem = null;
+            f.comboBox10.SelectedItem = null;
         }
 
         //Esconde o muestra los botones de paginación
@@ -384,46 +389,49 @@ namespace ProyectoA
             //Comprobación de que los campos obligatorios están completos y los datos introducidos son correctos, en tal caso, añadir datos  
             if (!comprobarCamposMaq(f))
             {
-                //string[] cadTlf;
-                //string insercion;
-                //bool ba = true, bo = true;
+                string insercion;
 
-                //DialogResult b = MessageBox.Show("          Confirmar añadir cliente.", "Confirmación", MessageBoxButtons.OKCancel);
-                //if (b == DialogResult.OK)
-                //{
-                //    insercion = "insert maquina values ('";
+                DialogResult b = MessageBox.Show("          Confirmar añadir máquina.", "Confirmación", MessageBoxButtons.OKCancel);
+                if (b == DialogResult.OK)
+                {
+                    insercion = "insert maquina values ('";
 
-                //    insercion += agregarCamposInsertMaquinas(f);
+                    insercion += agregarCamposInsertMaquinas(f);
+                    Console.WriteLine(insercion);
+                    if (insertMaquinas(insercion))
+                    {
+                        if (f.textBox11.Text != "")
+                        {
+                            if (anadirFichero(f.textBox10.Text, f.openFileDialog1))
+                            {
+                                DialogResult q = MessageBox.Show("Máquina añadida correctamente.\n¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                                if (q == DialogResult.OK) limpCampMaqA(f);
+                            }
+                            else
+                            {
+                                DialogResult q = MessageBox.Show("Ha habido problemas en la inserción. La máquina ha sido creada pero no se pudo subir el archivo adjunto.\n¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                                if (q == DialogResult.OK) limpCampMaqA(f);
+                            }
 
-                //    ba = insertMaquinas(insercion);
-
-                //    if (f.cli_a_tlf_textBox.Text != "")
-                //    {
-                //        //cadTlf = agregarCamposTlf(f.cli_a_tlf_textBox.Text);
-                //        //bo = insertarTelefono(cadTlf, f.cli_a_cod_textBox.Text, f.cli_a_nombEm_textBox.Text);
-                //    }
-
-                //    if (ba && bo)
-                //    {
-                //        DialogResult q = MessageBox.Show("          Usuario añadido correctamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
-                //        if (q == DialogResult.OK) limpCampMaqA(f);
-                //    }
-                //    else if (ba && !bo)
-                //    {
-                //        DialogResult q = MessageBox.Show("          Usuario añadido correctamente, pero error a la hora de insertar los teléfonos" +
-                //            "\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
-                //        if (q == DialogResult.OK) limpCampMaqA(f);
-                //    }
-                //    else if (!ba && bo)
-                //    {
-                //        DialogResult q = MessageBox.Show("          Error al añadir cliente, pero teléfono insertado correctamente. " +
-                //            "El usuario debía de existir previamente.\n          ¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
-                //        if (q == DialogResult.OK) limpCampMaqA(f);
-                //    }
-                //}
+                        }
+                        else
+                        {
+                            DialogResult q = MessageBox.Show("Máquina añadida correctamente.\n¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                            if (q == DialogResult.OK) limpCampMaqA(f);
+                        }
+                    }
+                    else
+                    {
+                        DialogResult q = MessageBox.Show("Error al añadir máquina. Compruebe que la máquina no exista ya y que se cumplen todas las condiciones." +
+                            "\n¿Desea limpiar los campos?", "", MessageBoxButtons.OKCancel);
+                        if (q == DialogResult.OK) limpCampMaqA(f);
+                    }
+                }
             }
+            else MessageBox.Show("No puede agregarse la máquina, compruebe los campos obligatorios y el cumplimiento de las condiciones.");
         }
 
+        
         //GENERA LA SENTENCIA SQL PARA INSERTAR EL CLIENTE
         private bool insertMaquinas(string insercion)
         {
@@ -466,64 +474,86 @@ namespace ProyectoA
         {
             string cadenaCamposI = "";
             //campos normales TABLA CLIENTE
+            string tqw = buscarNumEstado(f.comboBox1.Text);
             cadenaCamposI += f.textBox10.Text;
             cadenaCamposI += "', '" + f.comboBox2.Text;
             cadenaCamposI += "', '" + f.dateTimePicker2.Text;
             cadenaCamposI += "', '" + f.textBox8.Text;
+            cadenaCamposI += "', '" + tqw;
+            //cadenaCamposI += "', '" + f.comboBox1.Text;
             cadenaCamposI += "', '" + f.richTextBox1.Text;
 
             cadenaCamposI += "', '";
-            if (f.checkBox10.Checked) cadenaCamposI += "0";
-            if (f.checkBox10.Checked) cadenaCamposI += "1";
-            if (f.checkBox10.Checked) cadenaCamposI += "2";
-            if (f.checkBox8.Checked) cadenaCamposI += "4";
-            if (f.checkBox7.Checked) cadenaCamposI += "5";
+            if (f.checkBox10.Checked) cadenaCamposI += "012";
+            if (f.checkBox8.Checked) cadenaCamposI += "3";
+            if (f.checkBox7.Checked) cadenaCamposI += "4";
+            if (f.checkBox5.Checked) cadenaCamposI += "5";
+            if (f.checkBox4.Checked) cadenaCamposI += "6";
             if (f.checkBox3.Checked) cadenaCamposI += "7";
             if (f.checkBox2.Checked) cadenaCamposI += "8";
             if (f.checkBox1.Checked) cadenaCamposI += "9";
 
-            cadenaCamposI += "', '" + f.comboBox1.Text;
-            cadenaCamposI += "', '" + f.dateTimePicker1.Text;
-            //cadenaCamposI += "', '" + f.textBox3.Text;
-            //cadenaCamposI += "', '" + f.textBox2.Text;
-            cadenaCamposI += "', '" + f.richTextBox2.Text;
-
-            //añadir aquí lo de los archivos pdf
-
+            cadenaCamposI += "', '" + f.textBox7.Text;
+            if (f.textBox7.Text == "")
+            {
+                cadenaCamposI += "', null";
+                cadenaCamposI += ", '" + f.richTextBox2.Text;
+            }
+            else
+            {
+                cadenaCamposI += "', '" + invierteFecha(f.dateTimePicker5.Text);
+                cadenaCamposI += "', '" + f.richTextBox2.Text;
+            }
+            
+            if (f.comboBox7.Text == "")
+            {
+                cadenaCamposI += "', null, null, null, '";
+                
+            }
+            else
+            {
+                cadenaCamposI += "', '" + f.comboBox7.Text;
+                cadenaCamposI += "', '" + f.comboBox3.Text;
+                cadenaCamposI += "', '" + invierteFecha(f.dateTimePicker1.Text);
+                string targetPath = "";
+                if (f.textBox10.Text != "")
+                {
+                    targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas\" + f.textBox10.Text + Path.GetExtension(f.openFileDialog1.FileName);
+                    cadenaCamposI += "', '" + targetPath;
+                }
+                else cadenaCamposI += "', '";
+            }
             
             cadenaCamposI += "')";
 
             return cadenaCamposI;
         }
 
-        
-        //Realiza la inserción de los tlfs
-        private bool insertarTelefono(string[] cadTlf, string text1, string text2)
+        private string buscarNumEstado(string text)
         {
-            string sentencia;
-            bool resultado = true;
-            string conexion;
             MySqlConnection con = new MySqlConnection();
-
+            string conexion;
+            string resultado = "";
             try
             {
                 conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
                 con.ConnectionString = conexion;
                 con.Open();
 
-                for (int x = 0; x < cadTlf.Length; x++)
+                MySqlCommand comandos = new MySqlCommand();
+                comandos.Connection = con;
+                comandos.CommandText = "select id from estadomaquina where Nombre = '" + text + "'";
+                MySqlDataReader leer = comandos.ExecuteReader();
+
+                if (leer.HasRows)
                 {
-                    sentencia = "insert telefono values ('" + cadTlf[x] + "','" + text1 + "','" + text2 + "')";
-                    MySqlCommand comandos = new MySqlCommand();
-                    comandos.Connection = con;
-                    comandos.CommandText = sentencia;
-                    comandos.ExecuteNonQuery();
+                    leer.Read();
+                    resultado = leer["id"].ToString();
                 }
             }
             catch (Exception error)
             {
-                MessageBox.Show("Error insertando uno o más teléfonos: \n\n" + Convert.ToString(error));
-                resultado = false;
+                MessageBox.Show("Error: " + Convert.ToString(error));
             }
             finally
             {
@@ -538,6 +568,19 @@ namespace ProyectoA
             }
             return resultado;
         }
+
+        private string invierteFecha(string text)
+        {
+            string[] p = text.Split('/');
+            string resultado = null;
+            for(int x = p.Length; x>0; x--)
+            {
+                if (x - 1 == 0) resultado += p[x - 1];
+                else resultado += p[x - 1] + "-";
+            }
+            return resultado;
+        }
+
 
         //Limpia los campos de máquina añadir
         public void limpCampMaqA(Form1 f)
@@ -555,20 +598,22 @@ namespace ProyectoA
             f.checkBox1.Checked = false;
             f.richTextBox1.Text = null;
             f.richTextBox2.Text = null;
-            f.comboBox3.SelectedItem = null;
-            f.comboBox7.SelectedItem = null;
-            f.comboBox8.SelectedItem = null;
-            f.comboBox1.SelectedItem = null;
-            f.comboBox2.SelectedItem = null;
+            f.comboBox8.Text = null;
+            f.comboBox1.Text = null;
+            f.comboBox2.Text = null;
             f.textBox11.Text = null;
             f.textBox10.Text = null;
             f.textBox8.Text = null;
             f.textBox7.Text = null;
+            actualizarTextBoxVentaC("", "", f.comboBox7);
+            actualizarTextBoxVentaN("", "", f.comboBox3);
+            f.comboBox3.SelectedItem = null;
+            f.comboBox7.SelectedItem = null;
 
         }
 
         //Hace la comprobación de que los campos obligatorios correspondientes a MÁQUINA-AÑADIR estén completos
-        private bool comprobarCamposMaq(Form1 f)
+        public bool comprobarCamposMaq(Form1 f)
         {
             bool error = false;
 
@@ -588,17 +633,18 @@ namespace ProyectoA
                 if (!error) error = comprobarNumero(f.textBox10.Text);
 
                 //Comprueba longitud de campos
+                if (!error) if (f.textBox8.TextLength > 45) error = true;
                 if (!error) if (f.textBox7.TextLength > 45) error = true;
                 if (!error) if (f.richTextBox1.TextLength > 700) error = true;
                 if (!error) if (f.richTextBox2.TextLength > 700) error = true;
                 if (!error) error = comprobarDatosVenta(f.comboBox7.Text, f.comboBox3.Text);
+                if (!error) if ((f.comboBox7.Text == "" && f.comboBox3.Text != "") || (f.comboBox7.Text != "" && f.comboBox3.Text == "")) error = true;
 
             }
-            if (error == true) MessageBox.Show("No puede agregarse la máquina, compruebe los campos obligatorios y el cumplimiento de las condiciones.");
             return error;
         }
         //Comprueba el valor del número de la máquina -------------TODO Comprobar si funciona
-        private bool comprobarDatosVenta(string f, string f2)
+        public bool comprobarDatosVenta(string f, string f2)
         {
             if ((f == null || f == "") && (f2 == null || f2 == "")) { return false; }
             else
@@ -648,10 +694,9 @@ namespace ProyectoA
             }
         }
         //Comprueba el valor del número de la máquina
-        private bool comprobarNumero(string f)
+        public bool comprobarNumero(string f)
         {
-            if (f == null || f == "") { }
-            else
+            if (f != null || f != "")
             {
                 char[] numArray = f.ToCharArray();
                 if (numArray.Length == 4)
@@ -663,7 +708,7 @@ namespace ProyectoA
             return false;
         }
         //Comprueba el valor de la familia, estado y modelo
-        private bool comprobarFamilia(string f, string f2)
+        public bool comprobarFamilia(string f, string f2)
         {
             if (f == null || f == "") { return true;  }
             else
@@ -713,20 +758,19 @@ namespace ProyectoA
             }
             
         }
-
         
         //Incorpora el fichero
-        private void añadirFichero(Form1 f)
+        private bool anadirFichero(string ft, OpenFileDialog fo)
         {
-            f.openFileDialog1.InitialDirectory = "";
-            f.openFileDialog1.RestoreDirectory = true;
+            fo.InitialDirectory = "";
+            fo.RestoreDirectory = true;
 
-            if (f.openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (fo.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    string fileName = f.textBox10.Text + Path.GetExtension(f.openFileDialog1.FileName);
-                    string sourcePath = f.openFileDialog1.FileName;
+                    string fileName = ft + Path.GetExtension(fo.FileName);
+                    string sourcePath = fo.FileName;
                     string targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas";
                     string destFile = System.IO.Path.Combine(targetPath, fileName);
 
@@ -735,12 +779,11 @@ namespace ProyectoA
                         System.IO.Directory.CreateDirectory(targetPath);
                     }
                     System.IO.File.Copy(sourcePath, destFile, true);
+                    return true;
                 }
-                catch
-                {
-                    MessageBox.Show("Error a la hora de subir archivo.");
-                }
+                catch{ return false; }
             }
+            return false;
         }
         public void abreDialogo(Form1 f)
         {
@@ -999,7 +1042,7 @@ namespace ProyectoA
                 con.ConnectionString = conexion;
                 con.Open();
 
-                string query = "select distinct NombreEmpresa from cliente where Codigo like '%" + valor +"%' and NombreEmpresa like '%" + valor2 + "%'limit 0, 10;";
+                string query = "select distinct NombreEmpresa from cliente where Codigo like '%" + valor +"%' and NombreEmpresa like '%" + valor2 + "%' limit 0, 10;";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
                 DataTable table = new DataTable();
@@ -1007,8 +1050,8 @@ namespace ProyectoA
 
                 BindingSource bindingSource1 = new BindingSource();
                 bindingSource1.DataSource = table;
+                x.DisplayMember = "NombreEmpresa";
                 x.DataSource = bindingSource1;
-                x.SelectedItem = null;
             }
             catch (MySqlException error)
             {
@@ -1044,8 +1087,8 @@ namespace ProyectoA
 
                 BindingSource bindingSource1 = new BindingSource();
                 bindingSource1.DataSource = table;
+                x.DisplayMember = "Codigo";
                 x.DataSource = bindingSource1;
-                x.SelectedItem = null;
             }
             catch (MySqlException error)
             {

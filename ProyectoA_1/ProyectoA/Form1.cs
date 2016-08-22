@@ -22,6 +22,11 @@ namespace ProyectoA
             buttonDeDe.Hide();
             buttonIz.Hide();
             buttonIzIz.Hide();
+
+            button4.Hide();
+            button5.Hide();
+            button6.Hide();
+            button7.Hide();
         }
 
         private void clienteBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -40,13 +45,8 @@ namespace ProyectoA
             explicacionErrorCamposCA();
 
             //Panel3   Máquina Añadir
-            funM.rellenarComboBoxFamiliaA(this);
-            funM.rellenarComboBoxFamiliaB(this);
-            funM.rellenarComboBoxEstadoA(this);
-            funM.rellenarComboBoxEstadoB(this);
-            funM.actualizarTextBoxVentaC("", "", comboBox7);
-            funM.actualizarTextBoxVentaN("", "", comboBox3);
-            //comprobarCambiosTextBox();
+            rellenarLosComboBox();
+            comprobarCambiosTextBox();
 
             //Panel4   Máquina Buscar
             dataGridView2.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -60,38 +60,226 @@ namespace ProyectoA
             
         }
 
+        //Métodos necesarios para la página máquinas
+        private void rellenarLosComboBox()
+        {
+            funM.rellenarComboBoxFamiliaA(this);
+            funM.rellenarComboBoxFamiliaB(this);
+            funM.rellenarComboBoxEstadoA(this);
+            funM.rellenarComboBoxEstadoB(this);
+            funM.actualizarTextBoxVentaC("", "", comboBox7);
+            funM.actualizarTextBoxVentaN("", "", comboBox3);
+            comboBox3.SelectedItem = null;
+            comboBox7.SelectedItem = null;
+            funM.actualizarTextBoxVentaC("", "", comboBox9);
+            funM.actualizarTextBoxVentaN("", "", comboBox10);
+            comboBox9.SelectedItem = null;
+            comboBox10.SelectedItem = null;
+            if (comboBox8.Text == "") toolTip1.SetToolTip(pictureBox23, "Campo obligatorio. Asegúrese de que la familia existe.");
+            if (comboBox2.Text == "") toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe y el valor número contenga solo dígitos.");
+            if (comboBox1.Text == "") toolTip1.SetToolTip(pictureBox16, "Campo obligatorio. Asegúrese de que el estado existe.");
+        }
         private void comprobarCambiosTextBox()
         {
             comboBox8.TextChanged += ComboBox8_TextChanged;
             comboBox4.TextChanged += ComboBox4_TextChanged;
+            comboBox7.DropDown += ComboBox7_DropDown;
+            comboBox3.DropDown += ComboBox3_DropDown;
+            comboBox9.DropDown += ComboBox9_DropDown;
+            comboBox10.DropDown += ComboBox10_DropDown;
+            comboBox2.TextChanged += ComboBox2_TextChanged;
+            textBox10.TextChanged += TextBox10_TextChanged;
+            comboBox1.TextChanged += ComboBox1_TextChanged;
+            textBox7.TextChanged += TextBox7_TextChanged;
+            textBox8.TextChanged += TextBox8_TextChanged;
+            richTextBox1.TextChanged += RichTextBox1_TextChanged;
+            richTextBox2.TextChanged += RichTextBox2_TextChanged;
             comboBox7.TextChanged += ComboBox7_TextChanged;
             comboBox3.TextChanged += ComboBox3_TextChanged;
         }
-
+        private void TextBox8_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox8.TextLength > 45)
+            {
+                toolTip1.SetToolTip(pictureBox19, "Se ha superado la cantidad de caracteres permitidos: " + textBox8.TextLength + "/45");
+                pictureBox19.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox19, "");
+                pictureBox19.Image = null;
+            }
+        }
         private void ComboBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (!funM.comprobarDatosVenta(comboBox7.Text, comboBox3.Text))
+            {
+                toolTip1.SetToolTip(pictureBox15, "");
+                pictureBox15.Image = ProyectoA.Properties.Resources.tickPos;
+                toolTip1.SetToolTip(pictureBox17, "");
+                pictureBox17.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox15, "Para completar los datos de venta es necesario rellenar tanto el código como el nombre de empresa. Comprobar que exista la empresa con dicho código y nombre.");
+                pictureBox15.Image = ProyectoA.Properties.Resources.tickNeg;
+                toolTip1.SetToolTip(pictureBox17, "Para completar los datos de venta es necesario rellenar tanto el código como el nombre de empresa. Comprobar que exista la empresa con dicho código y nombre.");
+                pictureBox17.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            if (comboBox3.Text == "" && comboBox7.Text == "")
+            {
+                pictureBox17.Image = null;
+                pictureBox15.Image = null;
+            }
+        }
+        private void ComboBox7_TextChanged(object sender, EventArgs e)
+        {
+            if (!funM.comprobarDatosVenta(comboBox7.Text, comboBox3.Text))
+            {
+                toolTip1.SetToolTip(pictureBox15, "");
+                pictureBox15.Image = ProyectoA.Properties.Resources.tickPos;
+                toolTip1.SetToolTip(pictureBox17, "");
+                pictureBox17.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox15, "Necesario completar tanto el código como el nombre de empresa. Comprobar que exista la empresa con dicho código y nombre.");
+                pictureBox15.Image = ProyectoA.Properties.Resources.tickNeg;
+                toolTip1.SetToolTip(pictureBox17, "Necesario completar tanto el código como el nombre de empresa. Comprobar que exista la empresa con dicho código y nombre.");
+                pictureBox17.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            if (comboBox3.Text == "" && comboBox7.Text == "")
+            {
+                pictureBox17.Image = null;
+                pictureBox15.Image = null;
+            }
+        }
+        private void RichTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (richTextBox2.TextLength > 700)
+            {
+                toolTip1.SetToolTip(pictureBox20, "Se ha superado la cantidad de caracteres permitidos: " + richTextBox2.TextLength + "/700");
+                pictureBox20.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox20, "");
+                pictureBox20.Image = null;
+            }
+        }
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (richTextBox1.TextLength > 700)
+            {
+                toolTip1.SetToolTip(pictureBox21, "Se ha superado la cantidad de caracteres permitidos: " + richTextBox1.TextLength + "/700");
+                pictureBox21.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox21, "");
+                pictureBox21.Image = null;
+            }
+        }
+        private void TextBox7_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox7.TextLength > 45)
+            {
+                toolTip1.SetToolTip(pictureBox22, "Se ha superado la cantidad de caracteres permitidos: " + textBox7.TextLength + "/45");
+                pictureBox22.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox22, "");
+                pictureBox22.Image = null;
+            }
+        }
+        private void ComboBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (funM.comprobarFamilia("estadosmaquina", comboBox1.Text))
+            {
+                toolTip1.SetToolTip(pictureBox16, "Campo obligatorio. Asegúrese de que el estado existe.");
+                pictureBox16.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox16, "");
+                pictureBox16.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+        }
+        private void TextBox10_TextChanged(object sender, EventArgs e)
+        {
+            if (funM.comprobarFamilia("modelo", comboBox2.Text) || funM.comprobarNumero(textBox10.Text))
+            {
+                toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe y el valor número contenga solo dígitos.");
+                pictureBox13.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox13, "");
+                pictureBox13.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+        }
+        private void ComboBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (funM.comprobarFamilia("modelo", comboBox2.Text) || funM.comprobarNumero(textBox10.Text))
+            {
+                toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe y el valor número contenga solo dígitos.");
+                pictureBox13.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox13, "");
+                pictureBox13.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+        }
+        private void ComboBox10_DropDown(object sender, EventArgs e)
+        {
+            string a = comboBox9.Text;
+            string b = comboBox10.Text;
+            funM.actualizarTextBoxVentaN(a, b, comboBox10);
+            funM.actualizarTextBoxVentaC(b, a, comboBox9);
+            if (a == null || a == "") comboBox9.SelectedItem = null;
+        }
+        private void ComboBox9_DropDown(object sender, EventArgs e)
+        {
+            string a = comboBox9.Text;
+            string b = comboBox10.Text;
+            funM.actualizarTextBoxVentaC(b, a, comboBox9);
+            funM.actualizarTextBoxVentaN(a, b, comboBox10);
+            if (b == null || b == "") comboBox10.SelectedItem = null;
+        }
+        private void ComboBox3_DropDown(object sender, EventArgs e)
         {
             string a = comboBox7.Text;
             string b = comboBox3.Text;
             funM.actualizarTextBoxVentaN(a, b, comboBox3);
-            funM.actualizarTextBoxVentaC(b,a, comboBox7);
-
+            funM.actualizarTextBoxVentaC(b, a, comboBox7);
+            if(a == null || a == "") comboBox7.SelectedItem = null;
         }
-        private void ComboBox7_TextChanged(object sender, EventArgs e)
+        private void ComboBox7_DropDown(object sender, EventArgs e)
         {
             string a = comboBox7.Text;
             string b = comboBox3.Text;
-            funM.actualizarTextBoxVentaC(b,a, comboBox7);
-            funM.actualizarTextBoxVentaN(a,b, comboBox3);
-
+            funM.actualizarTextBoxVentaC(b, a, comboBox7);
+            funM.actualizarTextBoxVentaN(a, b, comboBox3);
+            if (b == null || b == "") comboBox3.SelectedItem = null;
         }
-
         private void ComboBox4_TextChanged(object sender, EventArgs e)
         {
             funM.rellenarComboBoxModeloB(this);
         }
-
         private void ComboBox8_TextChanged(object sender, EventArgs e)
         {
+            if (!funM.comprobarFamilia("familia", comboBox8.Text))
+            {
+                toolTip1.SetToolTip(pictureBox23, "");
+                pictureBox23.Image = ProyectoA.Properties.Resources.tickPos;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox23, "Campo obligatorio. Asegúrese de que la familia existe.");
+                pictureBox23.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
             funM.rellenarComboBoxModeloA(this);
         }
 
@@ -113,7 +301,6 @@ namespace ProyectoA
             cli_a_nombApell_textBox.TextChanged += Cli_a_nombApell_textBox_TextChanged;
             cli_a_observacion_richTextBox.TextChanged += Cli_a_observacion_richTextBox_TextChanged;
         }
-
         //Muestra el error de los campos que son obligatorios cuando no se ha tocado ningún label
         private void explicacionErrorCamposCA()
         {
@@ -127,7 +314,7 @@ namespace ProyectoA
                             "\n\n          Ejemplo NIE: 'X1234567A'");
             if (!cli_a_activo_SI_radioButton.Checked && !cli_a_activo_NO_radioButton.Checked) toolTip1.SetToolTip(pictureBox9, "Campo obligatorio.");
         }
-        
+        //Métodos necesarios para la página clientes
         private void Cli_a_observacion_richTextBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_observacion_richTextBox.TextLength > 700)
@@ -141,7 +328,6 @@ namespace ProyectoA
                 pictureBox12.Image = null;
             }
         }
-
         private void Cli_a_nombApell_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_nombApell_textBox.TextLength > 45)
@@ -155,7 +341,6 @@ namespace ProyectoA
                 pictureBox11.Image = null;
             }
         }
-
         private void Cli_a_cad_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_cad_textBox.TextLength > 45)
@@ -169,7 +354,6 @@ namespace ProyectoA
                 pictureBox10.Image = null;
             }
         }
-
         private void Cli_a_activo_NO_radioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (!cli_a_activo_SI_radioButton.Checked && !cli_a_activo_NO_radioButton.Checked)
@@ -183,7 +367,6 @@ namespace ProyectoA
                 pictureBox9.Image = ProyectoA.Properties.Resources.tickPos;
             }
         }
-
         private void Cli_a_activo_SI_radioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (!cli_a_activo_SI_radioButton.Checked && !cli_a_activo_NO_radioButton.Checked)
@@ -197,7 +380,6 @@ namespace ProyectoA
                 pictureBox9.Image = ProyectoA.Properties.Resources.tickPos;
             }
         }
-
         private void Cli_a_tlf_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_tlf_textBox.TextLength != 0)
@@ -221,7 +403,6 @@ namespace ProyectoA
                 pictureBox8.Image = null;
             }
         }
-
         private void Cli_a_dni_textBox_TextChanged(object sender, EventArgs e)
         {
             if (!funClien.comprobarDni(this))
@@ -238,7 +419,6 @@ namespace ProyectoA
                 pictureBox7.Image = ProyectoA.Properties.Resources.tickNeg;
             }
         }
-
         private void Cli_a_poblacion_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_poblacion_textBox.TextLength != 0)
@@ -260,7 +440,6 @@ namespace ProyectoA
                 pictureBox6.Image = ProyectoA.Properties.Resources.tickNeg;
             }
         }
-
         private void Cli_a_cp_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_cp_textBox.TextLength != 0)
@@ -282,7 +461,6 @@ namespace ProyectoA
                 pictureBox5.Image = null;
             }
         }
-
         private void Cli_a_dir_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_dir_textBox.TextLength != 0)
@@ -304,7 +482,6 @@ namespace ProyectoA
                 pictureBox4.Image = ProyectoA.Properties.Resources.tickNeg;
             }
         }
-
         private void Cli_a_cif_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_cif_textBox.TextLength != 0)
@@ -327,7 +504,6 @@ namespace ProyectoA
                 pictureBox3.Image = null;
             }
         }
-        
         private void Cli_a_nombEm_textBox_TextChanged(object sender, EventArgs e)
         {
             if (cli_a_nombEm_textBox.TextLength != 0)
@@ -349,7 +525,6 @@ namespace ProyectoA
                 pictureBox2.Image = ProyectoA.Properties.Resources.tickNeg;
             }
         }
-
         private void Cli_a_cod_textBox_TextChanged(object sender, EventArgs e)
         {
             if (!funClien.comprobarCodigo(this))
@@ -521,7 +696,6 @@ namespace ProyectoA
                 Form perfilClient = new PerfilCliente(a, b);
                 perfilClient.Show();
                 perfilClient.FormClosed += PerfilClient_FormClosed;
-                
             }
             catch{ }
         }
@@ -552,7 +726,6 @@ namespace ProyectoA
         private void BOTONprueba_Click(object sender, EventArgs e)
         {
             funM.abreDialogo(this);
-            
         }
 
         //BOTÓN DE AGREGAR MÁQUINA
@@ -574,7 +747,6 @@ namespace ProyectoA
             EdicM.Show();
             EdicM.FormClosed += EdicM_FormClosed;
         }
-
         private void EdicM_FormClosed(object sender, FormClosedEventArgs e)
         {
             funM.rellenarComboBoxFamiliaA(this);
@@ -582,19 +754,44 @@ namespace ProyectoA
             comboBox5.SelectedItem = null;
             comboBox2.SelectedItem = null;
         }
-
-        //PESTAÑA EDICIÓN MÁQUINAS ESTADOS
         private void estadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form estMa = new estadoMaquina();
             estMa.Show();
             estMa.FormClosed += EstMa_FormClosed;
         }
-
         private void EstMa_FormClosed(object sender, FormClosedEventArgs e)
         {
             funM.rellenarComboBoxEstadoA(this);
             funM.rellenarComboBoxEstadoB(this);
+        }
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Form EdicM = new EdicMacFM();
+            EdicM.Show();
+            EdicM.FormClosed += EdicM_FormClosed;
+        }
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Form estMa = new estadoMaquina();
+            estMa.Show();
+            estMa.FormClosed += EstMa_FormClosed;
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            funM.botonPgnII(this);
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            funM.botonPgnI(this);
+        }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            funM.botonPgnD(this);
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            funM.botonPgnDD(this);
         }
     }
 }

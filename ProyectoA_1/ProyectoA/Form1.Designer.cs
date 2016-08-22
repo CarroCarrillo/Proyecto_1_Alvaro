@@ -167,18 +167,18 @@ namespace ProyectoA
             this.botonMaqA = new System.Windows.Forms.Button();
             this.botonMaqB = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox10 = new System.Windows.Forms.ComboBox();
+            this.comboBox9 = new System.Windows.Forms.ComboBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
@@ -206,13 +206,14 @@ namespace ProyectoA
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button10 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.pictureBox23 = new System.Windows.Forms.PictureBox();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.BOTONprueba = new System.Windows.Forms.Button();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -222,7 +223,6 @@ namespace ProyectoA
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
@@ -338,12 +338,10 @@ namespace ProyectoA
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -572,7 +570,7 @@ namespace ProyectoA
             // 
             label37.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label37.AutoSize = true;
-            label37.Location = new System.Drawing.Point(895, 107);
+            label37.Location = new System.Drawing.Point(857, 106);
             label37.Name = "label37";
             label37.Size = new System.Drawing.Size(65, 13);
             label37.TabIndex = 53;
@@ -612,7 +610,7 @@ namespace ProyectoA
             // 
             label33.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label33.AutoSize = true;
-            label33.Location = new System.Drawing.Point(801, 21);
+            label33.Location = new System.Drawing.Point(836, 22);
             label33.Name = "label33";
             label33.Size = new System.Drawing.Size(86, 13);
             label33.TabIndex = 127;
@@ -622,7 +620,7 @@ namespace ProyectoA
             // 
             label34.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label34.AutoSize = true;
-            label34.Location = new System.Drawing.Point(797, 45);
+            label34.Location = new System.Drawing.Point(832, 46);
             label34.Name = "label34";
             label34.Size = new System.Drawing.Size(90, 13);
             label34.TabIndex = 128;
@@ -773,7 +771,7 @@ namespace ProyectoA
             // 
             label39.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label39.AutoSize = true;
-            label39.Location = new System.Drawing.Point(426, 22);
+            label39.Location = new System.Drawing.Point(458, 22);
             label39.Name = "label39";
             label39.Size = new System.Drawing.Size(82, 13);
             label39.TabIndex = 149;
@@ -1761,20 +1759,20 @@ namespace ProyectoA
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.AutoScroll = true;
-            this.panel4.Controls.Add(this.dateTimePicker3);
+            this.panel4.Controls.Add(this.comboBox10);
+            this.panel4.Controls.Add(this.comboBox9);
+            this.panel4.Controls.Add(this.textBox6);
+            this.panel4.Controls.Add(this.textBox3);
             this.panel4.Controls.Add(this.comboBox5);
             this.panel4.Controls.Add(this.textBox2);
             this.panel4.Controls.Add(label35);
-            this.panel4.Controls.Add(this.dateTimePicker6);
             this.panel4.Controls.Add(this.textBox9);
             this.panel4.Controls.Add(this.label36);
             this.panel4.Controls.Add(label39);
             this.panel4.Controls.Add(this.label17);
-            this.panel4.Controls.Add(this.dateTimePicker4);
             this.panel4.Controls.Add(this.comboBox4);
             this.panel4.Controls.Add(this.comboBox6);
             this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.textBox4);
             this.panel4.Controls.Add(this.textBox5);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Controls.Add(label29);
@@ -1797,17 +1795,39 @@ namespace ProyectoA
             this.panel4.Size = new System.Drawing.Size(1166, 491);
             this.panel4.TabIndex = 73;
             // 
-            // dateTimePicker3
+            // comboBox10
             // 
-            this.dateTimePicker3.AllowDrop = true;
-            this.dateTimePicker3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateTimePicker3.CustomFormat = "yyyy";
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker3.Location = new System.Drawing.Point(238, 44);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.ShowUpDown = true;
-            this.dateTimePicker3.Size = new System.Drawing.Size(56, 20);
-            this.dateTimePicker3.TabIndex = 157;
+            this.comboBox10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBox10.FormattingEnabled = true;
+            this.comboBox10.Location = new System.Drawing.Point(933, 44);
+            this.comboBox10.Name = "comboBox10";
+            this.comboBox10.Size = new System.Drawing.Size(180, 21);
+            this.comboBox10.TabIndex = 160;
+            // 
+            // comboBox9
+            // 
+            this.comboBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBox9.FormattingEnabled = true;
+            this.comboBox9.Location = new System.Drawing.Point(933, 18);
+            this.comboBox9.Name = "comboBox9";
+            this.comboBox9.Size = new System.Drawing.Size(180, 21);
+            this.comboBox9.TabIndex = 159;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox6.Location = new System.Drawing.Point(555, 43);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(180, 20);
+            this.textBox6.TabIndex = 158;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox3.Location = new System.Drawing.Point(238, 43);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(56, 20);
+            this.textBox3.TabIndex = 157;
             // 
             // comboBox5
             // 
@@ -1821,33 +1841,24 @@ namespace ProyectoA
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(300, 44);
+            this.textBox2.Location = new System.Drawing.Point(300, 43);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(56, 20);
             this.textBox2.TabIndex = 154;
             // 
-            // dateTimePicker6
-            // 
-            this.dateTimePicker6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateTimePicker6.CustomFormat = "";
-            this.dateTimePicker6.Location = new System.Drawing.Point(523, 43);
-            this.dateTimePicker6.Name = "dateTimePicker6";
-            this.dateTimePicker6.Size = new System.Drawing.Size(198, 20);
-            this.dateTimePicker6.TabIndex = 152;
-            // 
             // textBox9
             // 
             this.textBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox9.Location = new System.Drawing.Point(523, 18);
+            this.textBox9.Location = new System.Drawing.Point(555, 18);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(198, 20);
+            this.textBox9.Size = new System.Drawing.Size(180, 20);
             this.textBox9.TabIndex = 151;
             // 
             // label36
             // 
             this.label36.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(406, 47);
+            this.label36.Location = new System.Drawing.Point(438, 47);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(102, 13);
             this.label36.TabIndex = 150;
@@ -1861,15 +1872,6 @@ namespace ProyectoA
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(0, 13);
             this.label17.TabIndex = 148;
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateTimePicker4.CustomFormat = "";
-            this.dateTimePicker4.Location = new System.Drawing.Point(903, 66);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(198, 20);
-            this.dateTimePicker4.TabIndex = 146;
             // 
             // comboBox4
             // 
@@ -1892,18 +1894,10 @@ namespace ProyectoA
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(903, 42);
+            this.textBox1.Location = new System.Drawing.Point(933, 70);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 20);
+            this.textBox1.Size = new System.Drawing.Size(180, 20);
             this.textBox1.TabIndex = 133;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.Location = new System.Drawing.Point(903, 18);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(198, 20);
-            this.textBox4.TabIndex = 132;
             // 
             // textBox5
             // 
@@ -1917,7 +1911,7 @@ namespace ProyectoA
             // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(817, 72);
+            this.label25.Location = new System.Drawing.Point(852, 73);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(70, 13);
             this.label25.TabIndex = 129;
@@ -1934,6 +1928,7 @@ namespace ProyectoA
             this.button4.Text = "> >";
             this.toolTip1.SetToolTip(this.button4, "Última página");
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -1944,6 +1939,7 @@ namespace ProyectoA
             this.button5.Text = "< <";
             this.toolTip1.SetToolTip(this.button5, "Primera página");
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -1954,6 +1950,7 @@ namespace ProyectoA
             this.button6.Text = "<";
             this.toolTip1.SetToolTip(this.button6, "Página anterior");
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -1965,6 +1962,7 @@ namespace ProyectoA
             this.button7.Text = ">";
             this.toolTip1.SetToolTip(this.button7, "Página siguiente");
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -1993,7 +1991,7 @@ namespace ProyectoA
             this.groupBox1.Controls.Add(this.radioButton7);
             this.groupBox1.Controls.Add(this.radioButton8);
             this.groupBox1.Controls.Add(this.radioButton9);
-            this.groupBox1.Location = new System.Drawing.Point(975, 92);
+            this.groupBox1.Location = new System.Drawing.Point(937, 91);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(114, 36);
             this.groupBox1.TabIndex = 68;
@@ -2139,6 +2137,8 @@ namespace ProyectoA
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.button12);
+            this.panel3.Controls.Add(this.button11);
             this.panel3.Controls.Add(this.pictureBox23);
             this.panel3.Controls.Add(this.comboBox8);
             this.panel3.Controls.Add(label40);
@@ -2146,7 +2146,6 @@ namespace ProyectoA
             this.panel3.Controls.Add(this.comboBox3);
             this.panel3.Controls.Add(this.textBox11);
             this.panel3.Controls.Add(this.BOTONprueba);
-            this.panel3.Controls.Add(this.pictureBox14);
             this.panel3.Controls.Add(this.pictureBox22);
             this.panel3.Controls.Add(this.dateTimePicker5);
             this.panel3.Controls.Add(label21);
@@ -2158,7 +2157,6 @@ namespace ProyectoA
             this.panel3.Controls.Add(this.pictureBox21);
             this.panel3.Controls.Add(this.pictureBox20);
             this.panel3.Controls.Add(this.pictureBox19);
-            this.panel3.Controls.Add(this.pictureBox18);
             this.panel3.Controls.Add(this.pictureBox17);
             this.panel3.Controls.Add(this.pictureBox15);
             this.panel3.Controls.Add(this.pictureBox16);
@@ -2194,6 +2192,26 @@ namespace ProyectoA
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1166, 491);
             this.panel3.TabIndex = 72;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(30, 122);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(27, 23);
+            this.button12.TabIndex = 154;
+            this.button12.Text = "+";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(30, 46);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(27, 23);
+            this.button11.TabIndex = 153;
+            this.button11.Text = "+";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // pictureBox23
             // 
@@ -2254,16 +2272,6 @@ namespace ProyectoA
             this.BOTONprueba.Text = "Añadir fichero";
             this.BOTONprueba.UseVisualStyleBackColor = true;
             this.BOTONprueba.Click += new System.EventHandler(this.BOTONprueba_Click);
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox14.InitialImage = null;
-            this.pictureBox14.Location = new System.Drawing.Point(420, 225);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox14.TabIndex = 145;
-            this.pictureBox14.TabStop = false;
             // 
             // pictureBox22
             // 
@@ -2352,16 +2360,6 @@ namespace ProyectoA
             this.pictureBox19.Size = new System.Drawing.Size(20, 20);
             this.pictureBox19.TabIndex = 130;
             this.pictureBox19.TabStop = false;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox18.InitialImage = null;
-            this.pictureBox18.Location = new System.Drawing.Point(420, 359);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox18.TabIndex = 129;
-            this.pictureBox18.TabStop = false;
             // 
             // pictureBox17
             // 
@@ -2781,12 +2779,10 @@ namespace ProyectoA
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
@@ -2879,11 +2875,9 @@ namespace ProyectoA
         public System.Windows.Forms.Button buttonIz;
         public System.Windows.Forms.Button buttonDe;
         public System.Windows.Forms.Panel panel4;
-        public System.Windows.Forms.DateTimePicker dateTimePicker4;
         public System.Windows.Forms.ComboBox comboBox4;
         public System.Windows.Forms.ComboBox comboBox6;
         public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox4;
         public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.Label label25;
         public System.Windows.Forms.Button button4;
@@ -2942,7 +2936,6 @@ namespace ProyectoA
         private System.Windows.Forms.PictureBox pictureBox21;
         private System.Windows.Forms.PictureBox pictureBox20;
         private System.Windows.Forms.PictureBox pictureBox19;
-        private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox16;
@@ -2972,7 +2965,6 @@ namespace ProyectoA
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         public System.Windows.Forms.Label label17;
-        private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox22;
         public System.Windows.Forms.DateTimePicker dateTimePicker5;
         public System.Windows.Forms.CheckBox checkBox4;
@@ -2981,7 +2973,6 @@ namespace ProyectoA
         public System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button BOTONprueba;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
-        public System.Windows.Forms.DateTimePicker dateTimePicker6;
         public System.Windows.Forms.TextBox textBox9;
         public System.Windows.Forms.Label label36;
         public System.Windows.Forms.TextBox textBox11;
@@ -2993,9 +2984,14 @@ namespace ProyectoA
         private System.Windows.Forms.ToolStripMenuItem contratoToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox23;
         public System.Windows.Forms.ComboBox comboBox8;
-        public System.Windows.Forms.DateTimePicker dateTimePicker3;
         public System.Windows.Forms.ComboBox comboBox5;
         public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.ComboBox comboBox10;
+        public System.Windows.Forms.ComboBox comboBox9;
+        public System.Windows.Forms.TextBox textBox6;
+        public System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
     }
 }
 

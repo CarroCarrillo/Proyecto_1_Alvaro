@@ -542,7 +542,7 @@ namespace ProyectoA
 
                 MySqlCommand comandos = new MySqlCommand();
                 comandos.Connection = con;
-                comandos.CommandText = "select id from estadomaquina where Nombre = '" + text + "'";
+                comandos.CommandText = "select id from estadosmaquina where Nombre = '" + text + "'";
                 MySqlDataReader leer = comandos.ExecuteReader();
 
                 if (leer.HasRows)
@@ -762,28 +762,24 @@ namespace ProyectoA
         //Incorpora el fichero
         private bool anadirFichero(string ft, OpenFileDialog fo)
         {
-            fo.InitialDirectory = "";
-            fo.RestoreDirectory = true;
+            //fo.InitialDirectory = "";
+            //fo.RestoreDirectory = true;
 
-            if (fo.ShowDialog() == DialogResult.OK)
+            try
             {
-                try
-                {
-                    string fileName = ft + Path.GetExtension(fo.FileName);
-                    string sourcePath = fo.FileName;
-                    string targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas";
-                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+                string fileName = ft + Path.GetExtension(fo.FileName);
+                string sourcePath = fo.FileName;
+                string targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas";
+                string destFile = System.IO.Path.Combine(targetPath, fileName);
 
-                    if (!System.IO.Directory.Exists(targetPath))
-                    {
-                        System.IO.Directory.CreateDirectory(targetPath);
-                    }
-                    System.IO.File.Copy(sourcePath, destFile, true);
-                    return true;
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
                 }
-                catch{ return false; }
+                System.IO.File.Copy(sourcePath, destFile, true);
+                return true;
             }
-            return false;
+            catch{ return false; }
         }
         public void abreDialogo(Form1 f)
         {

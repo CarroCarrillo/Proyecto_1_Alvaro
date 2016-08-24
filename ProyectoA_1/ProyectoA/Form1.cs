@@ -798,5 +798,10 @@ namespace ProyectoA
         {
             funM.botonIniciarBusqueda(this);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            dataGridView2.RowCount = 1;
+        }
     }
 }

@@ -17,7 +17,6 @@ namespace ProyectoA
         private int indicePgn, tamPgn = 30, totalPgn;
         
 
-
         ///*
         // * BÚSQUEDA
         // * 
@@ -50,10 +49,7 @@ namespace ProyectoA
             devolverConsulta(consulta, f);
             mostrarPgn(f);
         }
-
         
-
-
         //Devuelve el count
         private int devolverContar(string consulta, Form1 f)
         {
@@ -61,7 +57,6 @@ namespace ProyectoA
             string conexion;
             try
             {
-                f.dataGridView1.RowCount = 1;
                 conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
                 con.ConnectionString = conexion;
                 con.Open();
@@ -248,6 +243,26 @@ namespace ProyectoA
                 }
                 else c += " and  Actualizado = ''";
             }
+            
+            if (f.radioButton12.Checked)
+            {
+                if (a == false)
+                {
+                    c += " cliente_Codigo != ''";
+                    a = true;
+                }
+                else c += " and  cliente_Codigo != ''";
+            }
+
+            if (f.radioButton11.Checked)
+            {
+                if (a == false)
+                {
+                    c += " cliente_Codigo is null";
+                    a = true;
+                }
+                else c += " and  cliente_Codigo is null";
+            }
 
             if (c.Length > 6) return c;
             else return "";
@@ -284,9 +299,11 @@ namespace ProyectoA
                         f.dataGridView2.Rows[cont].Cells[0].Value = leer["Modelo_Nombre"].ToString();
                         f.dataGridView2.Rows[cont].Cells[1].Value = leer["Anyo"].ToString();
                         f.dataGridView2.Rows[cont].Cells[2].Value = leer["Numero"].ToString();
-                        //f.dataGridView2.Rows[cont].Cells[3].Value = leer["Familia"].ToString();
+                        string consul1 = "select Familia_Nombre from modelo where Nombre = '" + leer["Modelo_Nombre"].ToString() + "';";
+                        subConsultaSelect(consul1, true, cont, f.dataGridView2);
                         f.dataGridView2.Rows[cont].Cells[4].Value = leer["Descripcion"].ToString();
-                        //f.dataGridView2.Rows[cont].Cells[5].Value = leer["id_maquina"].ToString();
+                        string consul2 = "select Nombre from estadosmaquina where id = '" + leer["id_maquina"].ToString() + "';";
+                        subConsultaSelect(consul2, false, cont, f.dataGridView2);
                         f.dataGridView2.Rows[cont].Cells[6].Value = leer["Observaciones"].ToString();
                         f.dataGridView2.Rows[cont].Cells[7].Value = leer["DatosCompra"].ToString();
                         f.dataGridView2.Rows[cont].Cells[8].Value = leer["FechaAdquisicion"].ToString().Split(' ')[0];
@@ -309,6 +326,46 @@ namespace ProyectoA
                         }
                         cont++;
                     }
+                }
+            }
+            catch (MySqlException error)
+            {
+                MessageBox.Show("Error: " + Convert.ToString(error));
+            }
+            finally
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                }
+            }
+        }
+
+        private void subConsultaSelect(string consulta, bool posicion, int cont, DataGridView cuadros)
+        {
+            MySqlConnection con = new MySqlConnection();
+            string conexion;
+            try
+            {
+                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                con.ConnectionString = conexion;
+                con.Open();
+               
+                MySqlCommand comandos = new MySqlCommand();
+                comandos.Connection = con;
+                comandos.CommandText = consulta;
+                MySqlDataReader leer = comandos.ExecuteReader();
+
+
+                if (leer.HasRows)
+                {
+                    leer.Read();
+                    if(posicion) cuadros.Rows[cont].Cells[3].Value = leer["Familia_Nombre"].ToString();
+                    else cuadros.Rows[cont].Cells[5].Value = leer["Nombre"].ToString();
                 }
             }
             catch (MySqlException error)
@@ -485,7 +542,6 @@ namespace ProyectoA
             }
             else MessageBox.Show("No puede agregarse la máquina, compruebe los campos obligatorios y el cumplimiento de las condiciones.");
         }
-
         
         //GENERA LA SENTENCIA SQL PARA INSERTAR EL CLIENTE
         private bool insertMaquinas(string insercion)
@@ -635,7 +691,6 @@ namespace ProyectoA
             }
             return resultado;
         }
-
 
         //Limpia los campos de máquina añadir
         public void limpCampMaqA(Form1 f)

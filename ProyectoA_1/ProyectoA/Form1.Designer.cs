@@ -76,51 +76,12 @@ namespace ProyectoA
             System.Windows.Forms.Label label39;
             System.Windows.Forms.Label label40;
             System.Windows.Forms.Label label35;
+            System.Windows.Forms.Label label43;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.botonClienA = new System.Windows.Forms.Button();
             this.botonClienB = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.cli_a_observacion_richTextBox = new System.Windows.Forms.RichTextBox();
-            this.checkBox_cli_a_tlf = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_dni = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_nomAp = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_poblacion = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cp = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_dir = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cif = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cad = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_nombEm = new System.Windows.Forms.CheckBox();
-            this.checkBox_cli_a_cod = new System.Windows.Forms.CheckBox();
-            this.cli_a_LC_button = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cli_a_activo_NO_radioButton = new System.Windows.Forms.RadioButton();
-            this.cli_a_activo_SI_radioButton = new System.Windows.Forms.RadioButton();
-            this.cli_a_tlf_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_dni_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_nombApell_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_poblacion_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cp_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_dir_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cif_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cad_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_nombEm_textBox = new System.Windows.Forms.TextBox();
-            this.cli_a_cod_textBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cli_a_Agregar_button = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.numPgnLabel = new System.Windows.Forms.Label();
             this.buttonDeDe = new System.Windows.Forms.Button();
@@ -162,6 +123,46 @@ namespace ProyectoA
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.cli_a_observacion_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.checkBox_cli_a_tlf = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_dni = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_nomAp = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_poblacion = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cp = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_dir = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cif = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cad = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_nombEm = new System.Windows.Forms.CheckBox();
+            this.checkBox_cli_a_cod = new System.Windows.Forms.CheckBox();
+            this.cli_a_LC_button = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cli_a_activo_NO_radioButton = new System.Windows.Forms.RadioButton();
+            this.cli_a_activo_SI_radioButton = new System.Windows.Forms.RadioButton();
+            this.cli_a_tlf_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_dni_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_nombApell_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_poblacion_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cp_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_dir_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cif_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cad_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_nombEm_textBox = new System.Windows.Forms.TextBox();
+            this.cli_a_cod_textBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cli_a_Agregar_button = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.botonMaqA = new System.Windows.Forms.Button();
@@ -258,6 +259,10 @@ namespace ProyectoA
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.radioButton12 = new System.Windows.Forms.RadioButton();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -316,9 +321,14 @@ namespace ProyectoA
             label39 = new System.Windows.Forms.Label();
             label40 = new System.Windows.Forms.Label();
             label35 = new System.Windows.Forms.Label();
+            label43 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
@@ -333,10 +343,6 @@ namespace ProyectoA
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -357,6 +363,7 @@ namespace ProyectoA
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // nombreEmpresaLabel
@@ -576,7 +583,7 @@ namespace ProyectoA
             // 
             label37.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label37.AutoSize = true;
-            label37.Location = new System.Drawing.Point(475, 109);
+            label37.Location = new System.Drawing.Point(940, 41);
             label37.Name = "label37";
             label37.Size = new System.Drawing.Size(65, 13);
             label37.TabIndex = 53;
@@ -586,7 +593,7 @@ namespace ProyectoA
             // 
             label29.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label29.AutoSize = true;
-            label29.Location = new System.Drawing.Point(125, 22);
+            label29.Location = new System.Drawing.Point(107, 22);
             label29.Name = "label29";
             label29.Size = new System.Drawing.Size(42, 13);
             label29.TabIndex = 124;
@@ -596,7 +603,7 @@ namespace ProyectoA
             // 
             label31.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label31.AutoSize = true;
-            label31.Location = new System.Drawing.Point(101, 71);
+            label31.Location = new System.Drawing.Point(83, 71);
             label31.Name = "label31";
             label31.Size = new System.Drawing.Size(66, 13);
             label31.TabIndex = 125;
@@ -606,7 +613,7 @@ namespace ProyectoA
             // 
             label32.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label32.AutoSize = true;
-            label32.Location = new System.Drawing.Point(124, 97);
+            label32.Location = new System.Drawing.Point(106, 97);
             label32.Name = "label32";
             label32.Size = new System.Drawing.Size(43, 13);
             label32.TabIndex = 126;
@@ -616,7 +623,7 @@ namespace ProyectoA
             // 
             label33.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label33.AutoSize = true;
-            label33.Location = new System.Drawing.Point(836, 22);
+            label33.Location = new System.Drawing.Point(670, 21);
             label33.Name = "label33";
             label33.Size = new System.Drawing.Size(86, 13);
             label33.TabIndex = 127;
@@ -626,7 +633,7 @@ namespace ProyectoA
             // 
             label34.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label34.AutoSize = true;
-            label34.Location = new System.Drawing.Point(832, 46);
+            label34.Location = new System.Drawing.Point(666, 45);
             label34.Name = "label34";
             label34.Size = new System.Drawing.Size(90, 13);
             label34.TabIndex = 128;
@@ -777,7 +784,7 @@ namespace ProyectoA
             // 
             label39.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label39.AutoSize = true;
-            label39.Location = new System.Drawing.Point(458, 22);
+            label39.Location = new System.Drawing.Point(396, 21);
             label39.Name = "label39";
             label39.Size = new System.Drawing.Size(82, 13);
             label39.TabIndex = 149;
@@ -797,7 +804,7 @@ namespace ProyectoA
             // 
             label35.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label35.AutoSize = true;
-            label35.Location = new System.Drawing.Point(48, 46);
+            label35.Location = new System.Drawing.Point(30, 46);
             label35.Name = "label35";
             label35.Size = new System.Drawing.Size(119, 13);
             label35.TabIndex = 153;
@@ -872,6 +879,407 @@ namespace ProyectoA
             this.botonClienB.Text = "BUSCAR";
             this.botonClienB.UseVisualStyleBackColor = true;
             this.botonClienB.Click += new System.EventHandler(this.botonClienB_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.numPgnLabel);
+            this.panel1.Controls.Add(this.buttonDeDe);
+            this.panel1.Controls.Add(this.buttonIzIz);
+            this.panel1.Controls.Add(this.buttonIz);
+            this.panel1.Controls.Add(this.buttonDe);
+            this.panel1.Controls.Add(this.botonClienLC);
+            this.panel1.Controls.Add(this.botonClienLB);
+            this.panel1.Controls.Add(this.groupBox8);
+            this.panel1.Controls.Add(this.groupBox7);
+            this.panel1.Controls.Add(this.telefonoTextBox);
+            this.panel1.Controls.Add(this.dniTextBox);
+            this.panel1.Controls.Add(this.nombrApellidosTextBox);
+            this.panel1.Controls.Add(this.poblacionTextBox);
+            this.panel1.Controls.Add(this.cpTextBox);
+            this.panel1.Controls.Add(this.direccionTextBox);
+            this.panel1.Controls.Add(this.cifTextBox);
+            this.panel1.Controls.Add(this.cadenaTextBox);
+            this.panel1.Controls.Add(this.nombreEmpresaTextBox);
+            this.panel1.Controls.Add(this.codigoTextBox);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(nombreEmpresaLabel);
+            this.panel1.Controls.Add(cadenaLabel);
+            this.panel1.Controls.Add(cifLabel);
+            this.panel1.Controls.Add(direccionLabel);
+            this.panel1.Controls.Add(poblacionLabel);
+            this.panel1.Controls.Add(cpLabel);
+            this.panel1.Controls.Add(nombreApellidosLabel);
+            this.panel1.Controls.Add(dniLabel);
+            this.panel1.Controls.Add(activoLabel);
+            this.panel1.Controls.Add(actualizadoLabel);
+            this.panel1.Controls.Add(codigoLabel);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Location = new System.Drawing.Point(6, 63);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1166, 491);
+            this.panel1.TabIndex = 1;
+            // 
+            // numPgnLabel
+            // 
+            this.numPgnLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.numPgnLabel.AutoSize = true;
+            this.numPgnLabel.Location = new System.Drawing.Point(1005, 174);
+            this.numPgnLabel.Name = "numPgnLabel";
+            this.numPgnLabel.Size = new System.Drawing.Size(0, 13);
+            this.numPgnLabel.TabIndex = 75;
+            // 
+            // buttonDeDe
+            // 
+            this.buttonDeDe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeDe.Location = new System.Drawing.Point(1122, 167);
+            this.buttonDeDe.Name = "buttonDeDe";
+            this.buttonDeDe.Size = new System.Drawing.Size(38, 21);
+            this.buttonDeDe.TabIndex = 74;
+            this.buttonDeDe.Text = "> >";
+            this.toolTip1.SetToolTip(this.buttonDeDe, "Última página");
+            this.buttonDeDe.UseVisualStyleBackColor = true;
+            this.buttonDeDe.Click += new System.EventHandler(this.buttonDeDe_Click);
+            // 
+            // buttonIzIz
+            // 
+            this.buttonIzIz.Location = new System.Drawing.Point(7, 167);
+            this.buttonIzIz.Name = "buttonIzIz";
+            this.buttonIzIz.Size = new System.Drawing.Size(38, 21);
+            this.buttonIzIz.TabIndex = 73;
+            this.buttonIzIz.Text = "< <";
+            this.toolTip1.SetToolTip(this.buttonIzIz, "Primera página");
+            this.buttonIzIz.UseVisualStyleBackColor = true;
+            this.buttonIzIz.Click += new System.EventHandler(this.buttonIzIz_Click);
+            // 
+            // buttonIz
+            // 
+            this.buttonIz.Location = new System.Drawing.Point(51, 167);
+            this.buttonIz.Name = "buttonIz";
+            this.buttonIz.Size = new System.Drawing.Size(38, 21);
+            this.buttonIz.TabIndex = 72;
+            this.buttonIz.Text = "<";
+            this.toolTip1.SetToolTip(this.buttonIz, "Página anterior");
+            this.buttonIz.UseVisualStyleBackColor = true;
+            this.buttonIz.Click += new System.EventHandler(this.buttonIz_Click);
+            // 
+            // buttonDe
+            // 
+            this.buttonDe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDe.Location = new System.Drawing.Point(1078, 167);
+            this.buttonDe.Name = "buttonDe";
+            this.buttonDe.Size = new System.Drawing.Size(38, 21);
+            this.buttonDe.TabIndex = 71;
+            this.buttonDe.Text = ">";
+            this.toolTip1.SetToolTip(this.buttonDe, "Página siguiente");
+            this.buttonDe.UseVisualStyleBackColor = true;
+            this.buttonDe.Click += new System.EventHandler(this.buttonDe_Click);
+            // 
+            // botonClienLC
+            // 
+            this.botonClienLC.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.botonClienLC.Location = new System.Drawing.Point(839, 142);
+            this.botonClienLC.Name = "botonClienLC";
+            this.botonClienLC.Size = new System.Drawing.Size(133, 28);
+            this.botonClienLC.TabIndex = 70;
+            this.botonClienLC.Text = "Limpiar campos";
+            this.botonClienLC.UseVisualStyleBackColor = true;
+            this.botonClienLC.Click += new System.EventHandler(this.botonClienLC_Click);
+            // 
+            // botonClienLB
+            // 
+            this.botonClienLB.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.botonClienLB.Location = new System.Drawing.Point(213, 142);
+            this.botonClienLB.Name = "botonClienLB";
+            this.botonClienLB.Size = new System.Drawing.Size(133, 28);
+            this.botonClienLB.TabIndex = 69;
+            this.botonClienLB.Text = "Limpiar búsqueda";
+            this.botonClienLB.UseVisualStyleBackColor = true;
+            this.botonClienLB.Click += new System.EventHandler(this.botonClienLB_Click);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox8.Controls.Add(this.radioButton6);
+            this.groupBox8.Controls.Add(this.radioButton4);
+            this.groupBox8.Controls.Add(this.radioButton3);
+            this.groupBox8.Location = new System.Drawing.Point(999, 61);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(117, 36);
+            this.groupBox8.TabIndex = 68;
+            this.groupBox8.TabStop = false;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Checked = true;
+            this.radioButton6.Location = new System.Drawing.Point(93, 16);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(14, 13);
+            this.radioButton6.TabIndex = 2;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(48, 14);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(39, 17);
+            this.radioButton4.TabIndex = 1;
+            this.radioButton4.Text = "No";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 13);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(36, 17);
+            this.radioButton3.TabIndex = 0;
+            this.radioButton3.Text = "Sí";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox7.Controls.Add(this.radioButton5);
+            this.groupBox7.Controls.Add(this.radioButton2);
+            this.groupBox7.Controls.Add(this.radioButton1);
+            this.groupBox7.Location = new System.Drawing.Point(999, 19);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(117, 36);
+            this.groupBox7.TabIndex = 67;
+            this.groupBox7.TabStop = false;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Checked = true;
+            this.radioButton5.Location = new System.Drawing.Point(93, 15);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(14, 13);
+            this.radioButton5.TabIndex = 2;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(48, 13);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(39, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "No";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 13);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(36, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.Text = "Sí";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // telefonoTextBox
+            // 
+            this.telefonoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.telefonoTextBox.Location = new System.Drawing.Point(721, 71);
+            this.telefonoTextBox.Name = "telefonoTextBox";
+            this.telefonoTextBox.Size = new System.Drawing.Size(133, 20);
+            this.telefonoTextBox.TabIndex = 65;
+            // 
+            // dniTextBox
+            // 
+            this.dniTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dniTextBox.Location = new System.Drawing.Point(721, 45);
+            this.dniTextBox.Name = "dniTextBox";
+            this.dniTextBox.Size = new System.Drawing.Size(133, 20);
+            this.dniTextBox.TabIndex = 64;
+            // 
+            // nombrApellidosTextBox
+            // 
+            this.nombrApellidosTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nombrApellidosTextBox.Location = new System.Drawing.Point(721, 19);
+            this.nombrApellidosTextBox.Name = "nombrApellidosTextBox";
+            this.nombrApellidosTextBox.Size = new System.Drawing.Size(133, 20);
+            this.nombrApellidosTextBox.TabIndex = 63;
+            // 
+            // poblacionTextBox
+            // 
+            this.poblacionTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.poblacionTextBox.Location = new System.Drawing.Point(406, 71);
+            this.poblacionTextBox.Name = "poblacionTextBox";
+            this.poblacionTextBox.Size = new System.Drawing.Size(133, 20);
+            this.poblacionTextBox.TabIndex = 62;
+            // 
+            // cpTextBox
+            // 
+            this.cpTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cpTextBox.Location = new System.Drawing.Point(406, 45);
+            this.cpTextBox.Name = "cpTextBox";
+            this.cpTextBox.Size = new System.Drawing.Size(133, 20);
+            this.cpTextBox.TabIndex = 61;
+            // 
+            // direccionTextBox
+            // 
+            this.direccionTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.direccionTextBox.Location = new System.Drawing.Point(406, 19);
+            this.direccionTextBox.Name = "direccionTextBox";
+            this.direccionTextBox.Size = new System.Drawing.Size(133, 20);
+            this.direccionTextBox.TabIndex = 60;
+            // 
+            // cifTextBox
+            // 
+            this.cifTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cifTextBox.Location = new System.Drawing.Point(134, 97);
+            this.cifTextBox.Name = "cifTextBox";
+            this.cifTextBox.Size = new System.Drawing.Size(133, 20);
+            this.cifTextBox.TabIndex = 59;
+            // 
+            // cadenaTextBox
+            // 
+            this.cadenaTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cadenaTextBox.Location = new System.Drawing.Point(134, 71);
+            this.cadenaTextBox.Name = "cadenaTextBox";
+            this.cadenaTextBox.Size = new System.Drawing.Size(133, 20);
+            this.cadenaTextBox.TabIndex = 58;
+            // 
+            // nombreEmpresaTextBox
+            // 
+            this.nombreEmpresaTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.nombreEmpresaTextBox.Location = new System.Drawing.Point(134, 45);
+            this.nombreEmpresaTextBox.Name = "nombreEmpresaTextBox";
+            this.nombreEmpresaTextBox.Size = new System.Drawing.Size(133, 20);
+            this.nombreEmpresaTextBox.TabIndex = 57;
+            // 
+            // codigoTextBox
+            // 
+            this.codigoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.codigoTextBox.Location = new System.Drawing.Point(134, 19);
+            this.codigoTextBox.Name = "codigoTextBox";
+            this.codigoTextBox.Size = new System.Drawing.Size(133, 20);
+            this.codigoTextBox.TabIndex = 56;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(646, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "Teléfono:";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.ColumnTlf,
+            this.Column10,
+            this.Column11});
+            this.dataGridView1.Location = new System.Drawing.Point(7, 194);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1153, 294);
+            this.dataGridView1.TabIndex = 66;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Código";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nombre empresa";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 120;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Cadena";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "CIF";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Dirección";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Población";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "CP";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 50;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Nombre y apellidos";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 120;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "DNI";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 80;
+            // 
+            // ColumnTlf
+            // 
+            this.ColumnTlf.HeaderText = "Teléfono";
+            this.ColumnTlf.Name = "ColumnTlf";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Observaciones";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 159;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Activo";
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 50;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button3.Location = new System.Drawing.Point(472, 132);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(241, 38);
+            this.button3.TabIndex = 54;
+            this.button3.Text = "INICIAR BÚSQUEDA";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel2
             // 
@@ -1303,407 +1711,6 @@ namespace ProyectoA
             this.cli_a_Agregar_button.UseVisualStyleBackColor = true;
             this.cli_a_Agregar_button.Click += new System.EventHandler(this.cli_a_Agregar_button_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.numPgnLabel);
-            this.panel1.Controls.Add(this.buttonDeDe);
-            this.panel1.Controls.Add(this.buttonIzIz);
-            this.panel1.Controls.Add(this.buttonIz);
-            this.panel1.Controls.Add(this.buttonDe);
-            this.panel1.Controls.Add(this.botonClienLC);
-            this.panel1.Controls.Add(this.botonClienLB);
-            this.panel1.Controls.Add(this.groupBox8);
-            this.panel1.Controls.Add(this.groupBox7);
-            this.panel1.Controls.Add(this.telefonoTextBox);
-            this.panel1.Controls.Add(this.dniTextBox);
-            this.panel1.Controls.Add(this.nombrApellidosTextBox);
-            this.panel1.Controls.Add(this.poblacionTextBox);
-            this.panel1.Controls.Add(this.cpTextBox);
-            this.panel1.Controls.Add(this.direccionTextBox);
-            this.panel1.Controls.Add(this.cifTextBox);
-            this.panel1.Controls.Add(this.cadenaTextBox);
-            this.panel1.Controls.Add(this.nombreEmpresaTextBox);
-            this.panel1.Controls.Add(this.codigoTextBox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(nombreEmpresaLabel);
-            this.panel1.Controls.Add(cadenaLabel);
-            this.panel1.Controls.Add(cifLabel);
-            this.panel1.Controls.Add(direccionLabel);
-            this.panel1.Controls.Add(poblacionLabel);
-            this.panel1.Controls.Add(cpLabel);
-            this.panel1.Controls.Add(nombreApellidosLabel);
-            this.panel1.Controls.Add(dniLabel);
-            this.panel1.Controls.Add(activoLabel);
-            this.panel1.Controls.Add(actualizadoLabel);
-            this.panel1.Controls.Add(codigoLabel);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Location = new System.Drawing.Point(6, 63);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1166, 491);
-            this.panel1.TabIndex = 1;
-            // 
-            // numPgnLabel
-            // 
-            this.numPgnLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.numPgnLabel.AutoSize = true;
-            this.numPgnLabel.Location = new System.Drawing.Point(1005, 174);
-            this.numPgnLabel.Name = "numPgnLabel";
-            this.numPgnLabel.Size = new System.Drawing.Size(0, 13);
-            this.numPgnLabel.TabIndex = 75;
-            // 
-            // buttonDeDe
-            // 
-            this.buttonDeDe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeDe.Location = new System.Drawing.Point(1122, 167);
-            this.buttonDeDe.Name = "buttonDeDe";
-            this.buttonDeDe.Size = new System.Drawing.Size(38, 21);
-            this.buttonDeDe.TabIndex = 74;
-            this.buttonDeDe.Text = "> >";
-            this.toolTip1.SetToolTip(this.buttonDeDe, "Última página");
-            this.buttonDeDe.UseVisualStyleBackColor = true;
-            this.buttonDeDe.Click += new System.EventHandler(this.buttonDeDe_Click);
-            // 
-            // buttonIzIz
-            // 
-            this.buttonIzIz.Location = new System.Drawing.Point(7, 167);
-            this.buttonIzIz.Name = "buttonIzIz";
-            this.buttonIzIz.Size = new System.Drawing.Size(38, 21);
-            this.buttonIzIz.TabIndex = 73;
-            this.buttonIzIz.Text = "< <";
-            this.toolTip1.SetToolTip(this.buttonIzIz, "Primera página");
-            this.buttonIzIz.UseVisualStyleBackColor = true;
-            this.buttonIzIz.Click += new System.EventHandler(this.buttonIzIz_Click);
-            // 
-            // buttonIz
-            // 
-            this.buttonIz.Location = new System.Drawing.Point(51, 167);
-            this.buttonIz.Name = "buttonIz";
-            this.buttonIz.Size = new System.Drawing.Size(38, 21);
-            this.buttonIz.TabIndex = 72;
-            this.buttonIz.Text = "<";
-            this.toolTip1.SetToolTip(this.buttonIz, "Página anterior");
-            this.buttonIz.UseVisualStyleBackColor = true;
-            this.buttonIz.Click += new System.EventHandler(this.buttonIz_Click);
-            // 
-            // buttonDe
-            // 
-            this.buttonDe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDe.Location = new System.Drawing.Point(1078, 167);
-            this.buttonDe.Name = "buttonDe";
-            this.buttonDe.Size = new System.Drawing.Size(38, 21);
-            this.buttonDe.TabIndex = 71;
-            this.buttonDe.Text = ">";
-            this.toolTip1.SetToolTip(this.buttonDe, "Página siguiente");
-            this.buttonDe.UseVisualStyleBackColor = true;
-            this.buttonDe.Click += new System.EventHandler(this.buttonDe_Click);
-            // 
-            // botonClienLC
-            // 
-            this.botonClienLC.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.botonClienLC.Location = new System.Drawing.Point(839, 142);
-            this.botonClienLC.Name = "botonClienLC";
-            this.botonClienLC.Size = new System.Drawing.Size(133, 28);
-            this.botonClienLC.TabIndex = 70;
-            this.botonClienLC.Text = "Limpiar campos";
-            this.botonClienLC.UseVisualStyleBackColor = true;
-            this.botonClienLC.Click += new System.EventHandler(this.botonClienLC_Click);
-            // 
-            // botonClienLB
-            // 
-            this.botonClienLB.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.botonClienLB.Location = new System.Drawing.Point(213, 142);
-            this.botonClienLB.Name = "botonClienLB";
-            this.botonClienLB.Size = new System.Drawing.Size(100, 23);
-            this.botonClienLB.TabIndex = 69;
-            this.botonClienLB.Text = "Limpiar búsqueda";
-            this.botonClienLB.UseVisualStyleBackColor = true;
-            this.botonClienLB.Click += new System.EventHandler(this.botonClienLB_Click);
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox8.Controls.Add(this.radioButton6);
-            this.groupBox8.Controls.Add(this.radioButton4);
-            this.groupBox8.Controls.Add(this.radioButton3);
-            this.groupBox8.Location = new System.Drawing.Point(999, 61);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(117, 36);
-            this.groupBox8.TabIndex = 68;
-            this.groupBox8.TabStop = false;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Checked = true;
-            this.radioButton6.Location = new System.Drawing.Point(93, 16);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(14, 13);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(48, 14);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(39, 17);
-            this.radioButton4.TabIndex = 1;
-            this.radioButton4.Text = "No";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 13);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(36, 17);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.Text = "Sí";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox7.Controls.Add(this.radioButton5);
-            this.groupBox7.Controls.Add(this.radioButton2);
-            this.groupBox7.Controls.Add(this.radioButton1);
-            this.groupBox7.Location = new System.Drawing.Point(999, 19);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(117, 36);
-            this.groupBox7.TabIndex = 67;
-            this.groupBox7.TabStop = false;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Checked = true;
-            this.radioButton5.Location = new System.Drawing.Point(93, 15);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(14, 13);
-            this.radioButton5.TabIndex = 2;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(48, 13);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(39, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 13);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(36, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.Text = "Sí";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // telefonoTextBox
-            // 
-            this.telefonoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.telefonoTextBox.Location = new System.Drawing.Point(721, 71);
-            this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.Size = new System.Drawing.Size(133, 20);
-            this.telefonoTextBox.TabIndex = 65;
-            // 
-            // dniTextBox
-            // 
-            this.dniTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dniTextBox.Location = new System.Drawing.Point(721, 45);
-            this.dniTextBox.Name = "dniTextBox";
-            this.dniTextBox.Size = new System.Drawing.Size(133, 20);
-            this.dniTextBox.TabIndex = 64;
-            // 
-            // nombrApellidosTextBox
-            // 
-            this.nombrApellidosTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nombrApellidosTextBox.Location = new System.Drawing.Point(721, 19);
-            this.nombrApellidosTextBox.Name = "nombrApellidosTextBox";
-            this.nombrApellidosTextBox.Size = new System.Drawing.Size(133, 20);
-            this.nombrApellidosTextBox.TabIndex = 63;
-            // 
-            // poblacionTextBox
-            // 
-            this.poblacionTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.poblacionTextBox.Location = new System.Drawing.Point(406, 71);
-            this.poblacionTextBox.Name = "poblacionTextBox";
-            this.poblacionTextBox.Size = new System.Drawing.Size(133, 20);
-            this.poblacionTextBox.TabIndex = 62;
-            // 
-            // cpTextBox
-            // 
-            this.cpTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cpTextBox.Location = new System.Drawing.Point(406, 45);
-            this.cpTextBox.Name = "cpTextBox";
-            this.cpTextBox.Size = new System.Drawing.Size(133, 20);
-            this.cpTextBox.TabIndex = 61;
-            // 
-            // direccionTextBox
-            // 
-            this.direccionTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.direccionTextBox.Location = new System.Drawing.Point(406, 19);
-            this.direccionTextBox.Name = "direccionTextBox";
-            this.direccionTextBox.Size = new System.Drawing.Size(133, 20);
-            this.direccionTextBox.TabIndex = 60;
-            // 
-            // cifTextBox
-            // 
-            this.cifTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cifTextBox.Location = new System.Drawing.Point(134, 97);
-            this.cifTextBox.Name = "cifTextBox";
-            this.cifTextBox.Size = new System.Drawing.Size(133, 20);
-            this.cifTextBox.TabIndex = 59;
-            // 
-            // cadenaTextBox
-            // 
-            this.cadenaTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cadenaTextBox.Location = new System.Drawing.Point(134, 71);
-            this.cadenaTextBox.Name = "cadenaTextBox";
-            this.cadenaTextBox.Size = new System.Drawing.Size(133, 20);
-            this.cadenaTextBox.TabIndex = 58;
-            // 
-            // nombreEmpresaTextBox
-            // 
-            this.nombreEmpresaTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nombreEmpresaTextBox.Location = new System.Drawing.Point(134, 45);
-            this.nombreEmpresaTextBox.Name = "nombreEmpresaTextBox";
-            this.nombreEmpresaTextBox.Size = new System.Drawing.Size(133, 20);
-            this.nombreEmpresaTextBox.TabIndex = 57;
-            // 
-            // codigoTextBox
-            // 
-            this.codigoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.codigoTextBox.Location = new System.Drawing.Point(134, 19);
-            this.codigoTextBox.Name = "codigoTextBox";
-            this.codigoTextBox.Size = new System.Drawing.Size(133, 20);
-            this.codigoTextBox.TabIndex = 56;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(646, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "Teléfono:";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.ColumnTlf,
-            this.Column10,
-            this.Column11});
-            this.dataGridView1.Location = new System.Drawing.Point(7, 194);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1153, 294);
-            this.dataGridView1.TabIndex = 66;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Código";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre empresa";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 120;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Cadena";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "CIF";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Dirección";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Población";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "CP";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 50;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Nombre y apellidos";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 120;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "DNI";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 80;
-            // 
-            // ColumnTlf
-            // 
-            this.ColumnTlf.HeaderText = "Teléfono";
-            this.ColumnTlf.Name = "ColumnTlf";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Observaciones";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 159;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Activo";
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 50;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.Location = new System.Drawing.Point(472, 132);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(241, 38);
-            this.button3.TabIndex = 54;
-            this.button3.Text = "INICIAR BÚSQUEDA";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel2);
@@ -1765,6 +1772,8 @@ namespace ProyectoA
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.groupBox3);
+            this.panel4.Controls.Add(label43);
             this.panel4.Controls.Add(this.textBox12);
             this.panel4.Controls.Add(this.label42);
             this.panel4.Controls.Add(this.textBox4);
@@ -1808,16 +1817,16 @@ namespace ProyectoA
             // textBox12
             // 
             this.textBox12.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox12.Location = new System.Drawing.Point(933, 98);
+            this.textBox12.Location = new System.Drawing.Point(767, 93);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(180, 20);
+            this.textBox12.Size = new System.Drawing.Size(69, 20);
             this.textBox12.TabIndex = 164;
             // 
             // label42
             // 
             this.label42.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(862, 101);
+            this.label42.Location = new System.Drawing.Point(696, 96);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(60, 13);
             this.label42.TabIndex = 163;
@@ -1827,51 +1836,51 @@ namespace ProyectoA
             // textBox4
             // 
             this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.Location = new System.Drawing.Point(555, 70);
+            this.textBox4.Location = new System.Drawing.Point(493, 69);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(180, 20);
+            this.textBox4.Size = new System.Drawing.Size(69, 20);
             this.textBox4.TabIndex = 162;
             // 
             // label41
             // 
             this.label41.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(454, 73);
+            this.label41.Location = new System.Drawing.Point(410, 72);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(86, 13);
+            this.label41.Size = new System.Drawing.Size(68, 13);
             this.label41.TabIndex = 161;
-            this.label41.Text = "Mes adquisición:";
+            this.label41.Text = "Mes compra:";
             // 
             // comboBox10
             // 
             this.comboBox10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(933, 44);
+            this.comboBox10.Location = new System.Drawing.Point(767, 43);
             this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(180, 21);
+            this.comboBox10.Size = new System.Drawing.Size(115, 21);
             this.comboBox10.TabIndex = 160;
             // 
             // comboBox9
             // 
             this.comboBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(933, 18);
+            this.comboBox9.Location = new System.Drawing.Point(767, 17);
             this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(180, 21);
+            this.comboBox9.Size = new System.Drawing.Size(115, 21);
             this.comboBox9.TabIndex = 159;
             // 
             // textBox6
             // 
             this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox6.Location = new System.Drawing.Point(555, 43);
+            this.textBox6.Location = new System.Drawing.Point(493, 42);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(180, 20);
+            this.textBox6.Size = new System.Drawing.Size(69, 20);
             this.textBox6.TabIndex = 158;
             // 
             // textBox3
             // 
             this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(238, 43);
+            this.textBox3.Location = new System.Drawing.Point(220, 43);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(56, 20);
             this.textBox3.TabIndex = 157;
@@ -1880,7 +1889,7 @@ namespace ProyectoA
             // 
             this.comboBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(176, 43);
+            this.comboBox5.Location = new System.Drawing.Point(158, 43);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(56, 21);
             this.comboBox5.TabIndex = 156;
@@ -1888,7 +1897,7 @@ namespace ProyectoA
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(300, 43);
+            this.textBox2.Location = new System.Drawing.Point(282, 43);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(56, 20);
             this.textBox2.TabIndex = 154;
@@ -1896,20 +1905,20 @@ namespace ProyectoA
             // textBox9
             // 
             this.textBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox9.Location = new System.Drawing.Point(555, 18);
+            this.textBox9.Location = new System.Drawing.Point(493, 17);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(180, 20);
+            this.textBox9.Size = new System.Drawing.Size(115, 20);
             this.textBox9.TabIndex = 151;
             // 
             // label36
             // 
             this.label36.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(455, 46);
+            this.label36.Location = new System.Drawing.Point(411, 46);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(85, 13);
+            this.label36.Size = new System.Drawing.Size(67, 13);
             this.label36.TabIndex = 150;
-            this.label36.Text = "Año adquisición:";
+            this.label36.Text = "Año compra:";
             // 
             // label17
             // 
@@ -1924,7 +1933,7 @@ namespace ProyectoA
             // 
             this.comboBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(176, 17);
+            this.comboBox4.Location = new System.Drawing.Point(158, 17);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(180, 21);
             this.comboBox4.TabIndex = 145;
@@ -1933,7 +1942,7 @@ namespace ProyectoA
             // 
             this.comboBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(176, 94);
+            this.comboBox6.Location = new System.Drawing.Point(158, 94);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(180, 21);
             this.comboBox6.TabIndex = 143;
@@ -1941,15 +1950,15 @@ namespace ProyectoA
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(933, 70);
+            this.textBox1.Location = new System.Drawing.Point(767, 69);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
+            this.textBox1.Size = new System.Drawing.Size(69, 20);
             this.textBox1.TabIndex = 133;
             // 
             // textBox5
             // 
             this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox5.Location = new System.Drawing.Point(176, 68);
+            this.textBox5.Location = new System.Drawing.Point(158, 68);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(180, 20);
             this.textBox5.TabIndex = 131;
@@ -1958,7 +1967,7 @@ namespace ProyectoA
             // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(863, 73);
+            this.label25.Location = new System.Drawing.Point(697, 72);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(59, 13);
             this.label25.TabIndex = 129;
@@ -2014,7 +2023,7 @@ namespace ProyectoA
             // button8
             // 
             this.button8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button8.Location = new System.Drawing.Point(839, 160);
+            this.button8.Location = new System.Drawing.Point(839, 142);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(133, 28);
             this.button8.TabIndex = 70;
@@ -2025,12 +2034,13 @@ namespace ProyectoA
             // button9
             // 
             this.button9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button9.Location = new System.Drawing.Point(213, 160);
+            this.button9.Location = new System.Drawing.Point(213, 142);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(133, 28);
             this.button9.TabIndex = 69;
             this.button9.Text = "Limpiar búsqueda";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // groupBox1
             // 
@@ -2038,7 +2048,7 @@ namespace ProyectoA
             this.groupBox1.Controls.Add(this.radioButton7);
             this.groupBox1.Controls.Add(this.radioButton8);
             this.groupBox1.Controls.Add(this.radioButton9);
-            this.groupBox1.Location = new System.Drawing.Point(555, 94);
+            this.groupBox1.Location = new System.Drawing.Point(1020, 26);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(114, 36);
             this.groupBox1.TabIndex = 68;
@@ -2104,7 +2114,7 @@ namespace ProyectoA
             // button10
             // 
             this.button10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button10.Location = new System.Drawing.Point(472, 150);
+            this.button10.Location = new System.Drawing.Point(472, 132);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(241, 38);
             this.button10.TabIndex = 54;
@@ -2709,39 +2719,94 @@ namespace ProyectoA
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox3.Controls.Add(this.radioButton10);
+            this.groupBox3.Controls.Add(this.radioButton11);
+            this.groupBox3.Controls.Add(this.radioButton12);
+            this.groupBox3.Location = new System.Drawing.Point(1020, 68);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(114, 36);
+            this.groupBox3.TabIndex = 70;
+            this.groupBox3.TabStop = false;
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Checked = true;
+            this.radioButton10.Location = new System.Drawing.Point(93, 16);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(14, 13);
+            this.radioButton10.TabIndex = 2;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.UseVisualStyleBackColor = true;
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Location = new System.Drawing.Point(48, 13);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(39, 17);
+            this.radioButton11.TabIndex = 1;
+            this.radioButton11.Text = "No";
+            this.radioButton11.UseVisualStyleBackColor = true;
+            // 
+            // radioButton12
+            // 
+            this.radioButton12.AutoSize = true;
+            this.radioButton12.Location = new System.Drawing.Point(6, 13);
+            this.radioButton12.Name = "radioButton12";
+            this.radioButton12.Size = new System.Drawing.Size(36, 17);
+            this.radioButton12.TabIndex = 0;
+            this.radioButton12.Text = "Sí";
+            this.radioButton12.UseVisualStyleBackColor = true;
+            // 
+            // label43
+            // 
+            label43.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label43.AutoSize = true;
+            label43.Location = new System.Drawing.Point(956, 83);
+            label43.Name = "label43";
+            label43.Size = new System.Drawing.Size(49, 13);
+            label43.TabIndex = 69;
+            label43.Text = "Vendida:";
+            // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Modelo";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Mod.";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 50;
+            this.dataGridViewTextBoxColumn2.Width = 40;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Año";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 50;
+            this.dataGridViewTextBoxColumn3.Width = 40;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Número";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Núm.";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 50;
+            this.dataGridViewTextBoxColumn1.Width = 40;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Familia";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 80;
+            this.dataGridViewTextBoxColumn4.Width = 70;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Descripción";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 70;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "Estado";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 80;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -2756,26 +2821,27 @@ namespace ProyectoA
             // 
             // dataGridViewTextBoxColumn9
             // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Fecha adquisición";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Fecha compra";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 120;
+            this.dataGridViewTextBoxColumn9.Width = 70;
             // 
             // dataGridViewTextBoxColumn7
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Cod. agente";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Cod. empresa";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Width = 50;
             // 
             // dataGridViewTextBoxColumn8
             // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Nombre agente";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Nombre empresa";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 120;
+            this.dataGridViewTextBoxColumn8.Width = 80;
             // 
             // Column13
             // 
             this.Column13.HeaderText = "Fecha Venta";
             this.Column13.Name = "Column13";
+            this.Column13.Width = 70;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -2806,6 +2872,13 @@ namespace ProyectoA
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
@@ -2822,13 +2895,6 @@ namespace ProyectoA
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -2853,6 +2919,8 @@ namespace ProyectoA
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDADataSetBindingSource)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3044,6 +3112,10 @@ namespace ProyectoA
         public System.Windows.Forms.Label label41;
         public System.Windows.Forms.TextBox textBox12;
         public System.Windows.Forms.Label label42;
+        public System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.RadioButton radioButton10;
+        public System.Windows.Forms.RadioButton radioButton11;
+        public System.Windows.Forms.RadioButton radioButton12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

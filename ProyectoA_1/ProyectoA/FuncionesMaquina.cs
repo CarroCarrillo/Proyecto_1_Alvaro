@@ -33,7 +33,7 @@ namespace ProyectoA
             camposWhere = rellenarSelect(f);
 
             //Select count(*)
-            consulta = "select count(*) from maquina ";
+            consulta = "select count(*) contandoF from maquina ";
             consulta += camposWhere;
             totalPgn = devolverContar(consulta, f);
 
@@ -102,102 +102,153 @@ namespace ProyectoA
             bool a = false;
             string c = " where";
 
-            if (f.textBox10.Text != "")
+            if (f.textBox2.Text != "")
             {
-                c += " Numero like '%" + f.textBox10.Text + "%'";
+                c += " Numero like '%" + f.textBox2.Text + "%'";
                 a = true;
             }
 
-            if (f.comboBox2.Text != "")
+            if (f.comboBox5.Text != "")
             {
                 if (a == false)
                 {
-                    c += " Modelo_Nombre like '%" + f.comboBox2.Text + "%'";
+                    c += " Modelo_Nombre like '%" + f.comboBox5.Text + "%'";
                     a = true;
                 }
-                else c += " and Modelo_Nombre like '%" + f.comboBox2.Text + "%'";
+                else c += " and Modelo_Nombre like '%" + f.comboBox5.Text + "%'";
             }
 
-            if (f.dateTimePicker2.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " Anyo like '%" + f.dateTimePicker2.Text + "%'";
-                    a = true;
-                }
-                else c += " and Anyo like '%" + f.dateTimePicker2.Text + "%'";
-            }
-
-            if (f.textBox8.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " Descripcion like '%" + f.textBox8.Text + "%'";
-                    a = true;
-                }
-                else c += " and Descripcion like '%" + f.textBox8.Text + "%'";
-            }
-
-            if (f.comboBox1.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " EstadosMaquina_Id like '%" + f.comboBox1.Text + "%'";
-                    a = true;
-                }
-                else c += " and EstadosMaquina_Id like '%" + f.comboBox1.Text + "%'";
-            }
-            /*
             if (f.textBox3.Text != "")
             {
                 if (a == false)
                 {
-                    c += " _ like '%" + f.textBox3.Text + "%'";
+                    c += " Anyo like '%" + f.textBox3.Text + "%'";
                     a = true;
                 }
-                else c += " and _ like '%" + f.textBox3.Text + "%'";
+                else c += " and Anyo like '%" + f.textBox3.Text + "%'";
             }
 
-            if (f.textBox2.Text != "")
+            if (f.textBox5.Text != "")
             {
                 if (a == false)
                 {
-                    c += " _ like '%" + f.textBox2.Text + "%'";
+                    c += " Descripcion like '%" + f.textBox5.Text + "%'";
                     a = true;
                 }
-                else c += " and _ like '%" + f.textBox2.Text + "%'";
+                else c += " and Descripcion like '%" + f.textBox5.Text + "%'";
             }
 
-            if (f.dateTimePicker1.Text != "")
+            if (f.comboBox6.Text != "")
             {
                 if (a == false)
                 {
-                    c += " _ like '%" + f.dateTimePicker1.Text + "%'";
+                    c += " id_maquina = (select id from estadosmaquina where Nombre = '" + f.comboBox6.Text + "')"; 
                     a = true;
                 }
-                else c += " and _ like '%" + f.dateTimePicker1.Text + "%'";
-            }
-            */
-            if (f.richTextBox1.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " Observaciones like '%" + f.richTextBox1.Text + "%'";
-                    a = true;
-                }
-                else c += " and Observaciones like '%" + f.richTextBox1.Text + "%'";
-            }
-            
-            if (f.richTextBox2.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " ObservacionesAdquisicion like '%" + f.richTextBox2.Text + "%'";
-                }
-                else c += " and ObservacionesAdquisicion like '%" + f.richTextBox2.Text + "%'";
+                else c += " and id_maquina = (select id from estadosmaquina where Nombre = '" + f.comboBox6.Text + "')";
             }
 
-            //INCLUIR LO DEL DOCUMENTO PDF 
+            //Familia
+            if (f.comboBox4.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " Modelo_Nombre in (select Nombre from modelo where Familia_Nombre = '" + f.comboBox4.Text + "')";
+                    a = true;
+                }
+                else c += " and Modelo_Nombre in (select Nombre from modelo where Familia_Nombre = '" + f.comboBox4.Text + "')";
+            }
+
+            if (f.textBox9.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " DatosCompra like '%" + f.textBox9.Text + "%'";
+                    a = true;
+                }
+                else c += " and DatosCompra like '%" + f.textBox9.Text + "%'";
+            }
+
+            if (f.textBox6.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " year(FechaAdquisicion) = '" + f.textBox6.Text + "'";
+                    a = true;
+                }
+                else c += " and year(FechaAdquisicion) = '" + f.textBox6.Text + "'";
+            }
+
+            if (f.textBox4.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " month(FechaAdquisicion) = '" + f.textBox4.Text + "'";
+                    a = true;
+                }
+                else c += " and month(FechaAdquisicion) = '" + f.textBox4.Text + "'";
+            }
+
+            if (f.comboBox9.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " cliente_Codigo = '" + f.comboBox9.Text + "'";
+                    a = true;
+                }
+                else c += " and cliente_Codigo = '" + f.comboBox9.Text + "'";
+            }
+
+            if (f.comboBox10.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " cliente_NombreEmpresa = '" + f.comboBox10.Text + "'";
+                    a = true;
+                }
+                else c += " and cliente_NombreEmpresa = '" + f.comboBox10.Text + "'";
+            }
+
+            if (f.textBox1.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " year(fechaVenta) = '" + f.textBox1.Text + "'";
+                    a = true;
+                }
+                else c += " and year(fechaVenta) = '" + f.textBox1.Text + "'";
+            }
+
+            if (f.textBox12.Text != "")
+            {
+                if (a == false)
+                {
+                    c += " month(fechaVenta) = '" + f.textBox12.Text + "'";
+                    a = true;
+                }
+                else c += " and month(fechaVenta) = '" + f.textBox12.Text + "'";
+            }
+
+            if (f.radioButton9.Checked)
+            {
+                if (a == false)
+                {
+                    c += " Actualizado != ''";
+                    a = true;
+                }
+                else c += " and  Actualizado != ''";
+            }
+
+            if (f.radioButton8.Checked)
+            {
+                if (a == false)
+                {
+                    c += " Actualizado = ''";
+                    a = true;
+                }
+                else c += " and  Actualizado = ''";
+            }
+
             if (c.Length > 6) return c;
             else return "";
         }
@@ -228,28 +279,32 @@ namespace ProyectoA
                 {
                     while (leer.Read())
                     {
-                        f.dataGridView1.Rows.Add();
+                        f.dataGridView2.Rows.Add();
                         
-                        f.dataGridView2.Rows[cont].Cells[0].Value = leer["Modelo_Nombre"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[1].Value = leer["Anyo"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[2].Value = leer["Numero"] + Environment.NewLine;
-                        //f.dataGridView2.Rows[cont].Cells[3].Value = leer["Cif"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[4].Value = leer["Descripcion"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[5].Value = leer["EstadosMaquina_Id"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[6].Value = leer["Observaciones"] + Environment.NewLine;
-                        //f.dataGridView2.Rows[cont].Cells[7].Value = leer["CodigoAgente"] + Environment.NewLine;
-                        //f.dataGridView2.Rows[cont].Cells[8].Value = leer["NombreAgente"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[9].Value = leer["FechaAdquisicion"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[10].Value = leer["ObservacionesAdquisicion"] + Environment.NewLine;
-                        f.dataGridView2.Rows[cont].Cells[11].Value = leer["ImagenAdquisicion"] + Environment.NewLine;
+                        f.dataGridView2.Rows[cont].Cells[0].Value = leer["Modelo_Nombre"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[1].Value = leer["Anyo"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[2].Value = leer["Numero"].ToString();
+                        //f.dataGridView2.Rows[cont].Cells[3].Value = leer["Familia"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[4].Value = leer["Descripcion"].ToString();
+                        //f.dataGridView2.Rows[cont].Cells[5].Value = leer["id_maquina"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[6].Value = leer["Observaciones"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[7].Value = leer["DatosCompra"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[8].Value = leer["FechaAdquisicion"].ToString().Split(' ')[0];
+                        f.dataGridView2.Rows[cont].Cells[9].Value = leer["cliente_Codigo"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[10].Value = leer["cliente_NombreEmpresa"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[11].Value = leer["fechaVenta"].ToString().Split(' ')[0];
+                        f.dataGridView2.Rows[cont].Cells[12].Value = leer["ObservacionesVenta"].ToString();
+                        f.dataGridView2.Rows[cont].Cells[13].Value = leer["fichero"].ToString();
 
-                        if (leer["Actualizado"] + Environment.NewLine != "")
+                        if (leer["Actualizado"].ToString() != "")
                         {
                             cad = leer["Actualizado"].ToString().ToCharArray();
 
                             for (int x = 0; x < cad.Length; x++)
                             {
-                                f.dataGridView2.Rows[cont].Cells[(int)cad[x] - 48].Style.BackColor = Color.LightSkyBlue;
+                                if(x < 3) f.dataGridView2.Rows[cont].Cells[(int)cad[x] - 48].Style.BackColor = Color.LightSkyBlue;
+                                else if(x < 5) f.dataGridView2.Rows[cont].Cells[(int)cad[x] - 47].Style.BackColor = Color.LightSkyBlue;
+                                else f.dataGridView2.Rows[cont].Cells[(int)cad[x] - 46].Style.BackColor = Color.LightSkyBlue;
                             }
                         }
                         cont++;
@@ -397,7 +452,7 @@ namespace ProyectoA
                     insercion = "insert maquina values ('";
 
                     insercion += agregarCamposInsertMaquinas(f);
-                    Console.WriteLine(insercion);
+                    
                     if (insertMaquinas(insercion))
                     {
                         if (f.textBox11.Text != "")

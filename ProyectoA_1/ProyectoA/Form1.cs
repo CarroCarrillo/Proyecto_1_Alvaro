@@ -793,5 +793,10 @@ namespace ProyectoA
         {
             funM.botonPgnDD(this);
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            funM.botonIniciarBusqueda(this);
+        }
     }
 }

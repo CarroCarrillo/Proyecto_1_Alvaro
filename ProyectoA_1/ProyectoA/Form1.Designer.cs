@@ -167,6 +167,10 @@ namespace ProyectoA
             this.botonMaqA = new System.Windows.Forms.Button();
             this.botonMaqB = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.comboBox9 = new System.Windows.Forms.ComboBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -192,18 +196,6 @@ namespace ProyectoA
             this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.radioButton9 = new System.Windows.Forms.RadioButton();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button10 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
@@ -266,6 +258,20 @@ namespace ProyectoA
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bDADataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             nombreEmpresaLabel = new System.Windows.Forms.Label();
             cadenaLabel = new System.Windows.Forms.Label();
             cifLabel = new System.Windows.Forms.Label();
@@ -570,7 +576,7 @@ namespace ProyectoA
             // 
             label37.Anchor = System.Windows.Forms.AnchorStyles.Top;
             label37.AutoSize = true;
-            label37.Location = new System.Drawing.Point(857, 106);
+            label37.Location = new System.Drawing.Point(475, 109);
             label37.Name = "label37";
             label37.Size = new System.Drawing.Size(65, 13);
             label37.TabIndex = 53;
@@ -814,8 +820,8 @@ namespace ProyectoA
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -1701,8 +1707,8 @@ namespace ProyectoA
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Controls.Add(this.panel4);
+            this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -1759,6 +1765,10 @@ namespace ProyectoA
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.AutoScroll = true;
+            this.panel4.Controls.Add(this.textBox12);
+            this.panel4.Controls.Add(this.label42);
+            this.panel4.Controls.Add(this.textBox4);
+            this.panel4.Controls.Add(this.label41);
             this.panel4.Controls.Add(this.comboBox10);
             this.panel4.Controls.Add(this.comboBox9);
             this.panel4.Controls.Add(this.textBox6);
@@ -1794,6 +1804,43 @@ namespace ProyectoA
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1166, 491);
             this.panel4.TabIndex = 73;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox12.Location = new System.Drawing.Point(933, 98);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(180, 20);
+            this.textBox12.TabIndex = 164;
+            // 
+            // label42
+            // 
+            this.label42.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(862, 101);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(60, 13);
+            this.label42.TabIndex = 163;
+            this.label42.Text = "Mes venta:";
+            this.toolTip1.SetToolTip(this.label42, "Añadir los números que se desee separados por una coma.");
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox4.Location = new System.Drawing.Point(555, 70);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(180, 20);
+            this.textBox4.TabIndex = 162;
+            // 
+            // label41
+            // 
+            this.label41.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(454, 73);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(86, 13);
+            this.label41.TabIndex = 161;
+            this.label41.Text = "Mes adquisición:";
             // 
             // comboBox10
             // 
@@ -1858,11 +1905,11 @@ namespace ProyectoA
             // 
             this.label36.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(438, 47);
+            this.label36.Location = new System.Drawing.Point(455, 46);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(102, 13);
+            this.label36.Size = new System.Drawing.Size(85, 13);
             this.label36.TabIndex = 150;
-            this.label36.Text = "  Fecha adquisición:";
+            this.label36.Text = "Año adquisición:";
             // 
             // label17
             // 
@@ -1911,11 +1958,11 @@ namespace ProyectoA
             // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(852, 73);
+            this.label25.Location = new System.Drawing.Point(863, 73);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(70, 13);
+            this.label25.Size = new System.Drawing.Size(59, 13);
             this.label25.TabIndex = 129;
-            this.label25.Text = "Fecha venta:";
+            this.label25.Text = "Año venta:";
             this.toolTip1.SetToolTip(this.label25, "Añadir los números que se desee separados por una coma.");
             // 
             // button4
@@ -1967,7 +2014,7 @@ namespace ProyectoA
             // button8
             // 
             this.button8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button8.Location = new System.Drawing.Point(839, 142);
+            this.button8.Location = new System.Drawing.Point(839, 160);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(133, 28);
             this.button8.TabIndex = 70;
@@ -1978,9 +2025,9 @@ namespace ProyectoA
             // button9
             // 
             this.button9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button9.Location = new System.Drawing.Point(213, 142);
+            this.button9.Location = new System.Drawing.Point(213, 160);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(100, 23);
+            this.button9.Size = new System.Drawing.Size(133, 28);
             this.button9.TabIndex = 69;
             this.button9.Text = "Limpiar búsqueda";
             this.button9.UseVisualStyleBackColor = true;
@@ -1991,7 +2038,7 @@ namespace ProyectoA
             this.groupBox1.Controls.Add(this.radioButton7);
             this.groupBox1.Controls.Add(this.radioButton8);
             this.groupBox1.Controls.Add(this.radioButton9);
-            this.groupBox1.Location = new System.Drawing.Point(937, 91);
+            this.groupBox1.Location = new System.Drawing.Point(555, 94);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(114, 36);
             this.groupBox1.TabIndex = 68;
@@ -2042,9 +2089,11 @@ namespace ProyectoA
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn11,
+            this.Column12,
+            this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
+            this.Column13,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn12});
             this.dataGridView2.Location = new System.Drawing.Point(7, 194);
@@ -2052,85 +2101,16 @@ namespace ProyectoA
             this.dataGridView2.Size = new System.Drawing.Size(1153, 294);
             this.dataGridView2.TabIndex = 66;
             // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Modelo";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Año";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Número";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Familia";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Descripción";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Estado";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "Observaciones";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.Width = 159;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Cod. agente";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Nombre agente";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Fecha adquisición";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "Observaciones adquisición";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.Width = 159;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "Impreso";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.Width = 72;
-            // 
             // button10
             // 
             this.button10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button10.Location = new System.Drawing.Point(472, 132);
+            this.button10.Location = new System.Drawing.Point(472, 150);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(241, 38);
             this.button10.TabIndex = 54;
             this.button10.Text = "INICIAR BÚSQUEDA";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // panel3
             // 
@@ -2729,6 +2709,86 @@ namespace ProyectoA
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Modelo";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Año";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Número";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Familia";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Descripción";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Estado";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "Observaciones";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Width = 159;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Datos Compra";
+            this.Column12.Name = "Column12";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Fecha adquisición";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Cod. agente";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Nombre agente";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 120;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Fecha Venta";
+            this.Column13.Name = "Column13";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "Observaciones venta";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Width = 159;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Impreso";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Width = 72;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2952,18 +3012,6 @@ namespace ProyectoA
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTlf;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         public System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox pictureBox22;
         public System.Windows.Forms.DateTimePicker dateTimePicker5;
@@ -2992,6 +3040,24 @@ namespace ProyectoA
         public System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
+        public System.Windows.Forms.TextBox textBox4;
+        public System.Windows.Forms.Label label41;
+        public System.Windows.Forms.TextBox textBox12;
+        public System.Windows.Forms.Label label42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
     }
 }
 

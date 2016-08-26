@@ -803,5 +803,22 @@ namespace ProyectoA
         {
             dataGridView2.RowCount = 1;
         }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string a = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Form perfilMa = new PerfilMaquinas(a);
+                perfilMa.Show();
+                perfilMa.FormClosed += PerfilMa_FormClosed;
+            }
+            catch(Exception r) { MessageBox.Show(Convert.ToString(r)); }
+        }
+
+        private void PerfilMa_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            funM.reiniciarPgn(this);
+        }
     }
 }

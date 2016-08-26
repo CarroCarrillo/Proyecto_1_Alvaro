@@ -14,7 +14,7 @@ namespace ProyectoA
         private string conexion;
         private string consultaGlobal;
         private MySqlConnection con = new MySqlConnection();
-        private int indicePgn, tamPgn = 30, totalPgn;
+        private int indicePgn, tamPgn = 2, totalPgn;
 
 
         ///*
@@ -44,10 +44,9 @@ namespace ProyectoA
                        "from cliente c left join telefono t on c.Codigo = t.Cliente_Codigo " +
                        "and c.NombreEmpresa = t.Cliente_NombreEmpresa";
             consulta += camposWhere + " group by Codigo, NombreEmpresa";
-
+            consultaGlobal = consulta;
             if (totalPgn > tamPgn)
             {
-                consultaGlobal = consulta;
                 consulta += " order by codigo and codigo limit 0, " + tamPgn.ToString();
                 visibilidadBotonesPgn(f);
             }
@@ -401,7 +400,11 @@ namespace ProyectoA
         public void reiniciarPgn(Form1 f)
         {
             string cons;
-            cons = consultaGlobal + " order by codigo and codigo limit " + indicePgn.ToString() + "," + tamPgn.ToString();
+            if (totalPgn > tamPgn)
+            {
+                cons = consultaGlobal + " order by codigo and codigo limit " + indicePgn.ToString() + "," + tamPgn.ToString();
+            }
+            else cons = consultaGlobal;
             devolverConsulta(cons, f);
             visibilidadBotonesPgn(f);
             mostrarPgn(f);

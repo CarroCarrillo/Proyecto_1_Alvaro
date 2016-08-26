@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -11,51 +12,35 @@ using System.Windows.Forms;
 
 namespace ProyectoA
 {
-    class FuncionesMaquina
+    public partial class PerfilMaquinas : Form
     {
-        private string consultaGlobal;
-        private int indicePgn, tamPgn = 30, totalPgn;
-        
+        private string a;
 
-        ///*
-        // * BÚSQUEDA
-        // * 
-        // */
-
-        //Boton que inicia la búsqueda
-        public void botonIniciarBusqueda(Form1 f)
+        public PerfilMaquinas()
         {
-            string[] cadenaLabels = new string[12];
-            string consulta, camposWhere;
-            indicePgn = 0;
-
-            camposWhere = rellenarSelect(f);
-
-            //Select count(*)
-            consulta = "select count(*) contandoF from maquina ";
-            consulta += camposWhere;
-            totalPgn = devolverContar(consulta, f);
-
-            //Select normal
-            consulta = "select * from maquina ";
-            consulta += camposWhere + " order by Modelo_Nombre, Anyo, Numero ";
-            consultaGlobal = consulta;
-            if (totalPgn > tamPgn)
-            {
-                consulta += " and Modelo_Nombre limit 0, " + tamPgn.ToString();
-                visibilidadBotonesPgn(f);
-            }
-            devolverConsulta(consulta, f);
-            mostrarPgn(f);
+            InitializeComponent();
         }
-        
-        //Devuelve el count
-        private int devolverContar(string consulta, Form1 f)
+
+        public PerfilMaquinas(string x)
+        {
+            InitializeComponent();
+            this.a = x;
+            devolverMaquina();
+            boton_modificar.BackColor = Color.SkyBlue;
+            boton_eliminar.BackColor = Color.Salmon;
+            actualizarImagenesTick();
+        }
+
+        private void devolverMaquina()
         {
             MySqlConnection con = new MySqlConnection();
             string conexion;
             try
             {
+                string consulta;
+                consulta = "select m.*, mo.Familia_Nombre, e.Nombre  from maquina m, modelo mo, estadosmaquina e where "+
+                    "m.Numero = '" + a + "' and mo.Nombre = m.Modelo_Nombre and id = m.id_maquina;";
+
                 conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
                 con.ConnectionString = conexion;
                 con.Open();
@@ -64,307 +49,47 @@ namespace ProyectoA
                 comandos.Connection = con;
                 comandos.CommandText = consulta;
                 MySqlDataReader leer = comandos.ExecuteReader();
-
-                if (leer.HasRows)
-                {
-                    leer.Read();
-                    return Int32.Parse(leer["contandoF"].ToString());
-                }
-            }
-            catch (MySqlException error)
-            {
-                MessageBox.Show("Error: " + Convert.ToString(error));
-            }
-            finally
-            {
-                try
-                {
-                    con.Close();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
-                }
-            }
-            return 0;
-        }
-
-        //CREA EL WHERE DE LA SELECT    
-        //TODO Incluir lo de la tabla cliente y lo de los documentos pdf
-        private string rellenarSelect(Form1 f)
-        {
-            bool a = false;
-            string c = " where";
-
-            if (f.textBox2.Text != "")
-            {
-                c += " Numero like '%" + f.textBox2.Text + "%'";
-                a = true;
-            }
-
-            if (f.comboBox5.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " Modelo_Nombre like '%" + f.comboBox5.Text + "%'";
-                    a = true;
-                }
-                else c += " and Modelo_Nombre like '%" + f.comboBox5.Text + "%'";
-            }
-
-            if (f.textBox3.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " Anyo like '%" + f.textBox3.Text + "%'";
-                    a = true;
-                }
-                else c += " and Anyo like '%" + f.textBox3.Text + "%'";
-            }
-
-            if (f.textBox5.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " Descripcion like '%" + f.textBox5.Text + "%'";
-                    a = true;
-                }
-                else c += " and Descripcion like '%" + f.textBox5.Text + "%'";
-            }
-
-            if (f.comboBox6.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " id_maquina = (select id from estadosmaquina where Nombre = '" + f.comboBox6.Text + "')"; 
-                    a = true;
-                }
-                else c += " and id_maquina = (select id from estadosmaquina where Nombre = '" + f.comboBox6.Text + "')";
-            }
-
-            //Familia
-            if (f.comboBox4.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " Modelo_Nombre in (select Nombre from modelo where Familia_Nombre = '" + f.comboBox4.Text + "')";
-                    a = true;
-                }
-                else c += " and Modelo_Nombre in (select Nombre from modelo where Familia_Nombre = '" + f.comboBox4.Text + "')";
-            }
-
-            if (f.textBox9.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " DatosCompra like '%" + f.textBox9.Text + "%'";
-                    a = true;
-                }
-                else c += " and DatosCompra like '%" + f.textBox9.Text + "%'";
-            }
-
-            if (f.textBox6.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " year(FechaAdquisicion) = '" + f.textBox6.Text + "'";
-                    a = true;
-                }
-                else c += " and year(FechaAdquisicion) = '" + f.textBox6.Text + "'";
-            }
-
-            if (f.textBox4.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " month(FechaAdquisicion) = '" + f.textBox4.Text + "'";
-                    a = true;
-                }
-                else c += " and month(FechaAdquisicion) = '" + f.textBox4.Text + "'";
-            }
-
-            if (f.comboBox9.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " cliente_Codigo = '" + f.comboBox9.Text + "'";
-                    a = true;
-                }
-                else c += " and cliente_Codigo = '" + f.comboBox9.Text + "'";
-            }
-
-            if (f.comboBox10.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " cliente_NombreEmpresa = '" + f.comboBox10.Text + "'";
-                    a = true;
-                }
-                else c += " and cliente_NombreEmpresa = '" + f.comboBox10.Text + "'";
-            }
-
-            if (f.textBox1.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " year(fechaVenta) = '" + f.textBox1.Text + "'";
-                    a = true;
-                }
-                else c += " and year(fechaVenta) = '" + f.textBox1.Text + "'";
-            }
-
-            if (f.textBox12.Text != "")
-            {
-                if (a == false)
-                {
-                    c += " month(fechaVenta) = '" + f.textBox12.Text + "'";
-                    a = true;
-                }
-                else c += " and month(fechaVenta) = '" + f.textBox12.Text + "'";
-            }
-
-            if (f.radioButton9.Checked)
-            {
-                if (a == false)
-                {
-                    c += " Actualizado != ''";
-                    a = true;
-                }
-                else c += " and  Actualizado != ''";
-            }
-
-            if (f.radioButton8.Checked)
-            {
-                if (a == false)
-                {
-                    c += " Actualizado = ''";
-                    a = true;
-                }
-                else c += " and  Actualizado = ''";
-            }
-            
-            if (f.radioButton12.Checked)
-            {
-                if (a == false)
-                {
-                    c += " cliente_Codigo != ''";
-                    a = true;
-                }
-                else c += " and  cliente_Codigo != ''";
-            }
-
-            if (f.radioButton11.Checked)
-            {
-                if (a == false)
-                {
-                    c += " cliente_Codigo is null";
-                    a = true;
-                }
-                else c += " and  cliente_Codigo is null";
-            }
-
-            if (c.Length > 6) return c;
-            else return "";
-        }
-
-        //REALIZA LA CONEXION CON LA BD Y REALIZA LA SELECT
-        //TODO retocar parametros entrada y el actualizado
-        public void devolverConsulta(string consulta, Form1 f)
-        {
-            MySqlConnection con = new MySqlConnection();
-            string conexion;
-            try
-            {
-                f.dataGridView2.RowCount = 1;
-                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
-                con.ConnectionString = conexion;
-                con.Open();
-
-                int cont = 0;
                 char[] cad;
-
-                MySqlCommand comandos = new MySqlCommand();
-                comandos.Connection = con;
-                comandos.CommandText = consulta;
-                MySqlDataReader leer = comandos.ExecuteReader();
 
 
                 if (leer.HasRows)
                 {
                     while (leer.Read())
                     {
-                        f.dataGridView2.Rows.Add();
-                        
-                        f.dataGridView2.Rows[cont].Cells[0].Value = leer["Modelo_Nombre"].ToString();
-                        f.dataGridView2.Rows[cont].Cells[1].Value = leer["Anyo"].ToString();
-                        f.dataGridView2.Rows[cont].Cells[2].Value = leer["Numero"].ToString();
-                        string consul1 = "select Familia_Nombre from modelo where Nombre = '" + leer["Modelo_Nombre"].ToString() + "';";
-                        subConsultaSelect(consul1, true, cont, f.dataGridView2);
-                        f.dataGridView2.Rows[cont].Cells[4].Value = leer["Descripcion"].ToString();
-                        string consul2 = "select Nombre from estadosmaquina where id = '" + leer["id_maquina"].ToString() + "';";
-                        subConsultaSelect(consul2, false, cont, f.dataGridView2);
-                        f.dataGridView2.Rows[cont].Cells[6].Value = leer["Observaciones"].ToString();
-                        f.dataGridView2.Rows[cont].Cells[7].Value = leer["DatosCompra"].ToString();
-                        f.dataGridView2.Rows[cont].Cells[8].Value = leer["FechaAdquisicion"].ToString().Split(' ')[0];
-                        f.dataGridView2.Rows[cont].Cells[9].Value = leer["cliente_Codigo"].ToString();
-                        f.dataGridView2.Rows[cont].Cells[10].Value = leer["cliente_NombreEmpresa"].ToString();
-                        f.dataGridView2.Rows[cont].Cells[11].Value = leer["fechaVenta"].ToString().Split(' ')[0];
-                        f.dataGridView2.Rows[cont].Cells[12].Value = leer["ObservacionesVenta"].ToString();
-                        f.dataGridView2.Rows[cont].Cells[13].Value = leer["fichero"].ToString();
-
+                        comboBox8.Text = leer["Familia_Nombre"].ToString();
+                        comboBox2.Text = leer["Modelo_Nombre"].ToString();
+                        dateTimePicker2.Text = "01/01/" + leer["Anyo"].ToString();
+                        textBox10.Text = leer["Numero"].ToString();
+                        textBox8.Text = leer["Descripcion"].ToString();
+                        comboBox1.Text = leer["Nombre"].ToString();
+                        textBox7.Text = leer["DatosCompra"].ToString();
+                        dateTimePicker5.Text = leer["FechaAdquisicion"].ToString();
+                        comboBox7.Text = leer["cliente_Codigo"].ToString();
+                        comboBox3.Text = leer["cliente_NombreEmpresa"].ToString();
+                        dateTimePicker1.Text = leer["fechaVenta"].ToString();
+                        richTextBox1.Text = leer["Observaciones"].ToString();
+                        richTextBox2.Text = leer["ObservacionesVenta"].ToString();
                         if (leer["Actualizado"].ToString() != "")
                         {
                             cad = leer["Actualizado"].ToString().ToCharArray();
 
                             for (int x = 0; x < cad.Length; x++)
                             {
-                                if(x < 3) f.dataGridView2.Rows[cont].Cells[(int)cad[x] - 48].Style.BackColor = Color.LightSkyBlue;
-                                else if(x < 5) f.dataGridView2.Rows[cont].Cells[(int)cad[x] - 47].Style.BackColor = Color.LightSkyBlue;
-                                else f.dataGridView2.Rows[cont].Cells[(int)cad[x] - 46].Style.BackColor = Color.LightSkyBlue;
+                                if (cad[x] == '0') checkBox10.Checked = true;
+                                else if (cad[x] == '3') checkBox8.Checked = true;
+                                else if (cad[x] == '4') checkBox7.Checked = true;
+                                else if (cad[x] == '5') checkBox5.Checked = true;
+                                else if (cad[x] == '6') checkBox4.Checked = true;
+                                else if (cad[x] == '7') checkBox3.Checked = true;
+                                else if (cad[x] == '8') checkBox2.Checked = true;
+                                else if (cad[x] == '9') checkBox1.Checked = true;
                             }
                         }
-                        cont++;
                     }
                 }
-            }
-            catch (MySqlException error)
-            {
-                MessageBox.Show("Error: " + Convert.ToString(error));
-            }
-            finally
-            {
-                try
+                else
                 {
-                    con.Close();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
-                }
-            }
-        }
-
-        private void subConsultaSelect(string consulta, bool posicion, int cont, DataGridView cuadros)
-        {
-            MySqlConnection con = new MySqlConnection();
-            string conexion;
-            try
-            {
-                conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
-                con.ConnectionString = conexion;
-                con.Open();
-               
-                MySqlCommand comandos = new MySqlCommand();
-                comandos.Connection = con;
-                comandos.CommandText = consulta;
-                MySqlDataReader leer = comandos.ExecuteReader();
-
-
-                if (leer.HasRows)
-                {
-                    leer.Read();
-                    if(posicion) cuadros.Rows[cont].Cells[3].Value = leer["Familia_Nombre"].ToString();
-                    else cuadros.Rows[cont].Cells[5].Value = leer["Nombre"].ToString();
+                    MessageBox.Show("No se ha encontrado dicho cliente.");
                 }
             }
             catch (MySqlException error)
@@ -384,133 +109,15 @@ namespace ProyectoA
             }
         }
 
-        //BOTON LIMPIAR CAMPOS BUSCAR
-        public void limpCampCliB(Form1 f)
+        private void actualizarImagenesTick()
         {
-            f.comboBox4.Text = null;
-            f.comboBox5.Text = null;
-            f.textBox2.Text = null;
-            f.textBox3.Text = null;
-            f.textBox9.Text = null;
-            f.textBox6.Text = null;
-            f.textBox5.Text = null;
-            f.comboBox6.Text = null;
-            f.textBox1.Text = null;
-            f.radioButton8.Checked = false;
-            f.radioButton9.Checked = false;
-            f.radioButton7.Checked = true;
-            actualizarTextBoxVentaC("", "", f.comboBox9);
-            actualizarTextBoxVentaN("", "", f.comboBox10);
-            f.comboBox9.SelectedItem = null;
-            f.comboBox10.SelectedItem = null;
-            f.radioButton10.Checked = true;
+            MessageBox.Show("implementar");
         }
-
-        //Esconde o muestra los botones de paginación
-        public void visibilidadBotonesPgn(Form1 f)
-        {
-            if (indicePgn < tamPgn)
-            {
-                f.button6.Hide();
-                f.button5.Hide();
-            }
-            else
-            {
-                f.button5.Show();
-                f.button6.Show();
-            }
-            if (indicePgn >= totalPgn - tamPgn)
-            {
-                f.button4.Hide();
-                f.button7.Hide();
-            }
-            else
-            {
-                f.button7.Show();
-                f.button4.Show();
-            }
-        }
-
-        //Botón paginación >
-        public void botonPgnD(Form1 f)
-        {
-            string cons;
-            indicePgn += tamPgn;
-            cons = consultaGlobal + " and Modelo_Nombre limit " + indicePgn.ToString() + "," + tamPgn.ToString();
-            devolverConsulta(cons, f);
-            visibilidadBotonesPgn(f);
-            mostrarPgn(f);
-        }
-
-        //Botón paginación >>
-        public void botonPgnDD(Form1 f)
-        {
-            string cons;
-            int r = totalPgn % tamPgn;
-            indicePgn = totalPgn - r;
-            cons = consultaGlobal + " and Modelo_Nombre limit " + indicePgn.ToString() + "," + tamPgn.ToString();
-            devolverConsulta(cons, f);
-            visibilidadBotonesPgn(f);
-            mostrarPgn(f);
-        }
-
-        //Botón paginación <
-        public void botonPgnI(Form1 f)
-        {
-            string cons;
-            indicePgn -= tamPgn;
-            cons = consultaGlobal + " and Modelo_Nombre limit " + indicePgn.ToString() + "," + tamPgn.ToString();
-            devolverConsulta(cons, f);
-            visibilidadBotonesPgn(f);
-            mostrarPgn(f);
-        }
-
-        //Botón paginación <<
-        public void botonPgnII(Form1 f)
-        {
-            string cons;
-            indicePgn = 0;
-            cons = consultaGlobal + " and Modelo_Nombre limit " + indicePgn.ToString() + "," + tamPgn.ToString();
-            devolverConsulta(cons, f);
-            visibilidadBotonesPgn(f);
-            mostrarPgn(f);
-        }
-
-        public void reiniciarPgn(Form1 f)
-        {
-            string cons;
-            if (totalPgn > tamPgn)
-            {
-                cons = consultaGlobal + " and Modelo_Nombre limit " + indicePgn.ToString() + "," + tamPgn.ToString();
-            }
-            else cons = consultaGlobal;
-            devolverConsulta(cons, f);
-            visibilidadBotonesPgn(f);
-            mostrarPgn(f);
-        }
-
-        //Método que muestra la página en la que se está
-        private void mostrarPgn(Form1 f)
-        {
-            double x = 1, y = 1;
-              
-            if (indicePgn != 0) x = Math.Truncate((double)indicePgn / (double)tamPgn) + 1;
-            y = Math.Ceiling((double)totalPgn / (double)tamPgn);
-
-            if (x == 1 && y == 1) f.label17.Text = " ";
-            else f.label17.Text = "Pgn. " + x + "/" + y;
-        }
-
-
-        ///*
-        // * AÑADIR
-        // * 
-        // */
 
         //PRIMER MÉTODO LLAMADO PARA AGREGAR MAQUINA 
         public void botonAgregarMaquina(Form1 f)
         {
-            
+
             //Comprobación de que los campos obligatorios están completos y los datos introducidos son correctos, en tal caso, añadir datos  
             if (!comprobarCamposMaq(f))
             {
@@ -522,7 +129,7 @@ namespace ProyectoA
                     insercion = "insert maquina values ('";
 
                     insercion += agregarCamposInsertMaquinas(f);
-                    
+
                     if (insertMaquinas(insercion))
                     {
                         if (f.textBox11.Text != "")
@@ -555,7 +162,7 @@ namespace ProyectoA
             }
             else MessageBox.Show("No puede agregarse la máquina, compruebe los campos obligatorios y el cumplimiento de las condiciones.");
         }
-        
+
         //GENERA LA SENTENCIA SQL PARA INSERTAR EL CLIENTE
         private bool insertMaquinas(string insercion)
         {
@@ -628,11 +235,11 @@ namespace ProyectoA
                 cadenaCamposI += "', '" + invierteFecha(f.dateTimePicker5.Text);
                 cadenaCamposI += "', '" + f.richTextBox2.Text;
             }
-            
+
             if (f.comboBox7.Text == "")
             {
                 cadenaCamposI += "', null, null, null, '";
-                
+
             }
             else
             {
@@ -647,7 +254,7 @@ namespace ProyectoA
                 }
                 else cadenaCamposI += "', '";
             }
-            
+
             cadenaCamposI += "')";
 
             return cadenaCamposI;
@@ -697,7 +304,7 @@ namespace ProyectoA
         {
             string[] p = text.Split('/');
             string resultado = null;
-            for(int x = p.Length; x>0; x--)
+            for (int x = p.Length; x > 0; x--)
             {
                 if (x - 1 == 0) resultado += p[x - 1];
                 else resultado += p[x - 1] + "-";
@@ -748,7 +355,7 @@ namespace ProyectoA
 
             if (error != true)
             {
-               
+
                 //Comprobar que el CP cumple los requisitos
                 if (!error) error = comprobarFamilia("familia", f.comboBox8.Text);
                 if (!error) error = comprobarFamilia("modelo", f.comboBox2.Text);
@@ -782,7 +389,7 @@ namespace ProyectoA
 
                     MySqlCommand comandos = new MySqlCommand();
                     comandos.Connection = con;
-                    comandos.CommandText = "select count(*) as contado from cliente where Codigo = '" + f + "' and NombreEmpresa = '" + f2 +"';";
+                    comandos.CommandText = "select count(*) as contado from cliente where Codigo = '" + f + "' and NombreEmpresa = '" + f2 + "';";
                     MySqlDataReader leer = comandos.ExecuteReader();
 
                     if (leer.HasRows)
@@ -833,7 +440,7 @@ namespace ProyectoA
         //Comprueba el valor de la familia, estado y modelo
         public bool comprobarFamilia(string f, string f2)
         {
-            if (f == null || f == "") { return true;  }
+            if (f == null || f == "") { return true; }
             else
             {
                 MySqlConnection con = new MySqlConnection();
@@ -879,9 +486,9 @@ namespace ProyectoA
                 }
                 return false;
             }
-            
+
         }
-        
+
         //Incorpora el fichero
         private bool anadirFichero(string ft, OpenFileDialog fo)
         {
@@ -902,7 +509,7 @@ namespace ProyectoA
                 System.IO.File.Copy(sourcePath, destFile, true);
                 return true;
             }
-            catch{ return false; }
+            catch { return false; }
         }
         public void abreDialogo(Form1 f)
         {
@@ -964,7 +571,7 @@ namespace ProyectoA
                 con.ConnectionString = conexion;
                 con.Open();
 
-                string query = "select * from modelo where Familia_Nombre = '"+ f.comboBox8.Text +"';";
+                string query = "select * from modelo where Familia_Nombre = '" + f.comboBox8.Text + "';";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
                 DataTable table1 = new DataTable();
@@ -976,7 +583,7 @@ namespace ProyectoA
                 //f.comboBox8.ValueMember = "ID";
                 f.comboBox2.DataSource = bindingSource3;
                 f.comboBox2.SelectedItem = null;
-                
+
             }
             catch (MySqlException error)
             {
@@ -1161,7 +768,7 @@ namespace ProyectoA
                 con.ConnectionString = conexion;
                 con.Open();
 
-                string query = "select distinct NombreEmpresa from cliente where Codigo like '%" + valor +"%' and NombreEmpresa like '%" + valor2 + "%' limit 0, 10;";
+                string query = "select distinct NombreEmpresa from cliente where Codigo like '%" + valor + "%' and NombreEmpresa like '%" + valor2 + "%' limit 0, 10;";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conexion);
                 DataTable table = new DataTable();

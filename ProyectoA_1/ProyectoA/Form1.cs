@@ -76,7 +76,7 @@ namespace ProyectoA
             comboBox9.SelectedItem = null;
             comboBox10.SelectedItem = null;
             if (comboBox8.Text == "") toolTip1.SetToolTip(pictureBox23, "Campo obligatorio. Asegúrese de que la familia existe.");
-            if (comboBox2.Text == "") toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe y el valor número contenga solo dígitos.");
+            if (comboBox2.Text == "") toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe para esa familia y el valor número contenga solo dígitos o no exista ya.");
             if (comboBox1.Text == "") toolTip1.SetToolTip(pictureBox16, "Campo obligatorio. Asegúrese de que el estado existe.");
         }
         private void comprobarCambiosTextBox()
@@ -195,7 +195,7 @@ namespace ProyectoA
         }
         private void ComboBox1_TextChanged(object sender, EventArgs e)
         {
-            if (funM.comprobarFamilia("estadosmaquina", comboBox1.Text))
+            if (funM.comprobarEstadMa(comboBox1.Text))
             {
                 toolTip1.SetToolTip(pictureBox16, "Campo obligatorio. Asegúrese de que el estado existe.");
                 pictureBox16.Image = ProyectoA.Properties.Resources.tickNeg;
@@ -208,9 +208,9 @@ namespace ProyectoA
         }
         private void TextBox10_TextChanged(object sender, EventArgs e)
         {
-            if (funM.comprobarFamilia("modelo", comboBox2.Text) || funM.comprobarNumero(textBox10.Text))
+            if (funM.comprobarModelo(comboBox2.Text, comboBox8.Text) || funM.comprobarNumero(textBox10.Text))
             {
-                toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe y el valor número contenga solo dígitos.");
+                toolTip1.SetToolTip(pictureBox13, "Campo obligatorio.Asegúrese de que el modelo existe para esa familia y el valor número contenga solo dígitos o no exista ya.");
                 pictureBox13.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -221,9 +221,9 @@ namespace ProyectoA
         }
         private void ComboBox2_TextChanged(object sender, EventArgs e)
         {
-            if (funM.comprobarFamilia("modelo", comboBox2.Text) || funM.comprobarNumero(textBox10.Text))
+            if (funM.comprobarModelo(comboBox2.Text, comboBox8.Text) || funM.comprobarNumero(textBox10.Text))
             {
-                toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe y el valor número contenga solo dígitos.");
+                toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe para esa familia y el valor número contenga solo dígitos o no exista ya.");
                 pictureBox13.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             else
@@ -270,7 +270,7 @@ namespace ProyectoA
         }
         private void ComboBox8_TextChanged(object sender, EventArgs e)
         {
-            if (!funM.comprobarFamilia("familia", comboBox8.Text))
+            if (!funM.comprobarFamilia(comboBox8.Text))
             {
                 toolTip1.SetToolTip(pictureBox23, "");
                 pictureBox23.Image = ProyectoA.Properties.Resources.tickPos;
@@ -281,6 +281,16 @@ namespace ProyectoA
                 pictureBox23.Image = ProyectoA.Properties.Resources.tickNeg;
             }
             funM.rellenarComboBoxModeloA(this);
+            if (funM.comprobarModelo(comboBox2.Text, comboBox8.Text) || funM.comprobarNumero(textBox10.Text))
+            {
+                toolTip1.SetToolTip(pictureBox13, "Campo obligatorio. Asegúrese de que el modelo existe para esa familia y el valor número contenga solo dígitos o no exista ya.");
+                pictureBox13.Image = ProyectoA.Properties.Resources.tickNeg;
+            }
+            else
+            {
+                toolTip1.SetToolTip(pictureBox13, "");
+                pictureBox13.Image = ProyectoA.Properties.Resources.tickPos;
+            }
         }
 
 
@@ -751,8 +761,8 @@ namespace ProyectoA
         {
             funM.rellenarComboBoxFamiliaA(this);
             funM.rellenarComboBoxFamiliaB(this);
-            comboBox5.SelectedItem = null;
-            comboBox2.SelectedItem = null;
+            funM.rellenarComboBoxModeloA(this);
+            funM.rellenarComboBoxModeloB(this);
         }
         private void estadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -813,12 +823,18 @@ namespace ProyectoA
                 perfilMa.Show();
                 perfilMa.FormClosed += PerfilMa_FormClosed;
             }
-            catch(Exception r) { MessageBox.Show(Convert.ToString(r)); }
+            catch(Exception r) { Console.WriteLine(r); }
         }
 
         private void PerfilMa_FormClosed(object sender, FormClosedEventArgs e)
         {
             funM.reiniciarPgn(this);
+            funM.rellenarComboBoxFamiliaA(this);
+            funM.rellenarComboBoxFamiliaB(this);
+            funM.rellenarComboBoxModeloA(this);
+            funM.rellenarComboBoxModeloB(this);
+            funM.rellenarComboBoxEstadoA(this);
+            funM.rellenarComboBoxEstadoB(this);
         }
     }
 }

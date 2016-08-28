@@ -564,6 +564,7 @@ namespace ProyectoA
             bool resultado = false;
             try
             {
+                Console.WriteLine("desde inser " + insercion);
                 conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
                 con.ConnectionString = conexion;
                 con.Open();
@@ -642,14 +643,15 @@ namespace ProyectoA
                 string targetPath = "";
                 if (f.textBox10.Text != "")
                 {
-                    targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas\" + f.textBox10.Text + Path.GetExtension(f.openFileDialog1.FileName);
-                    cadenaCamposI += "', '" + targetPath;
+                    @targetPath = System.IO.Directory.GetCurrentDirectory() + @"\maquinas\" + f.textBox10.Text + Path.GetExtension(f.openFileDialog1.FileName);
+                    targetPath = targetPath.Replace("\\", "\\\\");
+                    @cadenaCamposI += "', '" + @targetPath;
                 }
                 else cadenaCamposI += "', '";
             }
             
             cadenaCamposI += "')";
-
+            
             return cadenaCamposI;
         }
 
@@ -750,9 +752,9 @@ namespace ProyectoA
             {
                
                 //Comprobar que el CP cumple los requisitos
-                if (!error) error = comprobarFamilia("familia", f.comboBox8.Text);
-                if (!error) error = comprobarFamilia("modelo", f.comboBox2.Text);
-                if (!error) error = comprobarFamilia("estadosmaquina", f.comboBox1.Text);
+                if (!error) error = comprobarFamilia(f.comboBox8.Text);
+                if (!error) error = comprobarModelo(f.comboBox2.Text, f.comboBox8.Text);
+                if (!error) error = comprobarEstadMa(f.comboBox1.Text);
                 if (!error) error = comprobarNumero(f.textBox10.Text);
 
                 //Comprueba longitud de campos
@@ -828,12 +830,12 @@ namespace ProyectoA
                 }
                 else return true;
             }
-            return false;
+            return existeNumero(f);
         }
         //Comprueba el valor de la familia, estado y modelo
-        public bool comprobarFamilia(string f, string f2)
+        public bool comprobarFamilia(string f2)
         {
-            if (f == null || f == "") { return true;  }
+            if (f2 == null || f2 == "") { return true; }
             else
             {
                 MySqlConnection con = new MySqlConnection();
@@ -846,7 +848,9 @@ namespace ProyectoA
 
                     MySqlCommand comandos = new MySqlCommand();
                     comandos.Connection = con;
-                    comandos.CommandText = "select count(*) as contado from " + f + " where Nombre = '" + f2 + "';";
+
+                    comandos.CommandText = "select count(*) as contado from familia where Nombre = '" + f2 + "';";
+
                     MySqlDataReader leer = comandos.ExecuteReader();
 
                     if (leer.HasRows)
@@ -879,9 +883,111 @@ namespace ProyectoA
                 }
                 return false;
             }
-            
+
         }
-        
+        public bool comprobarModelo(string f2, string f3)
+        {
+            if (f2 == null || f2 == "") { return true; }
+            else
+            {
+                MySqlConnection con = new MySqlConnection();
+                string conexion;
+                try
+                {
+                    conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                    con.ConnectionString = conexion;
+                    con.Open();
+
+                    MySqlCommand comandos = new MySqlCommand();
+                    comandos.Connection = con;
+
+                    comandos.CommandText = "select count(*) as contado from modelo where Nombre = '" + f2 + "' and Familia_Nombre = '" + f3 + "';";
+                    MySqlDataReader leer = comandos.ExecuteReader();
+
+                    if (leer.HasRows)
+                    {
+                        while (leer.Read())
+                        {
+                            if (Int32.Parse(leer["contado"].ToString()) > 0)
+                            {
+                                return false;
+                            }
+                            else return true;
+                        }
+                    }
+                    return true;
+                }
+                catch (MySqlException error)
+                {
+                    MessageBox.Show("Error: " + Convert.ToString(error));
+                }
+                finally
+                {
+                    try
+                    {
+                        con.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                    }
+                }
+                return false;
+            }
+
+        }
+        public bool comprobarEstadMa(string f2)
+        {
+            if (f2 == null || f2 == "") { return true; }
+            else
+            {
+                MySqlConnection con = new MySqlConnection();
+                string conexion;
+                try
+                {
+                    conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                    con.ConnectionString = conexion;
+                    con.Open();
+
+                    MySqlCommand comandos = new MySqlCommand();
+                    comandos.Connection = con;
+
+                    comandos.CommandText = "select count(*) as contado from estadosmaquina where Nombre = '" + f2 + "';";
+                    MySqlDataReader leer = comandos.ExecuteReader();
+
+                    if (leer.HasRows)
+                    {
+                        while (leer.Read())
+                        {
+                            if (Int32.Parse(leer["contado"].ToString()) > 0)
+                            {
+                                return false;
+                            }
+                            else return true;
+                        }
+                    }
+                    return true;
+                }
+                catch (MySqlException error)
+                {
+                    MessageBox.Show("Error: " + Convert.ToString(error));
+                }
+                finally
+                {
+                    try
+                    {
+                        con.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                    }
+                }
+                return false;
+            }
+
+        }
+
         //Incorpora el fichero
         private bool anadirFichero(string ft, OpenFileDialog fo)
         {
@@ -1225,6 +1331,56 @@ namespace ProyectoA
                 }
             }
         }
+        public bool existeNumero(string f2)
+        {
+            if (f2 == null || f2 == "") { return true; }
+            else
+            {
+                MySqlConnection con = new MySqlConnection();
+                string conexion;
+                try
+                {
+                    conexion = "server=localhost;user id=root;persistsecurityinfo=True;database=proyectoa_bd;Password=maiz";
+                    con.ConnectionString = conexion;
+                    con.Open();
 
+                    MySqlCommand comandos = new MySqlCommand();
+                    comandos.Connection = con;
+
+                    comandos.CommandText = "select count(*) as contado from maquina where Numero = '" + f2 + "';";
+                    MySqlDataReader leer = comandos.ExecuteReader();
+
+                    if (leer.HasRows)
+                    {
+                        while (leer.Read())
+                        {
+                            if (Int32.Parse(leer["contado"].ToString()) == 0)
+                            {
+                                return false;
+                            }
+                            else return true;
+                        }
+                    }
+                    return false;
+                }
+                catch (MySqlException error)
+                {
+                    MessageBox.Show("Error: " + Convert.ToString(error));
+                }
+                finally
+                {
+                    try
+                    {
+                        con.Close();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Error producido al cerrar sesión: \n\n" + Convert.ToString(e));
+                    }
+                }
+                return false;
+            }
+
+        }
     }
 }

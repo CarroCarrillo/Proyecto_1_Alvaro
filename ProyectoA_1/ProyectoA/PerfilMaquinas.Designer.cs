@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label40;
             System.Windows.Forms.Label label21;
             System.Windows.Forms.Label label38;
@@ -82,6 +83,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.boton_eliminar = new System.Windows.Forms.Button();
             this.boton_modificar = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             label40 = new System.Windows.Forms.Label();
             label21 = new System.Windows.Forms.Label();
             label38 = new System.Windows.Forms.Label();
@@ -107,6 +110,151 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
+            // label40
+            // 
+            label40.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label40.AutoSize = true;
+            label40.Location = new System.Drawing.Point(64, 105);
+            label40.Name = "label40";
+            label40.Size = new System.Drawing.Size(49, 13);
+            label40.TabIndex = 201;
+            label40.Text = "* Familia:";
+            // 
+            // label21
+            // 
+            label21.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label21.AutoSize = true;
+            label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label21.Location = new System.Drawing.Point(183, 230);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(144, 16);
+            label21.TabIndex = 194;
+            label21.Text = "DATOS ADQUISICIÓN";
+            // 
+            // label38
+            // 
+            label38.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label38.AutoSize = true;
+            label38.Location = new System.Drawing.Point(64, 257);
+            label38.Name = "label38";
+            label38.Size = new System.Drawing.Size(82, 13);
+            label38.TabIndex = 189;
+            label38.Text = "  Datos compra:";
+            // 
+            // label20
+            // 
+            label20.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label20.AutoSize = true;
+            label20.Location = new System.Drawing.Point(565, 241);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(111, 13);
+            label20.TabIndex = 177;
+            label20.Text = "Observaciones venta:";
+            // 
+            // label30
+            // 
+            label30.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label30.AutoSize = true;
+            label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label30.Location = new System.Drawing.Point(183, 334);
+            label30.Name = "label30";
+            label30.Size = new System.Drawing.Size(104, 16);
+            label30.TabIndex = 175;
+            label30.Text = "DATOS VENTA";
+            // 
+            // label28
+            // 
+            label28.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label28.AutoSize = true;
+            label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label28.Location = new System.Drawing.Point(181, 73);
+            label28.Name = "label28";
+            label28.Size = new System.Drawing.Size(123, 17);
+            label28.TabIndex = 174;
+            label28.Text = "DATOS MÁQUINA";
+            // 
+            // label15
+            // 
+            label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(565, 85);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(81, 13);
+            label15.TabIndex = 173;
+            label15.Text = "Observaciones:";
+            // 
+            // label18
+            // 
+            label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(64, 156);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(72, 13);
+            label18.TabIndex = 156;
+            label18.Text = "  Descripción:";
+            // 
+            // label19
+            // 
+            label19.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label19.AutoSize = true;
+            label19.Location = new System.Drawing.Point(64, 182);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(50, 13);
+            label19.TabIndex = 157;
+            label19.Text = "* Estado:";
+            // 
+            // label23
+            // 
+            label23.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label23.AutoSize = true;
+            label23.Location = new System.Drawing.Point(64, 365);
+            label23.Name = "label23";
+            label23.Size = new System.Drawing.Size(83, 13);
+            label23.TabIndex = 158;
+            label23.Text = "  Código cliente:";
+            // 
+            // label24
+            // 
+            label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label24.AutoSize = true;
+            label24.Location = new System.Drawing.Point(64, 391);
+            label24.Name = "label24";
+            label24.Size = new System.Drawing.Size(96, 13);
+            label24.TabIndex = 159;
+            label24.Text = "  Nombre empresa:";
+            // 
+            // label26
+            // 
+            label26.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label26.AutoSize = true;
+            label26.Location = new System.Drawing.Point(47, 510);
+            label26.Name = "label26";
+            label26.Size = new System.Drawing.Size(431, 26);
+            label26.TabIndex = 160;
+            label26.Text = "* Campos obligatorios. \r\n  Si el dato no estuviera actualizado o no fuera el corr" +
+    "ecto, marcar la casilla de la derecha.\r\n";
+            // 
+            // label27
+            // 
+            label27.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label27.AutoSize = true;
+            label27.Location = new System.Drawing.Point(64, 130);
+            label27.Name = "label27";
+            label27.Size = new System.Drawing.Size(126, 13);
+            label27.TabIndex = 155;
+            label27.Text = "* Modelo - Año - Número:";
+            // 
+            // label1
+            // 
+            label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(458, 22);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(168, 16);
+            label1.TabIndex = 206;
+            label1.Text = "PERFIL DE MÁQUINAS";
+            // 
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(21, 177);
@@ -115,6 +263,7 @@
             this.button12.TabIndex = 205;
             this.button12.Text = "+";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
@@ -124,6 +273,7 @@
             this.button11.TabIndex = 204;
             this.button11.Text = "+";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // pictureBox23
             // 
@@ -147,16 +297,6 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(217, 21);
             this.comboBox8.TabIndex = 202;
-            // 
-            // label40
-            // 
-            label40.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label40.AutoSize = true;
-            label40.Location = new System.Drawing.Point(64, 105);
-            label40.Name = "label40";
-            label40.Size = new System.Drawing.Size(49, 13);
-            label40.TabIndex = 201;
-            label40.Text = "* Familia:";
             // 
             // comboBox7
             // 
@@ -214,17 +354,6 @@
             this.dateTimePicker5.Size = new System.Drawing.Size(217, 20);
             this.dateTimePicker5.TabIndex = 195;
             // 
-            // label21
-            // 
-            label21.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label21.AutoSize = true;
-            label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label21.Location = new System.Drawing.Point(183, 230);
-            label21.Name = "label21";
-            label21.Size = new System.Drawing.Size(144, 16);
-            label21.TabIndex = 194;
-            label21.Text = "DATOS ADQUISICIÓN";
-            // 
             // checkBox4
             // 
             this.checkBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -262,16 +391,6 @@
             this.label22.Size = new System.Drawing.Size(102, 13);
             this.label22.TabIndex = 190;
             this.label22.Text = "  Fecha adquisición:";
-            // 
-            // label38
-            // 
-            label38.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label38.AutoSize = true;
-            label38.Location = new System.Drawing.Point(64, 257);
-            label38.Name = "label38";
-            label38.Size = new System.Drawing.Size(82, 13);
-            label38.TabIndex = 189;
-            label38.Text = "  Datos compra:";
             // 
             // pictureBox21
             // 
@@ -385,16 +504,6 @@
             this.comboBox1.Size = new System.Drawing.Size(217, 21);
             this.comboBox1.TabIndex = 178;
             // 
-            // label20
-            // 
-            label20.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label20.AutoSize = true;
-            label20.Location = new System.Drawing.Point(565, 241);
-            label20.Name = "label20";
-            label20.Size = new System.Drawing.Size(111, 13);
-            label20.TabIndex = 177;
-            label20.Text = "Observaciones venta:";
-            // 
             // richTextBox2
             // 
             this.richTextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -403,38 +512,6 @@
             this.richTextBox2.Size = new System.Drawing.Size(515, 109);
             this.richTextBox2.TabIndex = 176;
             this.richTextBox2.Text = "";
-            // 
-            // label30
-            // 
-            label30.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label30.AutoSize = true;
-            label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label30.Location = new System.Drawing.Point(183, 334);
-            label30.Name = "label30";
-            label30.Size = new System.Drawing.Size(104, 16);
-            label30.TabIndex = 175;
-            label30.Text = "DATOS VENTA";
-            // 
-            // label28
-            // 
-            label28.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label28.AutoSize = true;
-            label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label28.Location = new System.Drawing.Point(181, 73);
-            label28.Name = "label28";
-            label28.Size = new System.Drawing.Size(123, 17);
-            label28.TabIndex = 174;
-            label28.Text = "DATOS MÁQUINA";
-            // 
-            // label15
-            // 
-            label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label15.AutoSize = true;
-            label15.Location = new System.Drawing.Point(565, 85);
-            label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(81, 13);
-            label15.TabIndex = 173;
-            label15.Text = "Observaciones:";
             // 
             // richTextBox1
             // 
@@ -531,78 +608,6 @@
             this.label16.TabIndex = 162;
             this.label16.Text = "  Fecha venta:";
             // 
-            // label18
-            // 
-            label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label18.AutoSize = true;
-            label18.Location = new System.Drawing.Point(64, 156);
-            label18.Name = "label18";
-            label18.Size = new System.Drawing.Size(72, 13);
-            label18.TabIndex = 156;
-            label18.Text = "  Descripción:";
-            // 
-            // label19
-            // 
-            label19.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label19.AutoSize = true;
-            label19.Location = new System.Drawing.Point(64, 182);
-            label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(50, 13);
-            label19.TabIndex = 157;
-            label19.Text = "* Estado:";
-            // 
-            // label23
-            // 
-            label23.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label23.AutoSize = true;
-            label23.Location = new System.Drawing.Point(64, 365);
-            label23.Name = "label23";
-            label23.Size = new System.Drawing.Size(83, 13);
-            label23.TabIndex = 158;
-            label23.Text = "  Código cliente:";
-            // 
-            // label24
-            // 
-            label24.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label24.AutoSize = true;
-            label24.Location = new System.Drawing.Point(64, 391);
-            label24.Name = "label24";
-            label24.Size = new System.Drawing.Size(96, 13);
-            label24.TabIndex = 159;
-            label24.Text = "  Nombre empresa:";
-            // 
-            // label26
-            // 
-            label26.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label26.AutoSize = true;
-            label26.Location = new System.Drawing.Point(47, 510);
-            label26.Name = "label26";
-            label26.Size = new System.Drawing.Size(431, 26);
-            label26.TabIndex = 160;
-            label26.Text = "* Campos obligatorios. \r\n  Si el dato no estuviera actualizado o no fuera el corr" +
-    "ecto, marcar la casilla de la derecha.\r\n";
-            // 
-            // label27
-            // 
-            label27.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label27.AutoSize = true;
-            label27.Location = new System.Drawing.Point(64, 130);
-            label27.Name = "label27";
-            label27.Size = new System.Drawing.Size(126, 13);
-            label27.TabIndex = 155;
-            label27.Text = "* Modelo - Año - Número:";
-            // 
-            // label1
-            // 
-            label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label1.Location = new System.Drawing.Point(458, 22);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(168, 16);
-            label1.TabIndex = 206;
-            label1.Text = "PERFIL DE MÁQUINAS";
-            // 
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -612,6 +617,7 @@
             this.button3.TabIndex = 210;
             this.button3.Text = "CERRAR";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -622,6 +628,7 @@
             this.button2.TabIndex = 209;
             this.button2.Text = "RESTABLECER CAMPOS";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // boton_eliminar
             // 
@@ -633,6 +640,7 @@
             this.boton_eliminar.TabIndex = 208;
             this.boton_eliminar.Text = "ELIMINAR";
             this.boton_eliminar.UseVisualStyleBackColor = true;
+            this.boton_eliminar.Click += new System.EventHandler(this.boton_eliminar_Click);
             // 
             // boton_modificar
             // 
@@ -643,6 +651,11 @@
             this.boton_modificar.TabIndex = 207;
             this.boton_modificar.Text = "MODIFICAR";
             this.boton_modificar.UseVisualStyleBackColor = true;
+            this.boton_modificar.Click += new System.EventHandler(this.boton_modificar_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // PerfilMaquinas
             // 
@@ -706,6 +719,7 @@
             this.Name = "PerfilMaquinas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Perfil de máquinas";
+            this.Load += new System.EventHandler(this.PerfilMaquinas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
@@ -762,5 +776,7 @@
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button boton_eliminar;
         public System.Windows.Forms.Button boton_modificar;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
